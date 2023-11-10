@@ -1,8 +1,8 @@
-package entity;
+package Entity;
 
 import java.sql.Timestamp;
 
-public abstract class TradeItem implements Item{
+public abstract class TradeItem implements entity.Item {
     private String name;
     private String description;
     private Timestamp timestamp;

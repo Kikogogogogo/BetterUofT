@@ -1,6 +1,6 @@
-package entity;
+package Entity;
 
-public class FoundItem implements Item{
+public class FoundItem implements entity.Item {
     private String name;
     private String description;
     private String location;
