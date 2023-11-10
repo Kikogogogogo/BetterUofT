@@ -1,28 +1,28 @@
-package entity;
+package Entity;
 
-public class FoundItem implements Item{
+public class LostItem implements entity.Item {
     private String name;
     private String description;
     private String location;
     private String date;
     private String time;
     private String id;
-    private boolean claimed;
+    private boolean found;
 
-    public FoundItem(String name, String description, String location, String date, String time, String id, boolean status) {
+    public LostItem(String name, String description, String location, String date, String time, String id, boolean found) {
         this.name = name;
         this.description = description;
         this.location = location;
         this.date = date;
         this.time = time;
         this.id = id;
-        this.claimed = status;
+        this.found = found;
     }
 
     public String getName() {
         return name;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -39,7 +39,8 @@ public class FoundItem implements Item{
 
     public String getId() { return id; }
 
-    public boolean getStatus() { return claimed; }
+    public boolean getStatus() { return found; }
 
-    public void setStatus(boolean status) { this.claimed = status; }
+    public void setStatus(boolean status) { this.found = status; }
+
 }
