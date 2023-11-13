@@ -43,7 +43,7 @@ public class Club {
         this.joinable = joinable;
     }
 
-    public void join(User user) {
+    public void join(int user) {
         users.add(user);
     }
 
