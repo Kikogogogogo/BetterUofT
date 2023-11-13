@@ -15,6 +15,8 @@ public class FinalApp extends JFrame {
         postAndReplyButton.addActionListener(this::openPostAndReply);
 
         JButton clubButton = new JButton("Club");
+        clubButton.addActionListener(this::openClub);
+
         JButton foodButton = new JButton("Food");
         JButton weatherButton = new JButton("Weather");
 
@@ -30,6 +32,10 @@ public class FinalApp extends JFrame {
             MessageBoardApp messageBoardApp = new MessageBoardApp();
             messageBoardApp.setVisible(true);
         });
+    }
+
+    private void openClub(ActionEvent event) {
+
     }
 
     public static void main(String[] args) {
