@@ -16,6 +16,8 @@ public class ClubDataAccessObject implements ClubDataAccess{
 
     @Override
     public void save(Club club) {
+        String userString;
+
         String line = String.format("%s,%s,%s,%s,%s",
                 club.getName(), club.getDescription(), club.getId(),
                 club.getJoinable(), club.getUsers());
@@ -37,13 +39,19 @@ public class ClubDataAccessObject implements ClubDataAccess{
             while((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 boolean joinable = (Integer.parseInt(values[3]) == 1);
-//                Club club = new Club(values[0], values[1], values[2], joinable, values[4]);
+
+                ArrayList<Integer> members = new ArrayList<>();
+                for (int i = 4; i < values.length ; i++) {
+                    members.add(Integer.parseInt(values[i]));
+                }
+                Club club = new Club(values[0], values[1], Integer.parseInt(values[2]), joinable, members);
+                clubs.add(club);
             }
         }
         catch (IOException e) {
 
         }
-        return null;
+        return clubs;
     }
 
 }

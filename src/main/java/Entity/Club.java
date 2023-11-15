@@ -47,7 +47,7 @@ public class Club {
         users.add(user);
     }
 
-    public void leave(String user) {
+    public void leave(int user) {
         users.remove(user);
     }
 
@@ -57,7 +57,7 @@ public class Club {
 
     public void setDescription(String description) { this.description = description; }
 
-    public boolean joined(String user) {
+    public boolean joined(int user) {
         return users.contains(user);
     }
 
