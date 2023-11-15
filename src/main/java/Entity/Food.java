@@ -1,6 +1,6 @@
-package entity;
+package Entity;
 
-public class Restaurant {
+public class Food {
     private String name;
     private String location;
     private String description;
@@ -8,7 +8,7 @@ public class Restaurant {
     private int rating;
     private int price;
 
-    public Restaurant(String name, String location, String description, String id, int rating, int price) {
+    public Food(String name, String location, String description, String id, int rating, int price) {
         this.name = name;
         this.location = location;
         this.description = description;
