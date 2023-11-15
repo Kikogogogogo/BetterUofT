@@ -34,18 +34,54 @@ public class ClubApp extends JFrame {
         DefaultListModel<String> clubListModel = new DefaultListModel<>();
 
         JList<String> clubList = new JList<>(clubListModel);
+        JScrollPane listScrollPane = new JScrollPane(clubList);
 
         List<Club> clubs = showingClubAdapter.getAllClubs();
 
-//        JScrollPane clubPanel = new JScrollPane(clubList);
         for (Club c : clubs) {
             clubListModel.addElement(c.getName());
         }
 
-        add(panel, BorderLayout.NORTH);
-        add(clubList, BorderLayout.CENTER);
-//        add(clubPanel, BorderLayout.CENTER);
-//        clubPanel.add(clubList);
+//        add(panel, BorderLayout.NORTH);
+//        add(clubList, BorderLayout.CENTER);
+
+        JButton createClubButton = new JButton("Create Club");
+        JButton joinClubButton = new JButton("Join Club");
+        JTextField descriptionTextField = new JTextField();
+        JCheckBox joinableCheckBox = new JCheckBox("Joinable");
+
+        joinableCheckBox.setEnabled(false);
+        descriptionTextField.setEnabled(false);
+
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+
+        // Construct the GUI
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        gbc.fill = GridBagConstraints.BOTH;
+        add(listScrollPane, gbc);
+
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.weighty = 0.0;
+        add(createClubButton, gbc);
+
+        gbc.gridx = 1;
+        add(joinClubButton, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        add(descriptionTextField, gbc);
+
+        gbc.gridy = 3;
+        add(joinableCheckBox, gbc);
     }
 
     public static void main(String[] args) {

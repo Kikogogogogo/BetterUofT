@@ -2,6 +2,7 @@ package Data;
 
 import Entity.Club;
 
+import java.awt.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
@@ -16,14 +17,17 @@ public class ClubDataAccessObject implements ClubDataAccess{
 
     @Override
     public void save(Club club) {
-        String userString;
+        StringBuilder userString = new StringBuilder();
 
-        String line = String.format("%s,%s,%s,%s,%s",
+        for (int user : club.getUsers()) {
+            userString.append(user).append(",");
+        }
+        int joinable = club.getJoinable() ? 1 : 0;
+        String line = String.format("%s,%s,%s,%s,%s\n",
                 club.getName(), club.getDescription(), club.getId(),
-                club.getJoinable(), club.getUsers());
+                joinable, userString);
 
-        try {
-            BufferedWriter writer= new BufferedWriter(new FileWriter(csvFilePath));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, true))) {;
             writer.write(line);
         } catch (IOException e)
         {
