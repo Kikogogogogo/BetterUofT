@@ -1,14 +1,14 @@
-package entity;
+package Entity;
 
 public class Restaurant {
     private String name;
     private String location;
     private String description;
     private String id;
-    private int rating;
-    private int price;
+    private double rating;
+    private String price;
 
-    public Restaurant(String name, String location, String description, String id, int rating, int price) {
+    public Restaurant(String name, String location, String description, String id, int rating, String price) {
         this.name = name;
         this.location = location;
         this.description = description;
@@ -33,11 +33,11 @@ public class Restaurant {
         return id;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 }
