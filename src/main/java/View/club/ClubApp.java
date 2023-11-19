@@ -1,27 +1,36 @@
 package View.club;
 
-import Adapter.ShowingClubAdapter;
+import Adapter.Club.ShowingClubPresenter;
 import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Entity.Club;
+import use_case.club.ShowingInputData;
+import use_case.club.ShowingOutputBoundary;
 import use_case.club.ShowingUsecase;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class ClubApp extends JFrame {
     private JPanel panel;
-    private ShowingClubAdapter showingClubAdapter;
+    private ShowingOutputBoundary showingClubPresenter;
+    public JList<String> clubList;
+    public DefaultListModel<String> clubListModel;
+    public JTextField descriptionTextField;
+    public JCheckBox joinableCheckBox;
 
     public ClubApp() {
 
         ClubDataAccess clubDataAccess = new ClubDataAccessObject("clubs.csv");
 
-        ShowingUsecase showingUsecase = new ShowingUsecase(clubDataAccess);
+        showingClubPresenter = new ShowingClubPresenter(this);
 
-        showingClubAdapter = new ShowingClubAdapter(showingUsecase);
+        ShowingUsecase showingUsecase = new ShowingUsecase(clubDataAccess, showingClubPresenter);
 
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,24 +40,17 @@ public class ClubApp extends JFrame {
 
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        DefaultListModel<String> clubListModel = new DefaultListModel<>();
+        clubListModel = new DefaultListModel<>();
 
-        JList<String> clubList = new JList<>(clubListModel);
+        clubList = new JList<>(clubListModel);
         JScrollPane listScrollPane = new JScrollPane(clubList);
 
-        List<Club> clubs = showingClubAdapter.getAllClubs();
-
-        for (Club c : clubs) {
-            clubListModel.addElement(c.getName());
-        }
-
-//        add(panel, BorderLayout.NORTH);
-//        add(clubList, BorderLayout.CENTER);
+        showingUsecase.showAllClubs();
 
         JButton createClubButton = new JButton("Create Club");
         JButton joinClubButton = new JButton("Join Club");
-        JTextField descriptionTextField = new JTextField();
-        JCheckBox joinableCheckBox = new JCheckBox("Joinable");
+        descriptionTextField = new JTextField();
+        joinableCheckBox = new JCheckBox("Joinable");
 
         joinableCheckBox.setEnabled(false);
         descriptionTextField.setEnabled(false);
@@ -82,6 +84,20 @@ public class ClubApp extends JFrame {
 
         gbc.gridy = 3;
         add(joinableCheckBox, gbc);
+
+        createClubButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        clubList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                showingUsecase.showClubDescription(clubList.getSelectedIndex());
+            }
+        });
     }
 
     public static void main(String[] args) {

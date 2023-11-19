@@ -1,4 +1,4 @@
-package Adapter;
+package Adapter.Club;
 
 import Entity.Club;
 import use_case.club.CreateUsecase;
