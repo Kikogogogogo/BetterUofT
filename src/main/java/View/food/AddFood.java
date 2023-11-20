@@ -11,7 +11,7 @@ public class AddFood extends JFrame{
     public AddFood(){
         setTitle("Add Food");
         setSize(800,600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         JLabel foodName = new JLabel("New restaurant");
         JTextField foodNameField = new JTextField();
@@ -37,16 +37,29 @@ public class AddFood extends JFrame{
         add(foodlocationFeild);
         add(addButton);
 
-        String name = foodNameField.getText();
-        String price = foodPriceField.getText();
-        String description = foodDescriptionField.getText();
-        String location = foodlocationFeild.getText();
-        String rating = foodratingField.getText();
+        addButton.addActionListener((ActionEvent event) -> {
+            String name = foodNameField.getText();
+            String price = foodPriceField.getText();
+            String description = foodDescriptionField.getText();
+            String location = foodlocationFeild.getText();
+            String rating = foodratingField.getText();
 
-        Food restaurant = new Food(name, location, description, "id", 0, price);
-        //        CsvFoodRepo csvFoodRepo = new CsvFoodRepo("food.csv");
-//        csvFoodRepo.save(restaurant);
+            Food restaurant = new Food(name, location, description, "id", rating, price);
+            CsvFoodRepo csvFoodRepo = new CsvFoodRepo("food.csv");
+            csvFoodRepo.save(restaurant);
 
+            JOptionPane.showMessageDialog(this, "Restaurant added successfully");
+
+
+        });
+
+    }
+
+    private static void openFood(ActionEvent event){
+        SwingUtilities.invokeLater(() -> {
+            AddFood addFood = new AddFood();
+            addFood.setVisible(true);
+        });
     }
 
     public static void main(String[] args) {

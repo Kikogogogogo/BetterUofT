@@ -5,16 +5,16 @@ public class Food {
     private String location;
     private String description;
     private String id;
-    private double rating;
+    private String rating;
     private String price;
 
-    public Food(String name, String location, String description, String id, int rating, String price) {
+    public Food(String name, String location, String description, String id, String rating, String price) {
         this.name = name;
         this.location = location;
         this.description = description;
         this.id = id;
         this.rating = rating;
-        this.price = String.valueOf(price);
+        this.price = price;
     }
 
     public String getName() {
@@ -33,7 +33,7 @@ public class Food {
         return id;
     }
 
-    public double getRating() {
+    public String getRating() {
         return rating;
     }
 
