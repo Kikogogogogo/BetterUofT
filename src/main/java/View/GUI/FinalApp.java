@@ -22,16 +22,23 @@ public class FinalApp extends JFrame {
         clubButton.addActionListener(this::openClub);
 
         JButton foodButton = new JButton("Food");
+        JButton tradeButton = new JButton("Trading");
+        postAndReplyButton.addActionListener(this::openTrading);
         foodButton.addActionListener(this::openFood);
-        JButton weatherButton = new JButton("Weather");
-
 
         add(postAndReplyButton);
         add(clubButton);
         add(foodButton);
-        add(weatherButton);
+        add(tradeButton);
     }
 
+    private void openTrading(ActionEvent e) {
+        SwingUtilities.invokeLater(() -> {
+            //modify
+            MessageBoardApp messageBoardApp = new MessageBoardApp();
+            messageBoardApp.setVisible(true);
+        });
+    }
     private void openPostAndReply(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
             MessageBoardApp messageBoardApp = new MessageBoardApp();
