@@ -28,4 +28,11 @@ public class ShowingClubPresenter implements ShowingOutputBoundary {
         view.descriptionTextField.setText(showingInputData.getClubs().get(index).getDescription());
     }
 
+    @Override
+    public void showClubJoinable(ShowingInputData showingInputData) {
+        int index = showingInputData.getSelection();
+        view.joinableCheckBox.setSelected(showingInputData.getClubs().get(index).getJoinable());
+    }
+
+
 }

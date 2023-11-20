@@ -39,6 +39,7 @@ public class ClubDataAccessObject implements ClubDataAccess{
     public List<Club> getClubs() {
         List<Club> clubs = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+            br.readLine();
             String line;
             while((line = br.readLine()) != null) {
                 String[] values = line.split(",");

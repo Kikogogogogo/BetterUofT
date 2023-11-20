@@ -43,6 +43,7 @@ public class ClubApp extends JFrame {
         clubListModel = new DefaultListModel<>();
 
         clubList = new JList<>(clubListModel);
+        clubList.setFont(new Font("serif", Font.PLAIN, 18));
         JScrollPane listScrollPane = new JScrollPane(clubList);
 
         showingUsecase.showAllClubs();
@@ -53,7 +54,8 @@ public class ClubApp extends JFrame {
         joinableCheckBox = new JCheckBox("Joinable");
 
         joinableCheckBox.setEnabled(false);
-        descriptionTextField.setEnabled(false);
+        descriptionTextField.setEditable(false);
+        descriptionTextField.setFont(new Font("serif", Font.PLAIN, 18));
 
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -96,6 +98,7 @@ public class ClubApp extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 showingUsecase.showClubDescription(clubList.getSelectedIndex());
+                showingUsecase.showClubJoinable(clubList.getSelectedIndex());
             }
         });
     }

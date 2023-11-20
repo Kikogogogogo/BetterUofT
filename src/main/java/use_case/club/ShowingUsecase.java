@@ -16,10 +16,6 @@ public class ShowingUsecase {
         this.showingClubPresenter = showingClubPresenter;
     }
 
-    public List<Club> getAllClubs() {
-        return clubDataAccess.getClubs();
-    }
-
     public void showClubDescription(int selection) {
         List<Club> clubs = clubDataAccess.getClubs();
 
@@ -27,6 +23,12 @@ public class ShowingUsecase {
         showingClubPresenter.showClubDescription(inputData);
     }
 
+    public void showClubJoinable(int selection) {
+        List<Club> clubs = clubDataAccess.getClubs();
+
+        ShowingInputData inputData = new ShowingInputData(selection, clubs);
+        showingClubPresenter.showClubJoinable(inputData);
+    }
     public void showAllClubs() {
         List<Club> clubs = clubDataAccess.getClubs();
 
