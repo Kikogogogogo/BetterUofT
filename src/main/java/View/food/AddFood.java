@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 import Data.CsvFoodRepo;
-import Entity.Restaurant;
+import Entity.Food;
 
 public class AddFood extends JFrame{
 
@@ -43,9 +43,10 @@ public class AddFood extends JFrame{
         String location = foodlocationFeild.getText();
         String rating = foodratingField.getText();
 
-        Restaurant restaurant = new Restaurant(name, location, description, "id", 0, price);
+        Food restaurant = new Food(name, location, description, "id", 0, price);
         //        CsvFoodRepo csvFoodRepo = new CsvFoodRepo("food.csv");
 //        csvFoodRepo.save(restaurant);
+
     }
 
     public static void main(String[] args) {

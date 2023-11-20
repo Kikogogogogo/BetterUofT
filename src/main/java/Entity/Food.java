@@ -8,17 +8,13 @@ public class Food {
     private double rating;
     private String price;
 
-<<<<<<< HEAD:src/main/java/Entity/Restaurant.java
-    public Restaurant(String name, String location, String description, String id, int rating, String price) {
-=======
-    public Food(String name, String location, String description, String id, int rating, int price) {
->>>>>>> main:src/main/java/Entity/Food.java
+    public Food(String name, String location, String description, String id, int rating, String price) {
         this.name = name;
         this.location = location;
         this.description = description;
         this.id = id;
         this.rating = rating;
-        this.price = price;
+        this.price = String.valueOf(price);
     }
 
     public String getName() {
