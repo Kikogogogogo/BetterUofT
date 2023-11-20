@@ -6,3 +6,4 @@ public interface FoodRepo {
     void save(Food food);
     List<Food> getAllFoods();
 }
+

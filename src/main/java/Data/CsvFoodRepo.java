@@ -14,13 +14,14 @@ public class CsvFoodRepo implements FoodRepo {
         this.path = Paths.get(path);
     }
 
+    @Override
     public void save(Food food) {
         String name = food.getName();
         String location = food.getLocation();
         String description = food.getDescription();
         String id = food.getId();
-        int rating = food.getRating();
-        int price = food.getPrice();
+        double rating = food.getRating();
+        String price = food.getPrice();
         String line = String.format("%s,%s,%s,%s,%d,%d\n", name, location, description, id, rating, price);
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             writer.write(line);
@@ -38,3 +39,4 @@ public class CsvFoodRepo implements FoodRepo {
         return foods;
     }
 }
+
