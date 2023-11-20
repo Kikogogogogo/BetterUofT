@@ -1,13 +1,9 @@
 package Adapter.Club;
 
 import Entity.Club;
-import View.GUI.FinalApp;
 import View.club.ClubApp;
 import use_case.club.ShowingInputData;
 import use_case.club.ShowingOutputBoundary;
-import use_case.club.ShowingUsecase;
-
-import java.util.List;
 
 public class ShowingClubPresenter implements ShowingOutputBoundary {
     final ClubApp view;

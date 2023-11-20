@@ -1,7 +1,5 @@
 package Entity;
 
-import entity.User;
-
 import java.util.ArrayList;
 
 public class Club {

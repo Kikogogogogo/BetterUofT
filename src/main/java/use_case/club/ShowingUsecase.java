@@ -7,7 +7,7 @@ import Entity.Club;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowingUsecase {
+public class ShowingUsecase implements ShowingClubInputBoundary{
     private ClubDataAccess clubDataAccess;
     private ShowingOutputBoundary showingClubPresenter;
 

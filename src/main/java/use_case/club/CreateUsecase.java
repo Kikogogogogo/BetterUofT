@@ -5,7 +5,7 @@ import Entity.Club;
 
 import java.util.ArrayList;
 
-public class CreateUsecase {
+public class CreateUsecase implements CreateInputBoundary{
     private final ClubDataAccess clubDataAccess;
 
     public CreateUsecase(ClubDataAccess clubDataAccess) {
