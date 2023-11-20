@@ -21,7 +21,7 @@ public class ClubApp extends JFrame {
     private ShowingOutputBoundary showingClubPresenter;
     public JList<String> clubList;
     public DefaultListModel<String> clubListModel;
-    public JTextField descriptionTextField;
+    public JTextArea descriptionTextField;
     public JCheckBox joinableCheckBox;
 
     public ClubApp() {
@@ -50,12 +50,15 @@ public class ClubApp extends JFrame {
 
         JButton createClubButton = new JButton("Create Club");
         JButton joinClubButton = new JButton("Join Club");
-        descriptionTextField = new JTextField();
+        descriptionTextField = new JTextArea();
         joinableCheckBox = new JCheckBox("Joinable");
 
+        JScrollPane descriptionScrollPane = new JScrollPane(descriptionTextField);
+        descriptionScrollPane.setPreferredSize(new Dimension(300, 100));
         joinableCheckBox.setEnabled(false);
         descriptionTextField.setEditable(false);
         descriptionTextField.setFont(new Font("serif", Font.PLAIN, 18));
+
 
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -82,7 +85,7 @@ public class ClubApp extends JFrame {
         gbc.gridy = 2;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        add(descriptionTextField, gbc);
+        add(descriptionScrollPane, gbc);
 
         gbc.gridy = 3;
         add(joinableCheckBox, gbc);
