@@ -1,15 +1,17 @@
-package entity;
+package Entity;
+
+import entity.User;
 
 import java.util.ArrayList;
 
 public class Club {
     String name;
     String description;
-    String id;
+    int id;
     Boolean joinable;
-    ArrayList<String> users;
+    ArrayList<Integer> users;
 
-    public Club(String name, String description, String id, Boolean joinable, ArrayList<String> users) {
+    public Club(String name, String description, int id, Boolean joinable, ArrayList<Integer> users) {
         this.name = name;
         this.description = description;
         this.id = id;
@@ -25,7 +27,7 @@ public class Club {
         return description;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -33,7 +35,7 @@ public class Club {
         return joinable;
     }
 
-    public ArrayList<String> getUsers() {
+    public ArrayList<Integer> getUsers() {
         return users;
     }
 
@@ -41,11 +43,11 @@ public class Club {
         this.joinable = joinable;
     }
 
-    public void join(String user) {
+    public void join(int user) {
         users.add(user);
     }
 
-    public void leave(String user) {
+    public void leave(int user) {
         users.remove(user);
     }
 
@@ -55,7 +57,7 @@ public class Club {
 
     public void setDescription(String description) { this.description = description; }
 
-    public boolean joined(String user) {
+    public boolean joined(int user) {
         return users.contains(user);
     }
 
