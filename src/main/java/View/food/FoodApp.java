@@ -1,5 +1,6 @@
 package View.food;
 
+<<<<<<< HEAD
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -22,6 +23,23 @@ public class FoodApp extends JFrame{
             AddFood addFood = new AddFood();
             addFood.setVisible(true);
         });
+=======
+import Data.CsvFoodRepo;
+import Data.FoodRepo;
+import Data.PostRepo;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class FoodApp {
+    public FoodApp() {
+        FoodRepo foodRepo = new CsvFoodRepo("food.csv");
+        FoodUsecase foodUsecase = new FoodUsecase(foodRepo);
+        JFrame frame = new JFrame("Food");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+>>>>>>> main
     }
 
 
