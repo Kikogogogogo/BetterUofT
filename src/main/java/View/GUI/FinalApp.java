@@ -1,4 +1,5 @@
 package View.GUI;
+import View.club.ClubApp;
 import View.postandreply.MessageBoardApp;
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +36,10 @@ public class FinalApp extends JFrame {
     }
 
     private void openClub(ActionEvent event) {
-
+        SwingUtilities.invokeLater(() -> {
+            ClubApp clubApp = new ClubApp();
+            clubApp.setVisible(true);
+        });
     }
 
     public static void main(String[] args) {
