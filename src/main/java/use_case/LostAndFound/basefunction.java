@@ -8,12 +8,12 @@ import Data.LAFDataAccess;
 public class basefunction{
     public void reportLostItem(LAFDataAccess LAFDataAccess) throws Exception {
         String jsonPayload = toJson(LAFDataAccess);
-        sendPostRequest("http://example.com/api/lost", jsonPayload);
+        sendPostRequest("test/api/lost", jsonPayload);
     }
 
     public void reportFoundItem(LAFDataAccess LAFDataAccess) throws Exception {
         String jsonPayload = toJson(LAFDataAccess);
-        sendPostRequest("http://example.com/api/found", jsonPayload);
+        sendPostRequest("test/api/found", jsonPayload);
     }
 
     private void sendPostRequest(String urlString, String jsonInputString) throws Exception {
