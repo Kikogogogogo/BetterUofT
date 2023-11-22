@@ -1,13 +1,23 @@
 package View.club;
 
+import Adapter.Club.CreateClubController;
+import Adapter.Club.CreateClubPresenter;
+import Data.ClubDataAccess;
+import Data.ClubDataAccessObject;
+import use_case.club.CreateInputBoundary;
 import use_case.club.CreateOutputBoundary;
+import use_case.club.CreateUsecase;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CreateClubApp extends JFrame {
-    private CreateOutputBoundary createClubPresenter;
+    private final CreateOutputBoundary createClubPresenter;
+    private final CreateInputBoundary createClubUsecase;
+    private final ClubDataAccess clubDataAccess;
+    private final CreateClubController createClubController;
     public JTextField nameField;
     public JTextField leaderField;
     public JTextField descriptionField;
@@ -15,6 +25,11 @@ public class CreateClubApp extends JFrame {
     public JButton submitButton;
     public JButton cancelButton;
     public CreateClubApp() {
+        clubDataAccess = new ClubDataAccessObject("clubs.csv");
+        createClubPresenter = new CreateClubPresenter(this);
+        createClubUsecase = new CreateUsecase(clubDataAccess, createClubPresenter);
+        createClubController = new CreateClubController(createClubUsecase);
+
         setTitle("Create Club");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,11 +63,25 @@ public class CreateClubApp extends JFrame {
         add(mainPanel);
 
         setLocationRelativeTo(null);
-        setVisible(true);
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        });
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createClubController.execute(nameField.getText(), descriptionField.getText(), publicCheckBox.isSelected());
+            }
+        });
     }
 
     public static void main(String[] args) {
         CreateClubApp createClubApp = new CreateClubApp();
         createClubApp.setVisible(true);
     }
+
 }

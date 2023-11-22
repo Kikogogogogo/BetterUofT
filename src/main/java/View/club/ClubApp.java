@@ -4,6 +4,7 @@ import Adapter.Club.ShowingClubPresenter;
 import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Entity.Club;
+import use_case.club.ShowingClubInputBoundary;
 import use_case.club.ShowingInputData;
 import use_case.club.ShowingOutputBoundary;
 import use_case.club.ShowingUsecase;
@@ -18,7 +19,8 @@ import java.util.List;
 
 public class ClubApp extends JFrame {
     private JPanel panel;
-    private ShowingOutputBoundary showingClubPresenter;
+    private final ShowingClubInputBoundary showingUsecase;
+    private final ShowingOutputBoundary showingClubPresenter;
     public JList<String> clubList;
     public DefaultListModel<String> clubListModel;
     public JTextArea descriptionTextField;
@@ -30,7 +32,7 @@ public class ClubApp extends JFrame {
 
         showingClubPresenter = new ShowingClubPresenter(this);
 
-        ShowingUsecase showingUsecase = new ShowingUsecase(clubDataAccess, showingClubPresenter);
+        showingUsecase = new ShowingUsecase(clubDataAccess, showingClubPresenter);
 
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,7 +95,8 @@ public class ClubApp extends JFrame {
         createClubButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                CreateClubApp createClubApp = new CreateClubApp();
+                createClubApp.setVisible(true);
             }
         });
 

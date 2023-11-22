@@ -1,5 +1,7 @@
 package use_case.club;
 
-public interface CreateInputBoundary {
+import java.util.ArrayList;
 
+public interface CreateInputBoundary {
+    public void createClub(String name, String description, boolean joinable);
 }
