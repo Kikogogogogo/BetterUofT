@@ -20,8 +20,8 @@ public class CsvFoodRepo implements FoodRepo {
         String location = food.getLocation();
         String description = food.getDescription();
         String id = food.getId();
-        String rating = food.getRating();
-        String price = food.getPrice();
+        String rating = food.getRatings();
+        String price = food.getPrices();
         String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + "\n";
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             writer.write(lines);
