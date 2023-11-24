@@ -6,48 +6,82 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class FoodApp extends JFrame {
-    // Assume this is an array of your Food items
     Food a = new Food("a", "a", "a", "a", "a", "a");
     Food b = new Food("b", "b", "b", "b", "b", "b");
     Food c = new Food("c", "c", "c", "c", "c", "c");
-    private Food[] foodItems = { a, b, c};
+    Food d = new Food("d", "d", "d", "d", "d", "d");
+    Food e = new Food("e", "e", "e", "e", "e", "e");
+    Food f = new Food("f", "f", "f", "f", "f", "f");
+    Food g = new Food("g", "g", "g", "g", "g", "g");
+    Food h = new Food("h", "h", "h", "h", "h", "h");
+
+    private Food[] foodItems = { a,b,c,d,e,f,g,h};
 
     public FoodApp() {
         setTitle("Food");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
+
+        // Left panel for buttons like Add and Sort
+        JPanel controlPanel = new JPanel();
+        controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
 
         JButton addButton = new JButton("Add");
+        addButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         addButton.addActionListener(this::openAdd);
-        add(addButton);
 
-        String[] choices = {"Name", "Price", "Rating"};
-        JComboBox<String> cb = new JComboBox<>(choices);
-        cb.setMaximumSize(cb.getPreferredSize());
-        add(cb);
+        JButton sortButton = new JButton("Sort");
+        sortButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // sortButton.addActionListener(this::sortFoodItems); // Implement sorting logic in sortFoodItems method
 
-        // Container panel with vertical BoxLayout to hold all food panels
-        JPanel foodContainerPanel = new JPanel();
-        foodContainerPanel.setLayout(new BoxLayout(foodContainerPanel, BoxLayout.Y_AXIS));
+        controlPanel.add(addButton);
+        controlPanel.add(Box.createRigidArea(new Dimension(0, 5))); // Space between buttons
+        controlPanel.add(sortButton);
+
+        // Right panel for listing the food items
+        JPanel foodListPanel = new JPanel();
+        foodListPanel.setLayout(new GridBagLayout()); // Use GridBagLayout for more control
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
         // Add a JScrollPane to allow scrolling of food panels
-        JScrollPane scrollPane = new JScrollPane(foodContainerPanel);
+        JScrollPane scrollPane = new JScrollPane(foodListPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         // Populate the container panel with food panels
         for (Food food : foodItems) {
             JPanel foodPanel = createFoodPanel(food);
-            foodContainerPanel.add(foodPanel);
+            foodListPanel.add(foodPanel, gbc);
         }
 
-        add(scrollPane); // Add the scroll pane to the frame
+        // Filler component for extra space
+        Component filler = Box.createVerticalGlue();
+        foodListPanel.add(filler, gbc);
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, controlPanel, scrollPane);
+        splitPane.setDividerLocation(150);
+
+        add(splitPane, BorderLayout.CENTER); // Add the split pane to the frame
+
+        setSize(800, 600);
+        setLocationRelativeTo(null); // Center on screen
     }
 
     private JPanel createFoodPanel(Food food) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+
+        int panelWidth = 400;
+        int panelHeight = 100;
+        Dimension panelSize = new Dimension(panelWidth, panelHeight);
+        panel.setPreferredSize(panelSize);
+        panel.setMinimumSize(panelSize);
 
         JLabel nameLabel = new JLabel("Name: " + food.getName());
         JLabel ratingLabel = new JLabel("Rating: " + food.getRatings() + " stars");
@@ -66,6 +100,7 @@ public class FoodApp extends JFrame {
 
     private void openFoodDetails(Food food) {
         JDialog detailsDialog = new JDialog(this, "Food Details", true);
+
         detailsDialog.setLayout(new BoxLayout(detailsDialog.getContentPane(), BoxLayout.Y_AXIS));
         detailsDialog.add(new JLabel("Name: " + food.getName()));
         detailsDialog.add(new JLabel("Rating: " + food.getRatings() + " stars"));
@@ -73,11 +108,9 @@ public class FoodApp extends JFrame {
         detailsDialog.add(new JLabel("Location: " + food.getLocation()));
         detailsDialog.add(new JLabel("Description: " + food.getDescription()));
 
+        detailsDialog.setSize(300, 200);
 
-        // Add more details as needed
-
-        detailsDialog.pack();
-        detailsDialog.setLocationRelativeTo(this); // Center the dialog relative to the main frame
+        detailsDialog.setLocationRelativeTo(this);
         detailsDialog.setVisible(true);
     }
 
