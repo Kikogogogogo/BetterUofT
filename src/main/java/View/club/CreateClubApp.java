@@ -7,6 +7,7 @@ import Data.ClubDataAccessObject;
 import use_case.club.CreateInputBoundary;
 import use_case.club.CreateOutputBoundary;
 import use_case.club.CreateUsecase;
+import use_case.club.ShowingClubInputBoundary;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,11 +25,11 @@ public class CreateClubApp extends JFrame {
     public JCheckBox publicCheckBox;
     public JButton submitButton;
     public JButton cancelButton;
-    public CreateClubApp() {
+    public CreateClubApp(ShowingClubInputBoundary showingUsecase) {
         clubDataAccess = new ClubDataAccessObject("clubs.csv");
         createClubPresenter = new CreateClubPresenter(this);
         createClubUsecase = new CreateUsecase(clubDataAccess, createClubPresenter);
-        createClubController = new CreateClubController(createClubUsecase);
+        createClubController = new CreateClubController(createClubUsecase, showingUsecase);
 
         setTitle("Create Club");
         setSize(400, 300);
@@ -51,6 +52,7 @@ public class CreateClubApp extends JFrame {
 
         mainPanel.add(new JLabel("Public:"));
         publicCheckBox = new JCheckBox();
+        publicCheckBox.setSelected(true);
         mainPanel.add(publicCheckBox);
 
         submitButton = new JButton("Submit");
@@ -80,8 +82,6 @@ public class CreateClubApp extends JFrame {
     }
 
     public static void main(String[] args) {
-        CreateClubApp createClubApp = new CreateClubApp();
-        createClubApp.setVisible(true);
     }
 
 }

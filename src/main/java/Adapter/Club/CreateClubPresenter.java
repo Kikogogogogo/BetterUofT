@@ -12,7 +12,7 @@ public class CreateClubPresenter implements CreateOutputBoundary {
         this.view = view;
     }
     public void prepareSuccessView(CreateOutputData createOutputData) {
-        JDialog d = new JDialog(view, createOutputData.getMessage());
-        d.setVisible(true);
+        JOptionPane.showMessageDialog(view, createOutputData.getMessage());
+        view.setVisible(false);
     }
 }

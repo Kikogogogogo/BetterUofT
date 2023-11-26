@@ -95,7 +95,7 @@ public class ClubApp extends JFrame {
         createClubButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CreateClubApp createClubApp = new CreateClubApp();
+                CreateClubApp createClubApp = new CreateClubApp(showingUsecase);
                 createClubApp.setVisible(true);
             }
         });
