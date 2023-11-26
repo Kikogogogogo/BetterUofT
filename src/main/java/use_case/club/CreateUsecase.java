@@ -21,9 +21,15 @@ public class CreateUsecase implements CreateInputBoundary{
         for (Club c : clubs) {
             if (id < c.getId())
                 id = c.getId();
+            if (name.equals(c.getName())){
+                createClubPresenter.prepareFailView(new CreateOutputData(false,
+                        "There is already a club with this name, please try again!"));
+                return;
+            }
         }
         Club club = new Club(name, description, id + 1, joinable, new ArrayList<>());
         clubDataAccess.save(club);
-        createClubPresenter.prepareSuccessView(new CreateOutputData(true, "The club is successfully created!"));
+        createClubPresenter.prepareSuccessView(new CreateOutputData(true,
+                "The club is successfully created!"));
     }
 }

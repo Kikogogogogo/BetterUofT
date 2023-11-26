@@ -13,6 +13,7 @@ public class ShowingClubPresenter implements ShowingOutputBoundary {
 
     public void showAllClubs(ShowingInputData showingInputData) {
 
+        view.clubListModel.removeAllElements();
         for (Club c : showingInputData.getClubs()) {
             view.clubListModel.addElement(c.getName());
         }

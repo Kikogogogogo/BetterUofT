@@ -15,4 +15,9 @@ public class CreateClubPresenter implements CreateOutputBoundary {
         JOptionPane.showMessageDialog(view, createOutputData.getMessage());
         view.setVisible(false);
     }
+
+    @Override
+    public void prepareFailView(CreateOutputData createOutputData) {
+        JOptionPane.showMessageDialog(view, createOutputData.getMessage());
+    }
 }
