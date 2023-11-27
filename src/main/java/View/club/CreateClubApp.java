@@ -80,7 +80,8 @@ public class CreateClubApp extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                createClubController.execute(nameField.getText(), descriptionField.getText(), publicCheckBox.isSelected());
+                createClubController.execute(nameField.getText(), descriptionField.getText(), publicCheckBox.isSelected(),
+                        leaderField.getText());
             }
         });
     }
