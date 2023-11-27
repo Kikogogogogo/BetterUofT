@@ -23,9 +23,9 @@ public class ClubDataAccessObject implements ClubDataAccess{
             userString.append(user).append(",");
         }
         int joinable = club.getJoinable() ? 1 : 0;
-        String line = String.format("%s,%s,%s,%s,%s\n",
+        String line = String.format("%s,%s,%s,%s,%s,%s\n",
                 club.getName(), club.getDescription(), club.getId(),
-                joinable, userString);
+                joinable, club.getLeader(),userString);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, true))) {;
             writer.write(line);
@@ -39,16 +39,18 @@ public class ClubDataAccessObject implements ClubDataAccess{
     public List<Club> getClubs() {
         List<Club> clubs = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+            br.readLine();
             String line;
             while((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 boolean joinable = (Integer.parseInt(values[3]) == 1);
 
                 ArrayList<Integer> members = new ArrayList<>();
-                for (int i = 4; i < values.length ; i++) {
+                int leader = Integer.parseInt(values[4]);
+                for (int i = 5; i < values.length ; i++) {
                     members.add(Integer.parseInt(values[i]));
                 }
-                Club club = new Club(values[0], values[1], Integer.parseInt(values[2]), joinable, members);
+                Club club = new Club(values[0], values[1], Integer.parseInt(values[2]), joinable, members,leader);
                 clubs.add(club);
             }
         }

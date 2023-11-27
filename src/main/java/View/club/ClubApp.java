@@ -4,6 +4,7 @@ import Adapter.Club.ShowingClubPresenter;
 import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Entity.Club;
+import use_case.club.ShowingClubInputBoundary;
 import use_case.club.ShowingInputData;
 import use_case.club.ShowingOutputBoundary;
 import use_case.club.ShowingUsecase;
@@ -18,10 +19,11 @@ import java.util.List;
 
 public class ClubApp extends JFrame {
     private JPanel panel;
-    private ShowingOutputBoundary showingClubPresenter;
+    private final ShowingClubInputBoundary showingUsecase;
+    private final ShowingOutputBoundary showingClubPresenter;
     public JList<String> clubList;
     public DefaultListModel<String> clubListModel;
-    public JTextField descriptionTextField;
+    public JTextArea descriptionTextField;
     public JCheckBox joinableCheckBox;
 
     public ClubApp() {
@@ -30,7 +32,7 @@ public class ClubApp extends JFrame {
 
         showingClubPresenter = new ShowingClubPresenter(this);
 
-        ShowingUsecase showingUsecase = new ShowingUsecase(clubDataAccess, showingClubPresenter);
+        showingUsecase = new ShowingUsecase(clubDataAccess, showingClubPresenter);
 
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,17 +45,22 @@ public class ClubApp extends JFrame {
         clubListModel = new DefaultListModel<>();
 
         clubList = new JList<>(clubListModel);
+        clubList.setFont(new Font("serif", Font.PLAIN, 18));
         JScrollPane listScrollPane = new JScrollPane(clubList);
 
         showingUsecase.showAllClubs();
 
         JButton createClubButton = new JButton("Create Club");
         JButton joinClubButton = new JButton("Join Club");
-        descriptionTextField = new JTextField();
+        descriptionTextField = new JTextArea();
         joinableCheckBox = new JCheckBox("Joinable");
 
+        JScrollPane descriptionScrollPane = new JScrollPane(descriptionTextField);
+        descriptionScrollPane.setPreferredSize(new Dimension(300, 100));
         joinableCheckBox.setEnabled(false);
-        descriptionTextField.setEnabled(false);
+        descriptionTextField.setEditable(false);
+        descriptionTextField.setFont(new Font("serif", Font.PLAIN, 18));
+
 
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -80,7 +87,7 @@ public class ClubApp extends JFrame {
         gbc.gridy = 2;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        add(descriptionTextField, gbc);
+        add(descriptionScrollPane, gbc);
 
         gbc.gridy = 3;
         add(joinableCheckBox, gbc);
@@ -88,7 +95,8 @@ public class ClubApp extends JFrame {
         createClubButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                CreateClubApp createClubApp = new CreateClubApp(showingUsecase);
+                createClubApp.setVisible(true);
             }
         });
 
@@ -96,6 +104,7 @@ public class ClubApp extends JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 showingUsecase.showClubDescription(clubList.getSelectedIndex());
+                showingUsecase.showClubJoinable(clubList.getSelectedIndex());
             }
         });
     }
