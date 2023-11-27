@@ -1,21 +1,16 @@
 package View.food;
 
+import Data.CsvFoodRepo;
 import Entity.Food;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FoodApp extends JFrame {
-    Food a = new Food("a", "a", "a", "a", "a", "a");
-    Food b = new Food("b", "b", "b", "b", "b", "b");
-    Food c = new Food("c", "c", "c", "c", "c", "c");
-    Food d = new Food("d", "d", "d", "d", "d", "d");
-    Food e = new Food("e", "e", "e", "e", "e", "e");
-    Food f = new Food("f", "f", "f", "f", "f", "f");
-    Food g = new Food("g", "g", "g", "g", "g", "g");
-    Food h = new Food("h", "h", "h", "h", "h", "h");
 
-    private Food[] foodItems = { a,b,c,d,e,f,g,h};
+    private ArrayList<Food> foodItems = new ArrayList<>();
 
     public FoodApp() {
         setTitle("Food");
@@ -51,6 +46,9 @@ public class FoodApp extends JFrame {
         // Add a JScrollPane to allow scrolling of food panels
         JScrollPane scrollPane = new JScrollPane(foodListPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        CsvFoodRepo csvFoodRepo = new CsvFoodRepo("food.csv");
+        foodItems = csvFoodRepo.getAllFoods();
 
         // Populate the container panel with food panels
         for (Food food : foodItems) {
