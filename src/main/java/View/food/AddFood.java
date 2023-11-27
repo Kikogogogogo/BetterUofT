@@ -50,18 +50,10 @@ public class AddFood extends JFrame{
 
             JOptionPane.showMessageDialog(this, "Restaurant added successfully");
 
-
+            dispose();
         });
 
     }
-
-    private static void openFood(ActionEvent event){
-        SwingUtilities.invokeLater(() -> {
-            AddFood addFood = new AddFood();
-            addFood.setVisible(true);
-        });
-    }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             AddFood addFood = new AddFood();

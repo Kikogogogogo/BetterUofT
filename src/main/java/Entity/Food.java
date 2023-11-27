@@ -33,11 +33,19 @@ public class Food {
         return id;
     }
 
-    public String getRating() {
+    public double getRating() {
+        return Double.parseDouble(rating);
+    }
+
+    public String getRatings() {
         return rating;
     }
 
-    public String getPrice() {
+    public double getPrice() {
+        return Double.parseDouble(price);
+    }
+
+    public String getPrices() {
         return price;
     }
 }
