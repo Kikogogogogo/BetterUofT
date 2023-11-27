@@ -30,13 +30,31 @@ public class CsvFoodRepo implements FoodRepo {
         }
     }
 
-    public List<Food> getAllFoods() {
-        List<Food> foods = new ArrayList<>();
+    public ArrayList<Food> getAllFoods() {
+        ArrayList<Food> foodItems = new ArrayList<>();
         if (!Files.exists(path)) {
-            return foods;
+            return foodItems;
         }
 
-        return foods;
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",", -1);
+                if (parts.length >= 6) {
+                    String name = parts[0];
+                    String location = parts[4];
+                    String description = parts[2];
+                    String id = parts[3];
+                    String rating = parts[1];
+                    String price = parts[5];
+                    Food food = new Food(name, location, description, id, rating, price);
+                    foodItems.add(food);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return foodItems;
     }
 }
 

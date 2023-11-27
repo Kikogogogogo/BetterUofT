@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 
 import Data.CsvFoodRepo;
 import Entity.Food;
+import java.util.*;
 
 public class AddFood extends JFrame{
 
@@ -41,10 +42,11 @@ public class AddFood extends JFrame{
             String name = foodNameField.getText();
             String price = foodPriceField.getText();
             String description = foodDescriptionField.getText();
-            String location = foodlocationFeild.getText();
             String rating = foodratingField.getText();
+            String location = foodlocationFeild.getText();
+            UUID id = UUID.randomUUID();
 
-            Food restaurant = new Food(name, location, description, "id", rating, price);
+            Food restaurant = new Food(name, location, description, id.toString(), rating, price);
             CsvFoodRepo csvFoodRepo = new CsvFoodRepo("food.csv");
             csvFoodRepo.save(restaurant);
 
