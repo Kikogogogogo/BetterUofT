@@ -6,15 +6,17 @@ public class Club {
     String name;
     String description;
     int id;
+    int leader;
     Boolean joinable;
     ArrayList<Integer> users;
 
-    public Club(String name, String description, int id, Boolean joinable, ArrayList<Integer> users) {
+    public Club(String name, String description, int id, Boolean joinable, ArrayList<Integer> users, int leader) {
         this.name = name;
         this.description = description;
         this.id = id;
         this.joinable = joinable;
         this.users = users;
+        this.leader = leader;
     }
 
     public String getName() {
@@ -35,6 +37,10 @@ public class Club {
 
     public ArrayList<Integer> getUsers() {
         return users;
+    }
+
+    public int getLeader() {
+        return leader;
     }
 
     public void setJoinable(Boolean joinable) {

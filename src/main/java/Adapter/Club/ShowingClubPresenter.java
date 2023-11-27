@@ -30,6 +30,4 @@ public class ShowingClubPresenter implements ShowingOutputBoundary {
         int index = showingInputData.getSelection();
         view.joinableCheckBox.setSelected(showingInputData.getClubs().get(index).getJoinable());
     }
-
-
 }

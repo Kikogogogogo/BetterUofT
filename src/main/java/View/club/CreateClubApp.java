@@ -4,6 +4,8 @@ import Adapter.Club.CreateClubController;
 import Adapter.Club.CreateClubPresenter;
 import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
+import Data.UserDataAccess;
+import Data.UserDataAcessObject;
 import use_case.club.CreateInputBoundary;
 import use_case.club.CreateOutputBoundary;
 import use_case.club.CreateUsecase;
@@ -18,6 +20,7 @@ public class CreateClubApp extends JFrame {
     private final CreateOutputBoundary createClubPresenter;
     private final CreateInputBoundary createClubUsecase;
     private final ClubDataAccess clubDataAccess;
+    private final UserDataAccess userDataAccess;
     private final CreateClubController createClubController;
     public JTextField nameField;
     public JTextField leaderField;
@@ -27,8 +30,9 @@ public class CreateClubApp extends JFrame {
     public JButton cancelButton;
     public CreateClubApp(ShowingClubInputBoundary showingUsecase) {
         clubDataAccess = new ClubDataAccessObject("clubs.csv");
+        userDataAccess = new UserDataAcessObject("users.csv");
         createClubPresenter = new CreateClubPresenter(this);
-        createClubUsecase = new CreateUsecase(clubDataAccess, createClubPresenter);
+        createClubUsecase = new CreateUsecase(clubDataAccess, userDataAccess, createClubPresenter);
         createClubController = new CreateClubController(createClubUsecase, showingUsecase);
 
         setTitle("Create Club");
