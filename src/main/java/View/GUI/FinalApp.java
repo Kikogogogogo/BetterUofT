@@ -4,6 +4,8 @@ import View.club.ClubApp;
 import View.food.FoodApp;
 
 import View.postandreply.MessageBoardApp;
+import View.trade.TradeView;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,9 +24,10 @@ public class FinalApp extends JFrame {
         clubButton.addActionListener(this::openClub);
 
         JButton foodButton = new JButton("Food");
-        JButton tradeButton = new JButton("Trading");
-        postAndReplyButton.addActionListener(this::openTrading);
         foodButton.addActionListener(this::openFood);
+
+        JButton tradeButton = new JButton("Trading");
+        tradeButton.addActionListener(this::openTrading);
 
         add(postAndReplyButton);
         add(clubButton);
@@ -34,9 +37,8 @@ public class FinalApp extends JFrame {
 
     private void openTrading(ActionEvent e) {
         SwingUtilities.invokeLater(() -> {
-            //modify
-            MessageBoardApp messageBoardApp = new MessageBoardApp();
-            messageBoardApp.setVisible(true);
+            TradeView tradeView = new TradeView();
+            tradeView.setVisible(true);
         });
     }
     private void openPostAndReply(ActionEvent event) {
