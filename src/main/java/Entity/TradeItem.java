@@ -8,13 +8,15 @@ public abstract class TradeItem implements entity.Item {
     private Timestamp timestamp;
     private String id;
     private boolean traded;
+    private String category;
 
-    public TradeItem(String name, String description, String date, String time, Timestamp timestamp, String id, boolean status) {
+    public TradeItem(String name, String description, String date, String time, Timestamp timestamp, String id, boolean status, String category) {
         this.name = name;
         this.description = description;
         this.timestamp = timestamp;
         this.id = id;
         this.traded = status;
+        this.category = category;
     }
 
     public String getName() {
@@ -32,4 +34,12 @@ public abstract class TradeItem implements entity.Item {
     public boolean getStatus() { return traded; }
 
     public void setStatus(boolean status) { this.traded = status; }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCategory() {
+        return category;
+    }
 }

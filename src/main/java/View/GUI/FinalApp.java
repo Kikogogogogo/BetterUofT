@@ -1,5 +1,8 @@
 package View.GUI;
+
 import View.club.ClubApp;
+import View.food.FoodApp;
+
 import View.postandreply.MessageBoardApp;
 import javax.swing.*;
 import java.awt.*;
@@ -19,15 +22,23 @@ public class FinalApp extends JFrame {
         clubButton.addActionListener(this::openClub);
 
         JButton foodButton = new JButton("Food");
-        JButton weatherButton = new JButton("Weather");
-
+        JButton tradeButton = new JButton("Trading");
+        postAndReplyButton.addActionListener(this::openTrading);
+        foodButton.addActionListener(this::openFood);
 
         add(postAndReplyButton);
         add(clubButton);
         add(foodButton);
-        add(weatherButton);
+        add(tradeButton);
     }
 
+    private void openTrading(ActionEvent e) {
+        SwingUtilities.invokeLater(() -> {
+            //modify
+            MessageBoardApp messageBoardApp = new MessageBoardApp();
+            messageBoardApp.setVisible(true);
+        });
+    }
     private void openPostAndReply(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
             MessageBoardApp messageBoardApp = new MessageBoardApp();
@@ -39,6 +50,13 @@ public class FinalApp extends JFrame {
         SwingUtilities.invokeLater(() -> {
             ClubApp clubApp = new ClubApp();
             clubApp.setVisible(true);
+        });
+    }
+  
+    private void openFood(ActionEvent event) {
+        SwingUtilities.invokeLater(() -> {
+            FoodApp foodApp = new FoodApp();
+            foodApp.setVisible(true);
         });
     }
 
