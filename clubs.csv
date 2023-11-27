@@ -2,3 +2,7 @@ Name,Description,ID,Joinable,Students
 club1,first club created,1,1,1,2,3,4,5
 club2,second club created,2,0,1,2,3,4,5
 club3,third club created,3,1,2,1,3,4,5
+test1,The first test club,4,1,
+test2,agsdf,5,1,
+test3,the third club created,6,1,
+test4,123,7,1,
