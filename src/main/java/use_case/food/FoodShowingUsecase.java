@@ -9,4 +9,9 @@ public class FoodShowingUsecase implements ShowingFoodInputBoundary{
         this.foodDataAccess = foodDataAccess;
         this.showingFoodPresenter = showingFoodPresenter;
     }
+
+    @Override
+    public void showAllFoods() {
+        showingFoodPresenter.showAllFoods(foodDataAccess.getAll());
+    }
 }

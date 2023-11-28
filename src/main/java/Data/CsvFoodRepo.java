@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CsvFoodRepo implements FoodRepo {
-    private Path path;
+    private static Path path;
+
 
     public CsvFoodRepo(String path) {
         this.path = Paths.get(path);
@@ -30,7 +31,7 @@ public class CsvFoodRepo implements FoodRepo {
         }
     }
 
-    public ArrayList<Food> getAllFoods() {
+    public static ArrayList<Food> getAllFoods() {
         ArrayList<Food> foodItems = new ArrayList<>();
         if (!Files.exists(path)) {
             return foodItems;

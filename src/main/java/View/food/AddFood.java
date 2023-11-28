@@ -1,10 +1,8 @@
 package View.food;
 
 import Adapter.Food.AddFoodPresenter;
-import Data.CsvFoodRepo;
 import Data.FoodDataAccess;
 import Data.FoodDataAccessObject;
-import Entity.Food;
 import Adapter.Food.AddFoodController;
 import use_case.food.*;
 
@@ -39,7 +37,7 @@ public class AddFood extends JFrame{
         FoodDataAccess = new FoodDataAccessObject("food.csv");
         addFoodPresenter = new AddFoodPresenter(this);
         FoodInputUsecase = new FoodInputUsecase(FoodDataAccess, addFoodPresenter);
-        AddFoodController = new AddFoodController(FoodInputUsecase);
+        AddFoodController = new AddFoodController(FoodInputUsecase, foodInputBoundary);
         setTitle("Add Food");
         setSize(800,600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -72,6 +70,8 @@ public class AddFood extends JFrame{
 
         JButton addButton = new JButton("Add");
         add(addButton);
+
+
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,9 +81,19 @@ public class AddFood extends JFrame{
                 rating = foodratingField.getText();
                 location = foodlocationFeild.getText();
                 AddFoodController.execute(name, location, description, id.toString(), rating, price);
+                JOptionPane.showMessageDialog(null, "Food added successfully!");
+                dispose();
+                openFood();
             }
         });
 
+    }
+
+    private void openFood() {
+        SwingUtilities.invokeLater(() -> {
+            FoodApp foodApp = new FoodApp();
+            foodApp.setVisible(true);
+        });
     }
     public static void main(String[] args) {
     }
