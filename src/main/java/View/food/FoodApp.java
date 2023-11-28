@@ -1,18 +1,30 @@
 package View.food;
 
+import Adapter.Food.AddFoodPresenter;
+import Adapter.Food.ShowingFoodPresenter;
 import Data.CsvFoodRepo;
+import Data.FoodDataAccess;
+import Data.FoodDataAccessObject;
 import Entity.Food;
+import use_case.food.FoodShowingUsecase;
+import use_case.food.ShowingFoodInputBoundary;
+import use_case.food.ShowingFoodOutputBoundary;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FoodApp extends JFrame {
 
     private ArrayList<Food> foodItems = new ArrayList<>();
+    private static ShowingFoodInputBoundary showingUsecase;
+    private final ShowingFoodOutputBoundary showingFoodPresenter;
 
     public FoodApp() {
+        FoodDataAccess FoodDataAccess = new FoodDataAccessObject("food.csv");
+        showingFoodPresenter = new ShowingFoodPresenter(this);
+        showingUsecase = new FoodShowingUsecase(FoodDataAccess, showingFoodPresenter);
         setTitle("Food");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,7 +127,7 @@ public class FoodApp extends JFrame {
 
     private void openAdd(ActionEvent event){
         SwingUtilities.invokeLater(() -> {
-            AddFood addFood = new AddFood();
+            AddFood addFood = new AddFood(showingUsecase);
             addFood.setVisible(true);
         });
     }
