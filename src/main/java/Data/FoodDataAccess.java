@@ -8,4 +8,6 @@ public interface FoodDataAccess {
 
 
     List<Food> getFoods();
+
+    Object getAll();
 }

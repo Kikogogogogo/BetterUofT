@@ -7,6 +7,7 @@ public class Food {
     private String id;
     private String rating;
     private String price;
+    private int count = 1;
 
     public Food(String name, String location, String description, String id, String rating, String price) {
         this.name = name;
@@ -47,5 +48,13 @@ public class Food {
 
     public String getPrices() {
         return price;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void increaseCount() {
+        this.count = count + 1;
     }
 }

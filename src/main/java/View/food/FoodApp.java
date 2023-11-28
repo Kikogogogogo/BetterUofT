@@ -79,6 +79,8 @@ public class FoodApp extends JFrame {
 
         setSize(800, 600);
         setLocationRelativeTo(null); // Center on screen
+
+
     }
 
     private JPanel createFoodPanel(Food food) {

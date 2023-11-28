@@ -1,7 +1,6 @@
 package Adapter.Food;
 
 import View.food.AddFood;
-import View.food.FoodApp;
 import use_case.food.AddFoodOutputBoundary;
 import use_case.food.AddFoodOutputData;
 import use_case.food.ShowingFoodOutputBoundary;
@@ -21,7 +20,7 @@ public class AddFoodPresenter implements AddFoodOutputBoundary, ShowingFoodOutpu
     }
 
     @Override
-    public void showAllFoods() {
+    public void showAllFoods(Object all) {
 
     }
 }

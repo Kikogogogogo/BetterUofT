@@ -10,7 +10,7 @@ public class ShowingFoodPresenter implements ShowingFoodOutputBoundary {
     }
 
     @Override
-    public void showAllFoods() {
+    public void showAllFoods(Object all) {
 
     }
 }

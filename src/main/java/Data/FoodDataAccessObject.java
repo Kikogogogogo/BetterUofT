@@ -42,4 +42,9 @@ public class FoodDataAccessObject implements FoodDataAccess {
     public List<Food> getFoods() {
         return null;
     }
+
+    @Override
+    public Object getAll() {
+        return null;
+    }
 }
