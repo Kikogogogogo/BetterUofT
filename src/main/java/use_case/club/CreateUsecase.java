@@ -12,7 +12,7 @@ public class CreateUsecase implements CreateInputBoundary{
     private final UserDataAccess userDataAccess;
     private final CreateOutputBoundary createClubPresenter;
 
-    public CreateUsecase(ClubDataAccess clubDataAccess, UserDataAccess userDataAccess,CreateOutputBoundary createClubPresenter) {
+    public CreateUsecase(ClubDataAccess clubDataAccess, UserDataAccess userDataAccess, CreateOutputBoundary createClubPresenter) {
         this.clubDataAccess = clubDataAccess;
         this.userDataAccess = userDataAccess;
         this.createClubPresenter = createClubPresenter;

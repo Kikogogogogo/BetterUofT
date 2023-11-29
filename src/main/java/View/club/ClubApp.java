@@ -1,13 +1,11 @@
 package View.club;
 
+import Adapter.Club.JoinClubPresenter;
 import Adapter.Club.ShowingClubPresenter;
 import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Entity.Club;
-import use_case.club.ShowingClubInputBoundary;
-import use_case.club.ShowingInputData;
-import use_case.club.ShowingOutputBoundary;
-import use_case.club.ShowingUsecase;
+import use_case.club.*;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -97,6 +95,14 @@ public class ClubApp extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 CreateClubApp createClubApp = new CreateClubApp(showingUsecase);
                 createClubApp.setVisible(true);
+            }
+        });
+
+        joinClubButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JoinClubApp joinClubApp = new JoinClubApp(new JoinInputData(clubList.getSelectedValue(), "A"));
+                joinClubApp.setVisible(true);
             }
         });
 
