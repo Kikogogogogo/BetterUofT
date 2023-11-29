@@ -21,8 +21,14 @@ public class AddFoodController {
     public void execute(String name, String location, String description, String id, String rating, String price) {
         Food food = check(name);
         if (food != null) {
+            System.out.println(food.getRating());
+            System.out.println(food.getCount());
+            System.out.println(Double.parseDouble(rating));
+            System.out.println(food.getRating() + Double.parseDouble(rating));
+            System.out.println((food.getRating() + Double.parseDouble(rating)) / food.getCount());
             double newRating = (food.getRating() + Double.parseDouble(rating)) / food.getCount();
             double newPrice = (food.getPrice() + Double.parseDouble(price)) / food.getCount();
+            delete(name);
             foodInputBoundary.createFood(name, location, description, id, Double.toString(newRating), Double.toString(newPrice));
             return;
         }
@@ -40,6 +46,19 @@ public class AddFoodController {
         }
         return null;
 
+    }
+
+    public void delete(String name) {
+        foodItems = CsvFoodRepo.getAllFoods();
+        for (Food food : foodItems) {
+            if (food.getName().equals(name)) {
+                foodItems.remove(food);
+                break;
+            }
+        }
+        CsvFoodRepo.emptyFoodFile();
+        CsvFoodRepo.saveAllFoods(foodItems);
+        showingFoodInputBoundary.showAllFoods();
     }
 
 
