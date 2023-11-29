@@ -1,2 +1,6 @@
 name,password,id,email,major,yearjoined
 Leo,123456,1,leo@utoronto.ca,math,2022
+Eric,abcdef,2,eric@utoronto.ca,cs,2021
+Amy,111111,3,amy@utoronto.ca,cs,2021
+Leo Liu,1234,4,leo.liu@utoronto.ca,stats,2022
+Ryan,abcde,5,ryan@utoronto.ca,philosophy,2022

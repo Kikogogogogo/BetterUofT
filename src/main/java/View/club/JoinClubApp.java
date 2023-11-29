@@ -4,6 +4,8 @@ import Adapter.Club.JoinClubController;
 import Adapter.Club.JoinClubPresenter;
 import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
+import Data.UserDataAccess;
+import Data.UserDataAcessObject;
 import use_case.club.JoinInputBoundary;
 import use_case.club.JoinInputData;
 import use_case.club.JoinOutputBoundary;
@@ -16,17 +18,20 @@ import java.awt.event.ActionListener;
 
 public class JoinClubApp extends JFrame {
     private final ClubDataAccess clubDataAccess;
+    private final UserDataAccess userDataAccess;
     private final JoinInputBoundary joinUsecase;
     private final JoinOutputBoundary joinPresenter;
     private final JoinClubController joinController;
     public JLabel clubNameLabel, leaderLabel, membersLabel;
     public JList<String> membersList;
+    public DefaultListModel<String> membersListModel;
     public JTextField nameField, passwordField;
     public JButton joinButton, cancelButton;
     public JoinClubApp(JoinInputData joinInputData) {
         this.clubDataAccess = new ClubDataAccessObject("clubs.csv");
+        this.userDataAccess = new UserDataAcessObject("users.csv");
         this.joinPresenter = new JoinClubPresenter(this);
-        this.joinUsecase = new JoinUsecase(clubDataAccess, joinPresenter);
+        this.joinUsecase = new JoinUsecase(clubDataAccess, userDataAccess, joinPresenter);
         this.joinController = new JoinClubController(joinUsecase);
 
         setTitle("Join Club");
@@ -38,7 +43,8 @@ public class JoinClubApp extends JFrame {
         clubNameLabel = new JLabel();
         leaderLabel = new JLabel();
         membersLabel = new JLabel("Members:");
-        membersList = new JList<>(new String[]{"Member1", "Member2", "Member3"});
+        membersListModel = new DefaultListModel<>();
+        membersList = new JList<>(membersListModel);
         nameField = new JTextField(15);
         passwordField = new JPasswordField(15);
 

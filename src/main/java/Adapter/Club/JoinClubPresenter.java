@@ -11,8 +11,10 @@ public class JoinClubPresenter implements JoinOutputBoundary {
         this.view = view;
     }
 
-    public void showClubName(JoinInputData joinInputData) {
+    public void showClubInfo(JoinInputData joinInputData) {
         view.clubNameLabel.setText("Club name: " + joinInputData.getClubName());
         view.leaderLabel.setText("Club leader: " + joinInputData.getLeader());
+        for (String m : joinInputData.getMembers())
+            view.membersListModel.addElement(m);
     }
 }

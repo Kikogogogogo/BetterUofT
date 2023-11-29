@@ -101,7 +101,11 @@ public class ClubApp extends JFrame {
         joinClubButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JoinClubApp joinClubApp = new JoinClubApp(new JoinInputData(clubList.getSelectedValue(), "A"));
+                if (!joinableCheckBox.isSelected()) {
+                    JOptionPane.showMessageDialog(panel, "The club is not joinable!");
+                    return;
+                }
+                JoinClubApp joinClubApp = new JoinClubApp(new JoinInputData(clubList.getSelectedValue()));
                 joinClubApp.setVisible(true);
             }
         });
