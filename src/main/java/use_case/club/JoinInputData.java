@@ -6,6 +6,8 @@ public class JoinInputData {
     private String clubName;
     private String leader;
     private List<String> members;
+    private String userName;
+    private String password;
 
     public JoinInputData(String clubName) {
         this.clubName = clubName;
@@ -28,6 +30,22 @@ public class JoinInputData {
 
     public List<String> getMembers() {
         return members;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
 }

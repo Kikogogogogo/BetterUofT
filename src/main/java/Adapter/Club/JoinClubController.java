@@ -13,4 +13,8 @@ public class JoinClubController {
     public void showClubInfo(JoinInputData joinInputData) {
         joinUsecase.showClubInfo(joinInputData);
     }
+
+    public void execute(JoinInputData joinInputData) {
+        joinUsecase.joinClub(joinInputData);
+    }
 }

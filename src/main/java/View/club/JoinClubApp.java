@@ -75,6 +75,15 @@ public class JoinClubApp extends JFrame {
         add(joinButton);
         add(cancelButton);
 
+        joinButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                joinInputData.setUserName(nameField.getText());
+                joinInputData.setPassword(passwordField.getText());
+                joinController.execute(joinInputData);
+            }
+        });
+
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

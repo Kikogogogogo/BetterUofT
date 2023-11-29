@@ -38,4 +38,21 @@ public class JoinUsecase implements JoinInputBoundary{
         joinInputData.setLeader(leader);
         joinPresenter.showClubInfo(joinInputData);
     }
+
+    public void joinClub(JoinInputData joinInputData) {
+        List<entity.User> users = userDataAccess.getUsers();
+        for (entity.User u : users) {
+            if (u.getUsername().equals(joinInputData.getUserName())) {
+                if (u.getPassword().equals(joinInputData.getPassword())) {
+                    joinPresenter.prepareSuccessView("You have joined the club " + joinInputData.getClubName());
+                    return;
+                }
+                else {
+                    joinPresenter.prepareFailView("The password is not correct!");
+                    return;
+                }
+            }
+        }
+        joinPresenter.prepareFailView("The username does not exist!");
+    }
 }
