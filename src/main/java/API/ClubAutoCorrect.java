@@ -10,7 +10,7 @@ public class ClubAutoCorrect implements AutoCorrect{
     private final String API_URL = "https://api.apilayer.com/dymt/did_you_mean_this?q=";
     private final String API_KEY = "GU2P6QqVdWN26fD6wo35zcrJ2n3u2CgB";
     public String getCorrectedText(String originalText) {
-        String updatedURL = API_URL + originalText;
+        String updatedURL = API_URL + originalText.toLowerCase();
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         JSONObject requestBody = new JSONObject();
         MediaType mediaType = MediaType.parse("application/json");
