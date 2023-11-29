@@ -71,14 +71,13 @@ public class AddFood extends JFrame{
         JButton addButton = new JButton("Add");
         add(addButton);
 
-
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 name = foodNameField.getText();
                 price = foodPriceField.getText();
-                description = foodDescriptionField.getText();
                 rating = foodratingField.getText();
+                description = foodDescriptionField.getText();
                 location = foodlocationFeild.getText();
                 AddFoodController.execute(name, location, description, id.toString(), rating, price);
                 JOptionPane.showMessageDialog(null, "Food added successfully!");
