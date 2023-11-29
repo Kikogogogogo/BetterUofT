@@ -11,6 +11,13 @@ public class CreateClubPresenter implements CreateOutputBoundary {
     public CreateClubPresenter(CreateClubApp view) {
         this.view = view;
     }
+
+    @Override
+    public void modifyDescription(String description) {
+        view.descriptionField.removeAll();
+        view.descriptionField.setText(description);
+    }
+
     public void prepareSuccessView(CreateOutputData createOutputData) {
         JOptionPane.showMessageDialog(view, createOutputData.getMessage());
         view.setVisible(false);

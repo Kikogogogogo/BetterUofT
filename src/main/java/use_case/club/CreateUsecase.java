@@ -1,5 +1,7 @@
 package use_case.club;
 
+import API.AutoCorrect;
+import API.ClubAutoCorrect;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;
@@ -16,6 +18,12 @@ public class CreateUsecase implements CreateInputBoundary{
         this.clubDataAccess = clubDataAccess;
         this.userDataAccess = userDataAccess;
         this.createClubPresenter = createClubPresenter;
+    }
+
+    @Override
+    public void correctDescription(String description) {
+        AutoCorrect autoCorrect = new ClubAutoCorrect();
+        createClubPresenter.modifyDescription(autoCorrect.getCorrectedText(description));
     }
 
     public void createClub(String name, String description, boolean joinable, String leaderName) {
