@@ -9,6 +9,7 @@ import Entity.Food;
 import use_case.food.FoodShowingUsecase;
 import use_case.food.ShowingFoodInputBoundary;
 import use_case.food.ShowingFoodOutputBoundary;
+import use_case.food.SortUsecase;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,8 +41,7 @@ public class FoodApp extends JFrame {
 
         JButton sortButton = new JButton("Sort");
         sortButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        // sortButton.addActionListener(this::sortFoodItems); // Implement sorting logic in sortFoodItems method
-
+        sortButton.addActionListener(this::sortFoodItems); // Implement sorting logic in sortFoodItems method
         controlPanel.add(addButton);
         controlPanel.add(Box.createRigidArea(new Dimension(0, 5))); // Space between buttons
         controlPanel.add(sortButton);
@@ -124,6 +124,13 @@ public class FoodApp extends JFrame {
 
         detailsDialog.setLocationRelativeTo(this);
         detailsDialog.setVisible(true);
+    }
+
+    private void sortFoodItems(ActionEvent event) {
+        SwingUtilities.invokeLater(() -> {
+            SortUsecase sortFood = new SortUsecase();
+            sortFood.sortFood();
+        });
     }
 
 
