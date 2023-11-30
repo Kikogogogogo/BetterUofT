@@ -44,90 +44,67 @@ public class JoinClubApp extends JFrame {
         membersListModel = new DefaultListModel<>();
         membersList = new JList<>(membersListModel);
         JScrollPane memberScrollPane = new JScrollPane(membersList);
-        nameField = new JTextField(15);
-        passwordField = new JPasswordField(15);
-//        nameField.setPreferredSize(new Dimension(300, 35));
-//        passwordField.setPreferredSize(new Dimension(300, 35));
-//        memberScrollPane.setPreferredSize(new Dimension(300, 500));
+        nameField = new JTextField(30);
+        passwordField = new JPasswordField(30);
+        nameField.setPreferredSize(new Dimension(1000, 30));
+        passwordField.setPreferredSize(new Dimension(1000, 30));
+        memberScrollPane.setPreferredSize(new Dimension(300, 300));
 
         joinButton = new JButton("Join");
         cancelButton = new JButton("Cancel");
+        joinButton.setPreferredSize(new Dimension(200, 30));
+        cancelButton.setPreferredSize(new Dimension(200, 30));
 
         joinController.showClubInfo(joinInputData);
 
-        // Set layout manager
-        setLayout(new GridLayout(6, 2, 5, 5));
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
 
-        // Add components to the frame
-        add(clubNameLabel);
-        add(new JLabel());
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        mainPanel.add(clubNameLabel, gbc);
 
-        add(leaderLabel);
-        add(new JLabel());
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        mainPanel.add(leaderLabel, gbc);
 
-        add(membersLabel);
-        add(memberScrollPane);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        mainPanel.add(membersLabel, gbc);
 
-        add(new JLabel("Your Name:"));
-        add(nameField);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        mainPanel.add(memberScrollPane, gbc);
 
-        add(new JLabel("Your Password:"));
-        add(passwordField);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        mainPanel.add(new JLabel("Name: "), gbc);
 
-        add(joinButton);
-        add(cancelButton);
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        mainPanel.add(nameField, gbc);
 
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        mainPanel.add(new JLabel("Password: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        mainPanel.add(passwordField, gbc);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(joinButton);
+        buttonPanel.add(cancelButton);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = 2;
+        mainPanel.add(buttonPanel, gbc);
+
+        add(mainPanel);
         pack();
-
-//        setLayout(new GridBagLayout());
-//        GridBagConstraints gbc = new GridBagConstraints();
-////        gbc.insets = new Insets(5, 5, 5, 5);
-//
-//        // Add components to the frame
-//        gbc.gridx = 0;
-//        gbc.gridy = 0;
-//        add(clubNameLabel, gbc);
-//
-//        gbc.gridx = 0;
-//        gbc.gridy = 1;
-//        add(leaderLabel, gbc);
-//
-//        gbc.gridx = 0;
-//        gbc.gridy = 2;
-//        add(membersLabel, gbc);
-//
-//        gbc.gridx = 0;
-//        gbc.gridy = 3;
-//        add(new JLabel("Name: "), gbc);
-//
-//        gbc.gridx = 0;
-//        gbc.gridy = 4;
-//        add(new JLabel("Password:"), gbc);
-//
-//        gbc.gridx = 1;
-//        gbc.gridy = 2;
-//        gbc.fill = GridBagConstraints.BOTH;
-//        add(memberScrollPane, gbc);
-//
-//        gbc.gridx = 1;
-//        gbc.gridy = 3;
-//
-//        gbc.fill = GridBagConstraints.HORIZONTAL;
-//        add(nameField, gbc);
-//
-//        gbc.gridx = 1;
-//        gbc.gridy = 4;
-//        add(passwordField, gbc);
-//
-//        JPanel buttonPanel = new JPanel();
-//        buttonPanel.add(joinButton);
-//        buttonPanel.add(cancelButton);
-//        gbc.gridx = 0;
-//        gbc.gridy = 5;
-//        gbc.gridwidth = 2;
-//        add(buttonPanel, gbc);
-//
-//        pack();
 
         joinButton.addActionListener(new ActionListener() {
             @Override
