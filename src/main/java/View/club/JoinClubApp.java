@@ -35,18 +35,20 @@ public class JoinClubApp extends JFrame {
         this.joinController = new JoinClubController(joinUsecase);
 
         setTitle("Join Club");
-        setSize(200, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        this.setSize(600, 600);
         clubNameLabel = new JLabel();
         leaderLabel = new JLabel();
         membersLabel = new JLabel("Members:");
         membersListModel = new DefaultListModel<>();
         membersList = new JList<>(membersListModel);
+        JScrollPane memberScrollPane = new JScrollPane(membersList);
         nameField = new JTextField(15);
         passwordField = new JPasswordField(15);
+//        nameField.setPreferredSize(new Dimension(300, 35));
+//        passwordField.setPreferredSize(new Dimension(300, 35));
+//        memberScrollPane.setPreferredSize(new Dimension(300, 500));
 
         joinButton = new JButton("Join");
         cancelButton = new JButton("Cancel");
@@ -64,7 +66,7 @@ public class JoinClubApp extends JFrame {
         add(new JLabel());
 
         add(membersLabel);
-        add(new JScrollPane(membersList));
+        add(memberScrollPane);
 
         add(new JLabel("Your Name:"));
         add(nameField);
@@ -74,6 +76,58 @@ public class JoinClubApp extends JFrame {
 
         add(joinButton);
         add(cancelButton);
+
+        pack();
+
+//        setLayout(new GridBagLayout());
+//        GridBagConstraints gbc = new GridBagConstraints();
+////        gbc.insets = new Insets(5, 5, 5, 5);
+//
+//        // Add components to the frame
+//        gbc.gridx = 0;
+//        gbc.gridy = 0;
+//        add(clubNameLabel, gbc);
+//
+//        gbc.gridx = 0;
+//        gbc.gridy = 1;
+//        add(leaderLabel, gbc);
+//
+//        gbc.gridx = 0;
+//        gbc.gridy = 2;
+//        add(membersLabel, gbc);
+//
+//        gbc.gridx = 0;
+//        gbc.gridy = 3;
+//        add(new JLabel("Name: "), gbc);
+//
+//        gbc.gridx = 0;
+//        gbc.gridy = 4;
+//        add(new JLabel("Password:"), gbc);
+//
+//        gbc.gridx = 1;
+//        gbc.gridy = 2;
+//        gbc.fill = GridBagConstraints.BOTH;
+//        add(memberScrollPane, gbc);
+//
+//        gbc.gridx = 1;
+//        gbc.gridy = 3;
+//
+//        gbc.fill = GridBagConstraints.HORIZONTAL;
+//        add(nameField, gbc);
+//
+//        gbc.gridx = 1;
+//        gbc.gridy = 4;
+//        add(passwordField, gbc);
+//
+//        JPanel buttonPanel = new JPanel();
+//        buttonPanel.add(joinButton);
+//        buttonPanel.add(cancelButton);
+//        gbc.gridx = 0;
+//        gbc.gridy = 5;
+//        gbc.gridwidth = 2;
+//        add(buttonPanel, gbc);
+//
+//        pack();
 
         joinButton.addActionListener(new ActionListener() {
             @Override

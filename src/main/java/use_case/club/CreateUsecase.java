@@ -5,6 +5,7 @@ import API.ClubAutoCorrect;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;
+import Entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class CreateUsecase implements CreateInputBoundary{
 
     public void createClub(String name, String description, boolean joinable, String leaderName) {
         List<Club> clubs = clubDataAccess.getClubs();
-        List<entity.User> users = userDataAccess.getUsers();
+        List<User> users = userDataAccess.getUsers();
         int id = -1;
         for (Club c : clubs) {
             if (id < c.getId())

@@ -4,6 +4,7 @@ import Adapter.Club.JoinClubPresenter;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;
+import Entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,8 @@ public class JoinUsecase implements JoinInputBoundary{
     }
 
     public void joinClub(JoinInputData joinInputData) {
-        List<entity.User> users = userDataAccess.getUsers();
-        for (entity.User u : users) {
+        List<User> users = userDataAccess.getUsers();
+        for (User u : users) {
             if (u.getUsername().equals(joinInputData.getUserName())) {
                 if (u.getPassword().equals(joinInputData.getPassword())) {
                     joinPresenter.prepareSuccessView("You have joined the club " + joinInputData.getClubName());
