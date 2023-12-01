@@ -1,5 +1,6 @@
 package Adapter.Club;
 
+import View.club.InfoClubApp;
 import use_case.club.InfoClubInputBoundary;
 import use_case.club.InfoOutputData;
 
@@ -11,6 +12,7 @@ public class InfoClubController {
     }
 
     public void execute(String clubName) {
+
         infoUsecase.showInfo(clubName);
     }
 }
