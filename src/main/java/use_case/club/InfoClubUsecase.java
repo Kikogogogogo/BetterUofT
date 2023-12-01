@@ -11,9 +11,9 @@ import java.util.List;
 public class InfoClubUsecase implements InfoClubInputBoundary{
     private final ClubDataAccess clubDataAccess;
     private final UserDataAccess userDataAccess;
-    private final InfoClubPresenter infoClubPresenter;
+    private final InfoClubOutputBoundary infoClubPresenter;
 
-    public InfoClubUsecase(ClubDataAccess clubDataAccess, UserDataAccess userDataAccess, InfoClubPresenter infoClubPresenter) {
+    public InfoClubUsecase(ClubDataAccess clubDataAccess, UserDataAccess userDataAccess, InfoClubOutputBoundary infoClubPresenter) {
         this.clubDataAccess = clubDataAccess;
         this.userDataAccess = userDataAccess;
         this.infoClubPresenter = infoClubPresenter;
