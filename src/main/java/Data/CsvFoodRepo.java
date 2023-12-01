@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CsvFoodRepo implements FoodRepo {
-    private Path path;
+    private static Path path;
+
 
     public CsvFoodRepo(String path) {
         this.path = Paths.get(path);
@@ -30,7 +31,7 @@ public class CsvFoodRepo implements FoodRepo {
         }
     }
 
-    public ArrayList<Food> getAllFoods() {
+    public static ArrayList<Food> getAllFoods() {
         ArrayList<Food> foodItems = new ArrayList<>();
         if (!Files.exists(path)) {
             return foodItems;
@@ -42,10 +43,10 @@ public class CsvFoodRepo implements FoodRepo {
                 String[] parts = line.split(",", -1);
                 if (parts.length >= 6) {
                     String name = parts[0];
-                    String location = parts[4];
+                    String location = parts[1];
                     String description = parts[2];
                     String id = parts[3];
-                    String rating = parts[1];
+                    String rating = parts[4];
                     String price = parts[5];
                     Food food = new Food(name, location, description, id, rating, price);
                     foodItems.add(food);
@@ -55,6 +56,33 @@ public class CsvFoodRepo implements FoodRepo {
             e.printStackTrace();
         }
         return foodItems;
+    }
+
+    public static void emptyFoodFile() {
+        try {
+            PrintWriter writer = new PrintWriter(path.toString());
+            writer.print("");
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveAllFoods(ArrayList<Food> foodItems) {
+        for (Food food : foodItems) {
+            String name = food.getName();
+            String location = food.getLocation();
+            String description = food.getDescription();
+            String id = food.getId();
+            String rating = food.getRatings();
+            String price = food.getPrices();
+            String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + "\n";
+            try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+                writer.write(lines);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
 

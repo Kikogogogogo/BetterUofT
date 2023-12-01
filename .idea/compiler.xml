@@ -9,5 +9,9 @@
         <module name="Kikoversion" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BetterUofT" target="20" />
+      <module name="Kikoversion" target="20" />
+    </bytecodeTargetLevel>
   </component>
 </project>
