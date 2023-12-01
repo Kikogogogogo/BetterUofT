@@ -64,4 +64,16 @@ public class UserDataAcessObject implements UserDataAccess {
         }
         return -1;
     }
+
+    @Override
+    public String getUserEmailFromID(int id) {
+        List<User> users = getUsers();
+        for (User u : users) {
+            if (id == u.getId())
+                return u.getEmail();
+        }
+        return null;
+    }
+
+
 }

@@ -9,4 +9,5 @@ public interface UserDataAccess {
     public List<User> getUsers();
     public String getUserNameFromID(int id);
     public int getUserIDFromName(String userName);
+    public String getUserEmailFromID(int id);
 }
