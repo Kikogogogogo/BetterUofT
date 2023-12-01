@@ -50,6 +50,8 @@ public class ClubApp extends JFrame {
 
         JButton createClubButton = new JButton("Create Club");
         JButton joinClubButton = new JButton("Join Club");
+        JButton showInfoButton = new JButton("Show Club Information");
+        JButton modifyButton = new JButton("Modify club information (for leaders)");
         descriptionTextField = new JTextArea();
         joinableCheckBox = new JCheckBox("Joinable");
 
@@ -81,13 +83,22 @@ public class ClubApp extends JFrame {
         gbc.gridx = 1;
         add(joinClubButton, gbc);
 
-        gbc.gridx = 0;
         gbc.gridy = 2;
+        gbc.gridx = 0;
+        gbc.gridwidth = 1;
+        gbc.weighty = 0.0;
+        add(showInfoButton, gbc);
+
+        gbc.gridx = 1;
+        add(modifyButton, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(descriptionScrollPane, gbc);
 
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         add(joinableCheckBox, gbc);
 
         createClubButton.addActionListener(new ActionListener() {

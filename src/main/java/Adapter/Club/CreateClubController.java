@@ -18,7 +18,8 @@ public class CreateClubController {
         createUsecase.correctDescription(originalDescription);
     }
     public void execute(String name, String description, boolean joinable, String leader) {
-        createUsecase.createClub(name, description, joinable, leader);
-        showingUsecase.showAllClubs();
+        if (createUsecase.createClub(name, description, joinable, leader)) {
+            showingUsecase.showAllClubs();
+        }
     }
 }
