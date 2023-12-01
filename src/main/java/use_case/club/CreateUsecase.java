@@ -1,8 +1,11 @@
 package use_case.club;
 
+import API.AutoCorrect;
+import API.ClubAutoCorrect;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;
+import Entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +15,21 @@ public class CreateUsecase implements CreateInputBoundary{
     private final UserDataAccess userDataAccess;
     private final CreateOutputBoundary createClubPresenter;
 
-    public CreateUsecase(ClubDataAccess clubDataAccess, UserDataAccess userDataAccess,CreateOutputBoundary createClubPresenter) {
+    public CreateUsecase(ClubDataAccess clubDataAccess, UserDataAccess userDataAccess, CreateOutputBoundary createClubPresenter) {
         this.clubDataAccess = clubDataAccess;
         this.userDataAccess = userDataAccess;
         this.createClubPresenter = createClubPresenter;
     }
 
-    public void createClub(String name, String description, boolean joinable, String leaderName) {
+    @Override
+    public void correctDescription(String description) {
+        AutoCorrect autoCorrect = new ClubAutoCorrect();
+        createClubPresenter.modifyDescription(autoCorrect.getCorrectedText(description));
+    }
+
+    public boolean createClub(String name, String description, boolean joinable, String leaderName) {
         List<Club> clubs = clubDataAccess.getClubs();
-        List<entity.User> users = userDataAccess.getUsers();
+        List<User> users = userDataAccess.getUsers();
         int id = -1;
         for (Club c : clubs) {
             if (id < c.getId())
@@ -28,18 +37,19 @@ public class CreateUsecase implements CreateInputBoundary{
             if (name.equals(c.getName())){
                 createClubPresenter.prepareFailView(new CreateOutputData(false,
                         "There is already a club with this name, please try again!"));
-                return;
+                return false;
             }
         }
         int leaderID = userDataAccess.getUserIDFromName(leaderName);
         if (leaderID == -1) {
             createClubPresenter.prepareFailView(new CreateOutputData(false,
                     "The user does not exist!"));
-            return;
+            return false;
         }
         Club club = new Club(name, description, id + 1, joinable, new ArrayList<>(), leaderID);
         clubDataAccess.save(club);
         createClubPresenter.prepareSuccessView(new CreateOutputData(true,
                 "The club is successfully created!"));
+        return true;
     }
 }

@@ -1,7 +1,7 @@
 package Data;
 
 import Entity.Club;
-import entity.User;
+import Entity.User;
 
 import java.io.*;
 import java.util.ArrayList;

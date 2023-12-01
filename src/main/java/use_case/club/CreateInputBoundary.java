@@ -3,5 +3,6 @@ package use_case.club;
 import java.util.ArrayList;
 
 public interface CreateInputBoundary {
-    public void createClub(String name, String description, boolean joinable, String leader);
+    public void correctDescription(String description);
+    public boolean createClub(String name, String description, boolean joinable, String leader);
 }

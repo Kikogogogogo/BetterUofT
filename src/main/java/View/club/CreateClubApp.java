@@ -24,8 +24,9 @@ public class CreateClubApp extends JFrame {
     private final CreateClubController createClubController;
     public JTextField nameField;
     public JTextField leaderField;
-    public JTextField descriptionField;
+    public JTextArea descriptionField;
     public JCheckBox publicCheckBox;
+    public JButton correctButton;
     public JButton submitButton;
     public JButton cancelButton;
     public CreateClubApp(ShowingClubInputBoundary showingUsecase) {
@@ -40,35 +41,77 @@ public class CreateClubApp extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(5, 2, 10, 10));
+        mainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
 
-        mainPanel.add(new JLabel("Name:"));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        mainPanel.add(new JLabel("Name:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
         nameField = new JTextField();
-        mainPanel.add(nameField);
+        nameField.setPreferredSize(new Dimension(200, 30));
+        mainPanel.add(nameField, gbc);
 
-        mainPanel.add(new JLabel("Leader:"));
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        mainPanel.add(new JLabel("Leader:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
         leaderField = new JTextField();
-        mainPanel.add(leaderField);
+        leaderField.setPreferredSize(new Dimension(200, 30));
+        mainPanel.add(leaderField, gbc);
 
-        mainPanel.add(new JLabel("Description:"));
-        descriptionField = new JTextField();
-        mainPanel.add(descriptionField);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        mainPanel.add(new JLabel("Description:"), gbc);
 
-        mainPanel.add(new JLabel("Public:"));
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        descriptionField = new JTextArea();
+        JScrollPane descriptionScrollPane = new JScrollPane(descriptionField);
+        descriptionScrollPane.setPreferredSize(new Dimension(400, 300));
+        mainPanel.add(descriptionScrollPane, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        mainPanel.add(new JLabel("Public:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 3;
         publicCheckBox = new JCheckBox();
         publicCheckBox.setSelected(true);
-        mainPanel.add(publicCheckBox);
+        mainPanel.add(publicCheckBox, gbc);
+
+        JPanel buttonPanel = new JPanel();
 
         submitButton = new JButton("Submit");
-
-        mainPanel.add(submitButton);
+        submitButton.setPreferredSize(new Dimension(200, 35));
+//        mainPanel.add(submitButton, gbc);
 
         cancelButton = new JButton("Cancel");
-        mainPanel.add(cancelButton);
+        cancelButton.setPreferredSize(new Dimension(200, 35));
+//        mainPanel.add(cancelButton, gbc);
+        buttonPanel.add(submitButton);
+        buttonPanel.add(cancelButton);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 2;
+        mainPanel.add(buttonPanel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = 2;
+        correctButton = new JButton("Correct/Check Description");
+        correctButton.setPreferredSize(new Dimension(400, 35));
+        mainPanel.add(correctButton, gbc);
 
         add(mainPanel);
-
-        setLocationRelativeTo(null);
+        pack();
 
         cancelButton.addActionListener(new ActionListener() {
             @Override
@@ -82,6 +125,13 @@ public class CreateClubApp extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 createClubController.execute(nameField.getText(), descriptionField.getText(), publicCheckBox.isSelected(),
                         leaderField.getText());
+            }
+        });
+
+        correctButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createClubController.correctDescription(descriptionField.getText());
             }
         });
     }

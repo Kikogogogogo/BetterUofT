@@ -1,13 +1,11 @@
 package View.club;
 
+import Adapter.Club.JoinClubPresenter;
 import Adapter.Club.ShowingClubPresenter;
 import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Entity.Club;
-import use_case.club.ShowingClubInputBoundary;
-import use_case.club.ShowingInputData;
-import use_case.club.ShowingOutputBoundary;
-import use_case.club.ShowingUsecase;
+import use_case.club.*;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -52,6 +50,8 @@ public class ClubApp extends JFrame {
 
         JButton createClubButton = new JButton("Create Club");
         JButton joinClubButton = new JButton("Join Club");
+        JButton showInfoButton = new JButton("Show Club Information");
+        JButton modifyButton = new JButton("Modify club information (for leaders)");
         descriptionTextField = new JTextArea();
         joinableCheckBox = new JCheckBox("Joinable");
 
@@ -83,13 +83,22 @@ public class ClubApp extends JFrame {
         gbc.gridx = 1;
         add(joinClubButton, gbc);
 
-        gbc.gridx = 0;
         gbc.gridy = 2;
+        gbc.gridx = 0;
+        gbc.gridwidth = 1;
+        gbc.weighty = 0.0;
+        add(showInfoButton, gbc);
+
+        gbc.gridx = 1;
+        add(modifyButton, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         add(descriptionScrollPane, gbc);
 
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         add(joinableCheckBox, gbc);
 
         createClubButton.addActionListener(new ActionListener() {
@@ -97,6 +106,18 @@ public class ClubApp extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 CreateClubApp createClubApp = new CreateClubApp(showingUsecase);
                 createClubApp.setVisible(true);
+            }
+        });
+
+        joinClubButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!joinableCheckBox.isSelected()) {
+                    JOptionPane.showMessageDialog(panel, "The club is not joinable!");
+                    return;
+                }
+                JoinClubApp joinClubApp = new JoinClubApp(new JoinInputData(clubList.getSelectedValue()));
+                joinClubApp.setVisible(true);
             }
         });
 
