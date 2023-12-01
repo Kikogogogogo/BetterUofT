@@ -3,5 +3,5 @@ package use_case.club;
 import Entity.Club;
 
 public interface RandomOutputBoundary {
-    public void prepareRandomClubResult(Club club);
+    public void prepareRandomClubResult(String name, String leader, String description);
 }
