@@ -25,8 +25,6 @@ public class ClubApp extends JFrame {
     private final ShowingOutputBoundary showingClubPresenter;
     private final InfoClubInputBoundary infoUsecase;
     private final InfoClubOutputBoundary infoClubPresenter;
-    private final RandomInputBoundary randomUsecase;
-    private final RandomOutputBoundary randomPresenter;
     public JList<String> clubList;
     public DefaultListModel<String> clubListModel;
     public JTextArea descriptionTextField;
@@ -39,11 +37,9 @@ public class ClubApp extends JFrame {
 
         showingClubPresenter = new ShowingClubPresenter(this);
         infoClubPresenter = new InfoClubPresenter(this);
-        randomPresenter = new RandomClubPresenter(this);
 
         showingUsecase = new ShowingUsecase(clubDataAccess, showingClubPresenter);
         infoUsecase = new InfoClubUsecase(clubDataAccess, userDataAccess, infoClubPresenter);
-        randomUsecase = new RandomClubUsecase(clubDataAccess, userDataAccess, randomPresenter);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Clubs");
@@ -152,7 +148,8 @@ public class ClubApp extends JFrame {
         randomButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                randomUsecase.getRandomClub();
+                RandomClubApp randomClubApp = new RandomClubApp(clubDataAccess, userDataAccess);
+                randomClubApp.setVisible(true);
             }
         });
 

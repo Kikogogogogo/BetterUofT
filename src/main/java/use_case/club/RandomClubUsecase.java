@@ -4,6 +4,7 @@ import Adapter.Club.InfoClubPresenter;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;
+import View.club.JoinClubApp;
 
 import java.util.List;
 import java.util.Random;
@@ -12,18 +13,30 @@ public class RandomClubUsecase implements RandomInputBoundary{
     private final ClubDataAccess clubDataAccess;
     private final UserDataAccess userDataAccess;
     private final RandomOutputBoundary randomPresenter;
+    private Club randomClub;
 
-    public RandomClubUsecase(ClubDataAccess clubDataAccess, UserDataAccess userDataAccess, RandomOutputBoundary infoPresenter){
+    public RandomClubUsecase(ClubDataAccess clubDataAccess, UserDataAccess userDataAccess, RandomOutputBoundary randomPresenter){
         this.clubDataAccess = clubDataAccess;
-        this.randomPresenter = infoPresenter;
+        this.randomPresenter = randomPresenter;
         this.userDataAccess = userDataAccess;
     }
 
     public void getRandomClub() {
         List<Club> clubs = clubDataAccess.getClubs();
         Random rand = new Random();
-        Club randomClub = clubs.get(rand.nextInt(clubs.size()));
+        randomClub = clubs.get(rand.nextInt(clubs.size()));
         randomPresenter.prepareRandomClubResult(randomClub.getName(),
-                userDataAccess.getUserNameFromID(randomClub.getLeader()), randomClub.getDescription());
+                userDataAccess.getUserNameFromID(randomClub.getLeader()), randomClub.getDescription(),
+                randomClub.getJoinable());
+    }
+
+    public void joinRandomClub() {
+        if (!randomClub.getJoinable()) {
+            randomPresenter.prepareFailView("This club is not joinable!");
+        }
+        else {
+            JoinClubApp joinClubApp = new JoinClubApp(new JoinInputData(randomClub.getName()));
+            joinClubApp.setVisible(true);
+        }
     }
 }
