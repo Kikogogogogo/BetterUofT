@@ -9,22 +9,23 @@ public class Report {
     private Timestamp timestamp;
     private String description;
 
-    // Constructors...
 
     // Getter for reportId
     public Long getReportId() {
         return reportId;
     }
 
-    // Setter for reportId
     public void setReportId(Long reportId) {
         this.reportId = reportId;
     }
 
-    // Setter for description
+    // Getter for description
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
-    // Other getters and setters...
 }
