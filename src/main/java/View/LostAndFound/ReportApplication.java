@@ -10,11 +10,12 @@ import java.awt.*;
 import java.util.Optional;
 
 
-public class ReportApplication {
+public class ReportApplication extends JFrame {
+    private ReportController reportController;
+
     private JFrame frame;
     private JTextField reportField, reportIdField;
     private JButton submitButton, findButton, updateButton, deleteButton;
-    private ReportController reportController;
     private JPanel panel;
 
     public ReportApplication() {
@@ -29,8 +30,9 @@ public class ReportApplication {
         reportController = new ReportController(createReport, findReport, updateReport, deleteReport);
     }
 
+
     private void initializeUI() {
-        frame = new JFrame("Report Management System");
+        frame = new JFrame("Lost and Found Management System");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
@@ -39,19 +41,19 @@ public class ReportApplication {
 
         reportIdField = new JTextField(20);
         reportField = new JTextField(20);
-        submitButton = new JButton("Submit Report");
-        findButton = new JButton("Find Report");
-        updateButton = new JButton("Update Report");
-        deleteButton = new JButton("Delete Report");
+        submitButton = new JButton("Submit lost item");
+        findButton = new JButton("Find lost item");
+        updateButton = new JButton("Update item");
+        deleteButton = new JButton("Delete lost item report");
 
         submitButton.addActionListener(e -> submitReport());
         findButton.addActionListener(e -> findReport());
         updateButton.addActionListener(e -> updateReport());
         deleteButton.addActionListener(e -> deleteReport());
 
-        panel.add(new JLabel("Report ID:"));
+        panel.add(new JLabel("Item ID:"));
         panel.add(reportIdField);
-        panel.add(new JLabel("Report Details:"));
+        panel.add(new JLabel("Item Details:"));
         panel.add(reportField);
         panel.add(submitButton);
         panel.add(findButton);
@@ -67,7 +69,7 @@ public class ReportApplication {
         Report report = new Report();
         report.setDescription(reportField.getText());
         reportController.createReport(report);
-        JOptionPane.showMessageDialog(frame, "Report submitted successfully!");
+        JOptionPane.showMessageDialog(frame, "Lost and Found report submitted successfully!");
     }
 
     private void findReport() {
@@ -84,16 +86,19 @@ public class ReportApplication {
         report.setReportId(reportId);
         report.setDescription(reportField.getText());
         reportController.updateReport(report);
-        JOptionPane.showMessageDialog(frame, "Report updated successfully!");
+        JOptionPane.showMessageDialog(frame, "Lost and Found report updated successfully!");
     }
 
     private void deleteReport() {
         Long reportId = Long.parseLong(reportIdField.getText());
         reportController.deleteReport(reportId);
-        JOptionPane.showMessageDialog(frame, "Report deleted successfully!");
+        JOptionPane.showMessageDialog(frame, "Lost and Found report deleted successfully!");
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ReportApplication());
+        SwingUtilities.invokeLater(() -> {
+            ReportApplication reportApp = new ReportApplication();
+            reportApp.setVisible(true);
+        });
     }
 }

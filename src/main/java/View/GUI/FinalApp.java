@@ -1,5 +1,6 @@
 package View.GUI;
 
+import View.LostAndFound.ReportApplication;
 import View.club.ClubApp;
 import View.food.FoodApp;
 
@@ -29,11 +30,17 @@ public class FinalApp extends JFrame {
         JButton tradeButton = new JButton("Trading");
         tradeButton.addActionListener(this::openTrading);
 
+        JButton lafButton = new JButton("Lost and Found");
+        lafButton.addActionListener(this::openLAF);
+
         add(postAndReplyButton);
         add(clubButton);
         add(foodButton);
         add(tradeButton);
+        add(lafButton);
     }
+
+
 
     private void openTrading(ActionEvent e) {
         SwingUtilities.invokeLater(() -> {
@@ -61,6 +68,15 @@ public class FinalApp extends JFrame {
             foodApp.setVisible(true);
         });
     }
+
+    private void openLAF(ActionEvent event) {
+        SwingUtilities.invokeLater(() -> {
+            ReportApplication reportApp = new ReportApplication();
+            reportApp.setVisible(true); // Assuming ReportApplication extends JFrame
+        });
+    }
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
