@@ -6,15 +6,16 @@ import Entity.Report;
 import use_case.LostAndFound.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Optional;
 
 
 public class ReportApplication {
     private JFrame frame;
-    private JTextField reportField;
-    private JTextField reportIdField;
+    private JTextField reportField, reportIdField;
     private JButton submitButton, findButton, updateButton, deleteButton;
     private ReportController reportController;
+    private JPanel panel;
 
     public ReportApplication() {
         initializeUI();
@@ -31,10 +32,13 @@ public class ReportApplication {
     private void initializeUI() {
         frame = new JFrame("Report Management System");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+        frame.setLayout(new BorderLayout());
 
-        reportField = new JTextField(20);
+        panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 2, 10, 10));
+
         reportIdField = new JTextField(20);
+        reportField = new JTextField(20);
         submitButton = new JButton("Submit Report");
         findButton = new JButton("Find Report");
         updateButton = new JButton("Update Report");
@@ -45,14 +49,16 @@ public class ReportApplication {
         updateButton.addActionListener(e -> updateReport());
         deleteButton.addActionListener(e -> deleteReport());
 
-        frame.add(new JLabel("Report ID:"));
-        frame.add(reportIdField);
-        frame.add(new JLabel("Report Details:"));
-        frame.add(reportField);
-        frame.add(submitButton);
-        frame.add(findButton);
-        frame.add(updateButton);
-        frame.add(deleteButton);
+        panel.add(new JLabel("Report ID:"));
+        panel.add(reportIdField);
+        panel.add(new JLabel("Report Details:"));
+        panel.add(reportField);
+        panel.add(submitButton);
+        panel.add(findButton);
+        panel.add(updateButton);
+        panel.add(deleteButton);
+
+        frame.add(panel, BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
     }
