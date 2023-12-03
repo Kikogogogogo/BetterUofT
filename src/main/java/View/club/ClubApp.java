@@ -6,6 +6,7 @@ import Data.ClubDataAccessObject;
 import Data.UserDataAccess;
 import Data.UserDataAcessObject;
 import Entity.Club;
+import View.GUI.FinalApp;
 import use_case.club.*;
 
 import javax.swing.*;
