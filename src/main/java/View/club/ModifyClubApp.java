@@ -28,7 +28,6 @@ public class ModifyClubApp extends JFrame {
     public JList<String> clubList;
     public DefaultListModel<String> clubListModel;
     public JTextArea descriptionTextArea;
-    public JCheckBox joinableCheckBox;
     public ModifyClubApp() {
         clubDataAccess = new ClubDataAccessObject("clubs.csv");
         userDataAccess = new UserDataAcessObject("users.csv");
@@ -62,8 +61,8 @@ public class ModifyClubApp extends JFrame {
         JScrollPane descriptionScrollPane = new JScrollPane(descriptionTextArea);
         descriptionScrollPane.setPreferredSize(new Dimension(400, 200));
         JButton getClubButton = new JButton("Search");
+        getClubButton.setPreferredSize(new Dimension(400, 30));
         JButton modifyDescriptionButton = new JButton("Modify Description");
-        joinableCheckBox = new JCheckBox("Joinable");
         JButton deleteClubButton = new JButton("Delete Club");
         JButton cancelButton = new JButton("Cancel");
 
@@ -90,17 +89,13 @@ public class ModifyClubApp extends JFrame {
         gbc.gridy = 3;
         mainPanel.add(descriptionScrollPane, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        mainPanel.add(joinableCheckBox, gbc);
-
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(modifyDescriptionButton);
         buttonPanel.add(deleteClubButton);
         buttonPanel.add(cancelButton);
 
         gbc.gridx = 0;
-        gbc.gridy = 5;
+        gbc.gridy = 4;
         gbc.gridwidth = 2;
         mainPanel.add(buttonPanel, gbc);
 
