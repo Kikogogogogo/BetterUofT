@@ -16,8 +16,14 @@ public class ModifyClubPresenter implements ModifyOutputBoundary {
 
     @Override
     public void setClubList(List<String> clubNames) {
+        view.clubList.clearSelection();
         view.clubListModel.removeAllElements();
         view.clubListModel.addAll(clubNames);
+    }
+
+    @Override
+    public void setDescription(String description) {
+        view.descriptionTextArea.setText(description);
     }
 
     @Override
@@ -28,5 +34,10 @@ public class ModifyClubPresenter implements ModifyOutputBoundary {
     @Override
     public void prepareFailView(String message) {
         JOptionPane.showMessageDialog(view, message);
+    }
+
+    @Override
+    public int prepareConfirmView(String message) {
+        return JOptionPane.showConfirmDialog(view, message);
     }
 }

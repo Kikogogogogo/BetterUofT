@@ -11,6 +11,8 @@ import use_case.club.ModifyInputBoundary;
 import use_case.club.ModifyOutputBoundary;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -63,6 +65,7 @@ public class ModifyClubApp extends JFrame {
         JButton modifyDescriptionButton = new JButton("Modify Description");
         joinableCheckBox = new JCheckBox("Joinable");
         JButton deleteClubButton = new JButton("Delete Club");
+        JButton cancelButton = new JButton("Cancel");
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridBagLayout());
@@ -94,6 +97,7 @@ public class ModifyClubApp extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(modifyDescriptionButton);
         buttonPanel.add(deleteClubButton);
+        buttonPanel.add(cancelButton);
 
         gbc.gridx = 0;
         gbc.gridy = 5;
@@ -115,7 +119,24 @@ public class ModifyClubApp extends JFrame {
                 modifyController.deleteClub(clubList.getSelectedValue());
             }
         });
-
+        modifyDescriptionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modifyController.modifyDescription(clubList.getSelectedValue(), descriptionTextArea.getText());
+            }
+        });
+        clubList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                modifyController.presentDescription(clubList.getSelectedValue());
+            }
+        });
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+            }
+        });
 
     }
 

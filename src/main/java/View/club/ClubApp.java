@@ -156,6 +156,14 @@ public class ClubApp extends JFrame {
                 showingUsecase.showClubJoinable(clubList.getSelectedIndex());
             }
         });
+
+        modifyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ModifyClubApp modifyClubApp = new ModifyClubApp();
+                modifyClubApp.setVisible(true);
+            }
+        });
     }
 
     public static void main(String[] args) {
