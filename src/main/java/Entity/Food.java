@@ -1,5 +1,7 @@
 package Entity;
 
+import java.util.ArrayList;
+
 public class Food {
     private String name;
     private String location;
@@ -8,6 +10,7 @@ public class Food {
     private String rating;
     private String price;
     private int count = 1;
+    private ArrayList<String> descriptionList = new ArrayList<>();
 
     public Food(String name, String location, String description, String id, String rating, String price) {
         this.name = name;
@@ -56,5 +59,31 @@ public class Food {
 
     public void increaseCount() {
         this.count = count + 1;
+    }
+
+    public void addDescription(String description) {
+        descriptionList.add(description);
+    }
+
+    public ArrayList<String> getDescriptionList() {
+        return descriptionList;
+    }
+
+    public  String getAverageRating() {
+        double averageRating = Double.parseDouble(rating) / count;
+        return String.valueOf(averageRating);
+    }
+
+    public String getAveragePrice() {
+        double averagePrice = Double.parseDouble(price) / count;
+        return String.valueOf(averagePrice);
+    }
+
+    public void increaseRating(double rating) {
+        this.rating = String.valueOf(rating);
+    }
+
+    public void increasePrice(double price) {
+        this.price = String.valueOf(price);
     }
 }

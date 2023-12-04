@@ -96,8 +96,8 @@ public class FoodApp extends JFrame {
         panel.setMinimumSize(panelSize);
 
         JLabel nameLabel = new JLabel("Name: " + food.getName());
-        JLabel ratingLabel = new JLabel("Rating: " + food.getRatings() + " stars");
-        JLabel priceLabel = new JLabel("Price: $" + food.getPrices());
+        JLabel ratingLabel = new JLabel("Rating: " + food.getAverageRating() + " stars");
+        JLabel priceLabel = new JLabel("Price: $" + food.getAveragePrice());
 
         JButton detailsButton = new JButton("Details");
         detailsButton.addActionListener(e -> openFoodDetails(food));
@@ -115,8 +115,10 @@ public class FoodApp extends JFrame {
 
         detailsDialog.setLayout(new BoxLayout(detailsDialog.getContentPane(), BoxLayout.Y_AXIS));
         detailsDialog.add(new JLabel("Name: " + food.getName()));
-        detailsDialog.add(new JLabel("Rating: " + food.getRatings() + " stars"));
-        detailsDialog.add(new JLabel("Price: $" + food.getPrices()));
+        detailsDialog.add(new JLabel("Rating: " + food.getAverageRating() + " stars"));
+        detailsDialog.add(new JLabel("Price: $" + food.getAveragePrice()));
+        System.out.println(food.getAveragePrice());
+        System.out.println(food.getAverageRating());
         detailsDialog.add(new JLabel("Location: " + food.getLocation()));
         detailsDialog.add(new JLabel("Description: " + food.getDescription()));
 
