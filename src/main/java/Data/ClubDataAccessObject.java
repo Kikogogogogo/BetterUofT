@@ -62,6 +62,33 @@ public class ClubDataAccessObject implements ClubDataAccess{
     }
 
     @Override
+    public void joinClub(String name, int id) {
+        StringBuilder temp = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+            temp.append(br.readLine() + "\n");
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                if (values[0].equals(name)) {
+                    StringBuilder students = new StringBuilder();
+                    for (int i = 4; i < values.length; i ++) {
+                        students.append("," + values[i]);
+                    }
+                    students.append("," + id);
+                    temp.append(String.format("%s,%s,%s,%s%s\n", name, values[1],
+                            values[2], values[3], students));
+                }
+                else
+                    temp.append(line + "\n");
+            }
+        } catch (IOException e) {}
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(csvFilePath))) {
+            bw.write(temp.toString());
+        } catch (IOException e) {}
+    }
+
+    @Override
     public void deleteClub(String name) {
         StringBuilder temp = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
