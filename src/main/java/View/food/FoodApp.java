@@ -128,7 +128,7 @@ public class FoodApp extends JFrame {
 
     private void sortFoodItems(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
-            SortUsecase sortFood = new SortUsecase();
+            SortUsecase sortFood = new SortUsecase(this);
             sortFood.sortFood();
         });
     }
