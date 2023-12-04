@@ -1,4 +1,4 @@
-package Data;
+package Data.PostandReply;
 
 import Entity.Post;
 
@@ -8,10 +8,10 @@ import java.util.List;
 import java.io.*;
 import java.nio.file.*;
 
-public class CsvPostRepo implements PostRepo {
+public class CsvPostRepoAccessObject implements PostRepoAccess {
     private Path csvFilePath;
 
-    public CsvPostRepo(String csvFilePath) {
+    public CsvPostRepoAccessObject(String csvFilePath) {
         this.csvFilePath = Paths.get(csvFilePath);
     }
 

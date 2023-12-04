@@ -1,11 +1,11 @@
-package Adapter;
+package Adapter.PostandReply;
 
 import use_case.postandreply.ReplyUsecase;
 
-public class ReplyingAdapter {
+public class ReplyController {
     private ReplyUsecase replyUsecase;
 
-    public ReplyingAdapter(ReplyUsecase replyUsecase) {
+    public ReplyController(ReplyUsecase replyUsecase) {
         this.replyUsecase = replyUsecase;
     }
 

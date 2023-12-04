@@ -1,6 +1,5 @@
-package View.LogginView;
+package View.postandreply;
 import API.Auth0Client;
-
 import javax.swing.*;
 import java.awt.*;
 

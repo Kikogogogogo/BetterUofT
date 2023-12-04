@@ -3,6 +3,7 @@ package View.GUI;
 import View.club.ClubApp;
 import View.food.FoodApp;
 
+import View.postandreply.ChooseModeGUI;
 import View.postandreply.MessageBoardApp;
 import View.trade.TradeView;
 
@@ -43,11 +44,10 @@ public class FinalApp extends JFrame {
     }
     private void openPostAndReply(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
-            MessageBoardApp messageBoardApp = new MessageBoardApp();
-            messageBoardApp.setVisible(true);
+            ChooseModeGUI chooseMode = new ChooseModeGUI();
+            chooseMode.setVisible(true);
         });
     }
-
     private void openClub(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
             ClubApp clubApp = new ClubApp();

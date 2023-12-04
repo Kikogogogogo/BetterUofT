@@ -1,15 +1,15 @@
-package Adapter;
+package Adapter.PostandReply;
 
 import Entity.Post;
 import Entity.Reply;
 import use_case.postandreply.PostUsecase;
 import use_case.postandreply.ReplyUsecase;
 
-public class ShowingAdapter {
+public class PostandReplyPrensenter {
     private PostUsecase postUsecase;
     private ReplyUsecase replyUsecase;
 
-    public ShowingAdapter(PostUsecase postUsecase, ReplyUsecase replyUsecase) {
+    public PostandReplyPrensenter(PostUsecase postUsecase, ReplyUsecase replyUsecase) {
         this.postUsecase = postUsecase;
         this.replyUsecase = replyUsecase;
     }

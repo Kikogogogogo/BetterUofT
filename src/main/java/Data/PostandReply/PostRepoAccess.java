@@ -1,10 +1,9 @@
-package Data;
+package Data.PostandReply;
 import Entity.Post;
 
 import java.util.List;
-import java.util.List;
 
-public interface PostRepo {
+public interface PostRepoAccess {
     void save(Post post);
     List<Post> getAllPosts();
 }

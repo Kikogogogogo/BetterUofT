@@ -1,4 +1,4 @@
-package View.LogginView;
+package View.postandreply;
 
 import javax.swing.*;
 import java.awt.*;

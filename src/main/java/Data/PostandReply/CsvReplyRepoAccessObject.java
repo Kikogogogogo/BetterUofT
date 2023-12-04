@@ -1,13 +1,13 @@
-package Data;
+package Data.PostandReply;
 import Entity.Reply;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
-public class CsvReplyRepo implements ReplyRepo {
+public class CsvReplyRepoAccessObject implements ReplyRepoAccess {
     private Path csvFilePath;
 
-    public CsvReplyRepo(String csvFilePath) {
+    public CsvReplyRepoAccessObject(String csvFilePath) {
         this.csvFilePath = Paths.get(csvFilePath);
         try {
             if (Files.notExists(this.csvFilePath)) {

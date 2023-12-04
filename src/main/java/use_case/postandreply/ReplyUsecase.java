@@ -1,23 +1,23 @@
 package use_case.postandreply;
-import Data.ReplyRepo;
+import Data.PostandReply.ReplyRepoAccess;
 import Entity.Reply;
 import java.util.List;
 import java.util.UUID;
 
 public class ReplyUsecase {
-    private final ReplyRepo replyRepo;
+    private final ReplyRepoAccess replyRepoAccess;
 
-    public ReplyUsecase(ReplyRepo replyRepo) {
-        this.replyRepo = replyRepo;
+    public ReplyUsecase(ReplyRepoAccess replyRepoAccess) {
+        this.replyRepoAccess = replyRepoAccess;
     }
 
     public void createReply(String postId, String message) {
         String id = UUID.randomUUID().toString();
         Reply reply = new Reply(id, postId, message);
-        replyRepo.save(reply);
+        replyRepoAccess.save(reply);
     }
 
     public List<Reply> getRepliesForPost(String postId) {
-        return replyRepo.getRepliesForPost(postId);
+        return replyRepoAccess.getRepliesForPost(postId);
     }
 }

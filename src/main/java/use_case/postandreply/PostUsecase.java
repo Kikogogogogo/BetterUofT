@@ -1,20 +1,18 @@
 package use_case.postandreply;
-
-import Data.PostRepo;
+import Data.PostandReply.PostRepoAccess;
 import Entity.Post;
-
 import java.util.List;
 
-public class PostUsecase {
-    private final PostRepo postRepo;
+public class PostUsecase implements PostInputBoundary{
+    private final PostRepoAccess postRepoAccess;
     private int lastId;
-    public PostUsecase(PostRepo postRepo) {
-        this.postRepo = postRepo;
+    public PostUsecase(PostRepoAccess postRepoAccess) {
+        this.postRepoAccess = postRepoAccess;
         this.lastId = determineLastId();
     }
 
     private int determineLastId() {
-        List<Post> allPosts = postRepo.getAllPosts();
+        List<Post> allPosts = postRepoAccess.getAllPosts();
         int maxId = 0;
         for (Post post : allPosts) {
             try {
@@ -30,10 +28,10 @@ public class PostUsecase {
     public void createPost(String message) {
         lastId++;
         Post post = new Post(String.valueOf(lastId), message);
-        postRepo.save(post);
+        postRepoAccess.save(post);
     }
 
     public List<Post> getAllPosts() {
-        return postRepo.getAllPosts();
+        return postRepoAccess.getAllPosts();
     }
 }

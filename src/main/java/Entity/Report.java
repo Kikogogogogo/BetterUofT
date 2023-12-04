@@ -10,7 +10,6 @@ public class Report {
     private String description;
 
 
-    // Getter for reportId
     public Long getReportId() {
         return reportId;
     }
@@ -19,7 +18,6 @@ public class Report {
         this.reportId = reportId;
     }
 
-    // Getter for description
     public String getDescription() {
         return description;
     }
