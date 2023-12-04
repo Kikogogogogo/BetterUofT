@@ -23,7 +23,8 @@ public class CsvFoodRepo implements FoodRepo {
         String id = food.getId();
         String rating = food.getRatings();
         String price = food.getPrices();
-        String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + "\n";
+        int count = food.getCount();
+        String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + ", " + count + "\n";
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             writer.write(lines);
         } catch (IOException e) {
@@ -76,13 +77,26 @@ public class CsvFoodRepo implements FoodRepo {
             String id = food.getId();
             String rating = food.getRatings();
             String price = food.getPrices();
-            String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + "\n";
+            int count = food.getCount();
+            String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + "," + count + "\n";
             try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
                 writer.write(lines);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void deleteFood(String name) {
+        ArrayList<Food> foodItems = getAllFoods();
+        for (Food food : foodItems) {
+            if (food.getName().equals(name)) {
+                foodItems.remove(food);
+                break;
+            }
+        }
+        emptyFoodFile();
+        saveAllFoods(foodItems);
     }
 }
 

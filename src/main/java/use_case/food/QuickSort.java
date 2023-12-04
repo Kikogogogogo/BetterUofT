@@ -56,18 +56,5 @@ public class QuickSort {
 
     // Main method to test the QuickSort algorithm
     public static void main(String args[]) {
-        ArrayList<Food> foodItems = new ArrayList<>();
-        foodItems.add(new Food("name", "location", "description", "id", "1", "1"));
-        foodItems.add(new Food("name", "location", "description", "id", "3", "3"));
-        foodItems.add(new Food("name", "location", "description", "id", "5", "5"));
-        foodItems.add(new Food("name", "location", "description", "id", "2", "2"));
-        foodItems.add(new Food("name", "location", "description", "id", "4", "4"));
-        foodItems.add(new Food("name", "location", "description", "id", "3", "3"));
-        foodItems.add(new Food("name", "location", "description", "id", "2", "2"));
-        QuickSort quickSort = new QuickSort(foodItems, 0, foodItems.size() - 1);
-        foodItems = quickSort.run();
-        for (Food food : foodItems) {
-            System.out.println(food.getRating());
-        }
     }
 }

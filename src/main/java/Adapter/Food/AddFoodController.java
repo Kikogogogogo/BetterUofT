@@ -19,28 +19,26 @@ public class AddFoodController {
     }
 
     public void execute(String name, String location, String description, String id, String rating, String price) {
-        Food food = check(name);
+        Food food = check(name, price, rating);
+        CsvFoodRepo a = new CsvFoodRepo("food.csv");
+        a.save(food);
         if (food != null) {
-            System.out.println(food.getRating());
-            System.out.println(food.getCount());
-            System.out.println(Double.parseDouble(rating));
-            System.out.println(food.getRating() + Double.parseDouble(rating));
-            System.out.println((food.getRating() + Double.parseDouble(rating)) / food.getCount());
-            double newRating = (food.getRating() + Double.parseDouble(rating)) / food.getCount();
-            double newPrice = (food.getPrice() + Double.parseDouble(price)) / food.getCount();
-            delete(name);
-            foodInputBoundary.createFood(name, location, description, id, Double.toString(newRating), Double.toString(newPrice));
             return;
         }
-        foodInputBoundary.createFood(name, location, description, id, rating, price);
+
+        a.save(new Food(name, location, description, id, rating, price));
         showingFoodInputBoundary.showAllFoods();
     }
 
-    public Food check(String name) {
+    public Food check(String name, String price, String rating) {
         foodItems = CsvFoodRepo.getAllFoods();
         for (Food food : foodItems) {
             if (food.getName().equals(name)) {
-                food.increaseCount();
+                double newRating = food.getRating() + Double.parseDouble(rating);
+                double newPrice = food.getPrice() + Double.parseDouble(price);
+                food.increaseRating(newRating);
+                food.increasePrice(newPrice);
+                CsvFoodRepo.deleteFood(food.getName());
                 return food;
             }
         }
