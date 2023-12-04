@@ -21,7 +21,6 @@ public class AddFoodController {
     public void execute(String name, String location, String description, String id, String rating, String price) {
         Food food = check(name, price, rating);
         CsvFoodRepo a = new CsvFoodRepo("food.csv");
-        a.save(food);
         if (food != null) {
             return;
         }
@@ -38,7 +37,10 @@ public class AddFoodController {
                 double newPrice = food.getPrice() + Double.parseDouble(price);
                 food.increaseRating(newRating);
                 food.increasePrice(newPrice);
+                food.increaseCount();
+
                 CsvFoodRepo.deleteFood(food.getName());
+                CsvFoodRepo.saveAllFoods(foodItems);
                 return food;
             }
         }

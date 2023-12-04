@@ -69,6 +69,16 @@ public class Food {
         return descriptionList;
     }
 
+    public  String getAverageRating() {
+        double averageRating = Double.parseDouble(rating) / count;
+        return String.valueOf(averageRating);
+    }
+
+    public String getAveragePrice() {
+        double averagePrice = Double.parseDouble(price) / count;
+        return String.valueOf(averagePrice);
+    }
+
     public void increaseRating(double rating) {
         this.rating = String.valueOf(rating);
     }
