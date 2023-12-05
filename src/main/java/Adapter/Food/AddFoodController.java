@@ -62,11 +62,12 @@ public class AddFoodController {
             Food newfood = new Food(name, location, description, id, rating, price, 1);
             csvFoodRepo.save(newfood);
         } else {
-            food.increaseCount();
-            food.increaseRating(Double.parseDouble(rating));
-            food.increasePrice(Double.parseDouble(price));
+            Food temp = food.clone();
             csvFoodRepo.deleteFood(food.getName());
-            csvFoodRepo.save(food);
+            temp.increaseCount();
+            temp.increaseRating(Double.parseDouble(rating));
+            temp.increasePrice(Double.parseDouble(price));
+            csvFoodRepo.save(temp);
         }
     }
 
@@ -74,8 +75,7 @@ public class AddFoodController {
         ArrayList<Food> exist = CsvFoodRepo.getAllFoods();
         for (Food food : exist) {
             if (food.getName().equals(name)) {
-                Food temp = food;
-                return temp;
+                return food;
             }
         }
         return null;
