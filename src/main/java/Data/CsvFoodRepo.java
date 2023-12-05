@@ -21,10 +21,10 @@ public class CsvFoodRepo implements FoodRepo {
         String location = food.getLocation();
         String description = food.getDescription();
         String id = food.getId();
-        String rating = food.getRatings();
-        String price = food.getPrices();
+        String rating = String.valueOf(food.getRating());
+        String price = String.valueOf(food.getPrice());
         int count = food.getCount();
-        String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + ", " + count + "\n";
+        String lines = name + "," + location + "," + description + "," + id + "," + rating + "," + price + ", " + count + "\n";
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             writer.write(lines);
         } catch (IOException e) {
@@ -80,7 +80,7 @@ public class CsvFoodRepo implements FoodRepo {
             String rating = food.getRatings();
             String price = food.getPrices();
             int count = food.getCount();
-            String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + ", " + count + "\n";
+            String lines = name + "," + location + "," + description + "," + id + "," + rating + "," + price + ", " + count + "\n";
             try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
                 writer.write(lines);
             } catch (IOException e) {

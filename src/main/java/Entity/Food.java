@@ -2,7 +2,7 @@ package Entity;
 
 import java.util.ArrayList;
 
-public class Food {
+public class Food implements Cloneable{
     private String name;
     private String location;
     private String description;
@@ -23,70 +23,80 @@ public class Food {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getLocation() {
-        return location;
+        return this.location;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public double getRating() {
-        return Double.parseDouble(rating);
+        return Double.parseDouble(this.rating);
     }
 
     public String getRatings() {
-        return rating;
+        return this.rating;
     }
 
     public double getPrice() {
-        return Double.parseDouble(price);
+        return Double.parseDouble(this.price);
     }
 
     public String getPrices() {
-        return price;
+        return this.price;
     }
 
     public int getCount() {
-        return count;
+        return this.count;
     }
 
     public void increaseCount() {
-        System.out.println("ncsjndcjs");
-        this.count = count + 1;
+        this.count = this.count + 1;
     }
 
     public void addDescription(String description) {
-        descriptionList.add(description);
+        this.descriptionList.add(description);
     }
 
     public ArrayList<String> getDescriptionList() {
-        return descriptionList;
+        return this.descriptionList;
     }
 
     public  String getAverageRating() {
-        double averageRating = Double.parseDouble(rating) / count;
+        double averageRating = Double.parseDouble(this.rating) / this.count;
         return String.valueOf(averageRating);
     }
 
     public String getAveragePrice() {
-        double averagePrice = Double.parseDouble(price) / count;
+        double averagePrice = Double.parseDouble(this.price) / this.count;
         return String.valueOf(averagePrice);
     }
 
     public void increaseRating(double rating) {
-        System.out.println("ncsjndcjs");
-        this.rating = String.valueOf(rating);
+        double newrating = Double.parseDouble(this.rating) + rating;
+        this.rating = String.valueOf(newrating);
     }
 
     public void increasePrice(double price) {
-        this.price = String.valueOf(price);
+        double newprice = Double.parseDouble(this.price) + price;
+        this.price = String.valueOf(newprice);
     }
+
+    public Food clone() {
+        try {
+            return (Food) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
