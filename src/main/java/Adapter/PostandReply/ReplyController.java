@@ -1,6 +1,6 @@
 package Adapter.PostandReply;
 
-import use_case.postandreply.ReplyUsecase;
+import use_case.postandreply.ChatWithHuman.ReplyUsecase;
 
 public class ReplyController {
     private ReplyUsecase replyUsecase;

@@ -2,8 +2,8 @@ package Adapter.PostandReply;
 
 import Entity.Post;
 import Entity.Reply;
-import use_case.postandreply.PostUsecase;
-import use_case.postandreply.ReplyUsecase;
+import use_case.postandreply.ChatWithHuman.PostUsecase;
+import use_case.postandreply.ChatWithHuman.ReplyUsecase;
 
 public class PostandReplyPrensenter {
     private PostUsecase postUsecase;

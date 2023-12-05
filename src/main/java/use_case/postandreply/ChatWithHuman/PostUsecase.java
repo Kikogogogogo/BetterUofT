@@ -1,4 +1,4 @@
-package use_case.postandreply;
+package use_case.postandreply.ChatWithHuman;
 import Data.PostandReply.PostRepoAccess;
 import Entity.Post;
 import java.util.List;
