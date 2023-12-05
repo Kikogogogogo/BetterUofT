@@ -32,9 +32,9 @@ public class ReportApplication extends JFrame {
 
 
     private void initializeUI() {
-        frame = new JFrame("Lost and Found Management System");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BorderLayout());
+        setTitle("Lost and Found Management System");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
 
         panel = new JPanel();
         panel.setLayout(new GridLayout(0, 2, 10, 10));
@@ -60,9 +60,8 @@ public class ReportApplication extends JFrame {
         panel.add(updateButton);
         panel.add(deleteButton);
 
-        frame.add(panel, BorderLayout.CENTER);
-        frame.pack();
-        frame.setVisible(true);
+        add(panel, BorderLayout.CENTER);
+        pack();
     }
 
     private void submitReport() {
