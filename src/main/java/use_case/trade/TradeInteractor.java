@@ -1,7 +1,11 @@
 package use_case.trade;
 import Data.CsvTradeDataAccess;
 import Entity.TradeItem;
+import View.trade.TradeView;
 import use_case.trade.TradeInputBoundary;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 public class TradeInteractor implements TradeInputBoundary {
     private TradeOutputBoundary presenter;
