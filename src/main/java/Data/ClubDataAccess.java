@@ -9,4 +9,5 @@ public interface ClubDataAccess {
     void joinClub(String name, int id);
     void deleteClub(String name);
     void modifyDescription(String clubName, String description);
+
 }

@@ -1,7 +1,18 @@
 package View.trade;
 
+import Adapter.trade.TradeController;
+import Adapter.trade.TradePresenter;
+import Data.ClubDataAccess;
+import Data.ClubDataAccessObject;
+import Data.CsvTradeDataAccess;
+import use_case.trade.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class TradeView extends JFrame {
 
@@ -9,9 +20,14 @@ public class TradeView extends JFrame {
     private JTextArea descriptionArea;
     private JTextField priceField;
     private JButton submitButton;
+    private TradePresenter presenter = new TradePresenter(this);
+    private CsvTradeDataAccess tradeDataAccess = new CsvTradeDataAccess("trade.csv");
+    private final TradeController tradeController = new TradeController(presenter, tradeDataAccess);
+
 
     public TradeView() {
         setTitle("Trade Item");
+//        CsvTradeDataAccess tradeDataAccess = new CsvTradeDataAccess("trade.csv");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
         add(createFormPanel(), BorderLayout.CENTER);
@@ -20,7 +36,9 @@ public class TradeView extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+//    public TradeView(TradeController tradeController) {
+//        this.tradeController = tradeController;
+//    }
     private JPanel createFormPanel() {
         JPanel formPanel = new JPanel(new GridBagLayout());
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -54,11 +72,31 @@ public class TradeView extends JFrame {
     private JButton createSubmitButton() {
         submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(100, 40));
-        // submitButton.addActionListener(...); // Add action listener to handle submit action
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onSubmit();
+            }
+        });
         return submitButton;
+    }
+    private void onSubmit() {
+        String category = categoryField.getText();
+        String description = descriptionArea.getText();
+        String priceText = priceField.getText();
+        String[] input = {category, description, priceText};
+        tradeController.submitTrade(input);
     }
 
     public static void main(String[] args) {
+//        String csvFilePath = "trades.csv";
+//        TradeOutputBoundary dataAccess = new CsvTradeDataAccess(csvFilePath);
+//        TradeInputBoundary interactor = new TradeInteractor(dataAccess);
+//        TradeController controller = new TradeController(interactor);
         SwingUtilities.invokeLater(TradeView::new);
+}
+
+    public void showResult() {
+        showMessageDialog(null, "Item uploaded Successfully");
     }
 }
