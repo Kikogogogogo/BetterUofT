@@ -15,8 +15,6 @@ public class TradePresenter implements TradeOutputBoundary {
     @Override
     public void showTrade(String[] input) {
         this.view.showResult();
-//        TradeOutputData tradeOutputData = new TradeOutputData(true, "Item uploaded successfully");
-//        tradeViewModel = new TradeViewModel(tradeOutputData);
     }
 
 
