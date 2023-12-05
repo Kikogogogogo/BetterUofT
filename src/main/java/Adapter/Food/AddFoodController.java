@@ -59,7 +59,8 @@ public class AddFoodController {
                         String id, String rating, String price) {
         Food food = check(name);
         if (food == null){
-            Food newfood = new Food(name, location, description, id, rating, price, 1);
+            Food newfood = new Food(name, location, description, id, rating,
+                    price, 1, "[" + description + "]");
             csvFoodRepo.save(newfood);
         } else {
             Food temp = food.clone();
@@ -67,6 +68,7 @@ public class AddFoodController {
             temp.increaseCount();
             temp.increaseRating(Double.parseDouble(rating));
             temp.increasePrice(Double.parseDouble(price));
+            temp.addDescription(description);
             csvFoodRepo.save(temp);
         }
     }

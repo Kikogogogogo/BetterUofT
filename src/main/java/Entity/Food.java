@@ -1,6 +1,7 @@
 package Entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Food implements Cloneable{
     private String name;
@@ -12,7 +13,24 @@ public class Food implements Cloneable{
     private int count = 0;
     private ArrayList<String> descriptionList = new ArrayList<>();
 
-    public Food(String name, String location, String description, String id, String rating, String price, int count) {
+    public Food(String name, String location, String description, String id,
+                String rating, String price, int count, String comments) {
+        this.name = name;
+        this.location = location;
+        this.description = description;
+        this.id = id;
+        this.rating = rating;
+        this.price = price;
+        this.count += count;
+        String trimmedInput = comments.substring(1, comments.length() - 1).trim();
+
+        // Split the string by commas and convert to an ArrayList
+        this.descriptionList = new ArrayList<>(Arrays.asList(trimmedInput.split("\\s*,\\s*")));
+
+    }
+
+    public Food(String name, String location, String description, String id, String rating, String price,
+                int count) {
         this.name = name;
         this.location = location;
         this.description = description;
@@ -88,6 +106,10 @@ public class Food implements Cloneable{
     public void increasePrice(double price) {
         double newprice = Double.parseDouble(this.price) + price;
         this.price = String.valueOf(newprice);
+    }
+
+    public String getComments() {
+        return this.descriptionList.toString();
     }
 
     public Food clone() {
