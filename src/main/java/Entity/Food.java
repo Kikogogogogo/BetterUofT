@@ -9,16 +9,17 @@ public class Food {
     private String id;
     private String rating;
     private String price;
-    private int count = 1;
+    private int count = 0;
     private ArrayList<String> descriptionList = new ArrayList<>();
 
-    public Food(String name, String location, String description, String id, String rating, String price) {
+    public Food(String name, String location, String description, String id, String rating, String price, int count) {
         this.name = name;
         this.location = location;
         this.description = description;
         this.id = id;
         this.rating = rating;
         this.price = price;
+        this.count += count;
     }
 
     public String getName() {
@@ -58,6 +59,7 @@ public class Food {
     }
 
     public void increaseCount() {
+        System.out.println("ncsjndcjs");
         this.count = count + 1;
     }
 
@@ -80,6 +82,7 @@ public class Food {
     }
 
     public void increaseRating(double rating) {
+        System.out.println("ncsjndcjs");
         this.rating = String.valueOf(rating);
     }
 
