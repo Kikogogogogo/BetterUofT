@@ -10,8 +10,8 @@ import Data.PostandReply.CsvPostRepoAccessObject;
 import Data.PostandReply.PostRepoAccess;
 import Data.PostandReply.CsvReplyRepoAccessObject;
 
-import use_case.postandreply.PostUsecase;
-import use_case.postandreply.ReplyUsecase;
+import use_case.postandreply.ChatWithHuman.PostUsecase;
+import use_case.postandreply.ChatWithHuman.ReplyUsecase;
 
 
 
