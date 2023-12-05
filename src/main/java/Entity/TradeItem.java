@@ -1,22 +1,35 @@
 package Entity;
 
-public class TradeItem{
+import java.sql.Timestamp;
+
+public abstract class TradeItem implements Entity.Item {
+    private String name;
     private String description;
+    private Timestamp timestamp;
+    private String id;
     private boolean traded;
     private String category;
-    private double price;
-    private String id;
 
-    public TradeItem(String description, boolean status, String category, double price) {
+    public TradeItem(String name, String description, String date, String time, Timestamp timestamp, String id, boolean status, String category) {
+        this.name = name;
         this.description = description;
+        this.timestamp = timestamp;
+        this.id = id;
         this.traded = status;
         this.category = category;
-        this.price = price;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {
         return description;
     }
+
+    public Timestamp getTimestamp() { return timestamp; }
+
+    public String getId() { return id; }
 
     public boolean getStatus() { return traded; }
 
@@ -28,33 +41,5 @@ public class TradeItem{
 
     public String getCategory() {
         return category;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getId() {
-        return id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
-
-    public String toCsvString() {
-        return category + "," + traded + "," + description + "," + price;
-    }
-    public static TradeItem fromCsvString(String csvString) {
-        String[] data = csvString.split(",");
-        String category = data[0].trim();
-        boolean traded = Boolean.parseBoolean(data[1]);
-        String description = data[2].trim();
-        double price = Double.parseDouble(data[3].trim());
-
-        return new TradeItem(description, traded, category, price);
     }
 }
