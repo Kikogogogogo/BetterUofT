@@ -27,7 +27,6 @@ public class TradeView extends JFrame {
 
     public TradeView() {
         setTitle("Trade Item");
-//        CsvTradeDataAccess tradeDataAccess = new CsvTradeDataAccess("trade.csv");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
         add(createFormPanel(), BorderLayout.CENTER);
@@ -36,9 +35,6 @@ public class TradeView extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-//    public TradeView(TradeController tradeController) {
-//        this.tradeController = tradeController;
-//    }
     private JPanel createFormPanel() {
         JPanel formPanel = new JPanel(new GridBagLayout());
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
