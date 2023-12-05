@@ -8,20 +8,20 @@ import Entity.Reply;
 
 import Entity.Post;
 
-import Adapter.ShowingAdapter;
+import Adapter.PostandReply.PostandReplyPrensenter;
 
 
 public class PostComponent extends JPanel {
     private Post post;
-    private ShowingAdapter showingAdapter;
+    private PostandReplyPrensenter postandReplyPrensenter;
     JButton showRepliesButton;
     private JList<Reply> replyList;
     private DefaultListModel<Reply> replyListModel;
     private boolean repliesVisible = false;
 
-    public PostComponent(Post post, ShowingAdapter showingAdapter) {
+    public PostComponent(Post post, PostandReplyPrensenter postandReplyPrensenter) {
         this.post = post;
-        this.showingAdapter = showingAdapter;
+        this.postandReplyPrensenter = postandReplyPrensenter;
         setLayout(new BorderLayout());
 
         JLabel postLabel = new JLabel("ID: " + post.getId() + " | Content: " + post.getMessage());
@@ -40,7 +40,7 @@ public class PostComponent extends JPanel {
 
     private void toggleRepliesVisibility() {
         if (!repliesVisible) {
-            List<Reply> replies = showingAdapter.getRepliesForPost(post.getId());
+            List<Reply> replies = postandReplyPrensenter.getRepliesForPost(post.getId());
             replyListModel.removeAllElements();
             for (Reply reply : replies) {
                 replyListModel.addElement(reply);

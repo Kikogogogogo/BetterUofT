@@ -4,6 +4,9 @@ import java.util.List;
 
 public interface FoodRepo {
     void save(Food food);
-    List<Food> getAllFoods();
+
+    static List<Food> getAllFoods() {
+        return null;
+    }
 }
 

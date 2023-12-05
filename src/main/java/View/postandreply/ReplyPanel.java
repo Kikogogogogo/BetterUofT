@@ -2,7 +2,7 @@ package View.postandreply;
 
 
 import Entity.Post;
-import Adapter.ReplyingAdapter;
+import Adapter.PostandReply.ReplyController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +10,11 @@ import java.awt.*;
 public class ReplyPanel extends JPanel {
     private JTextArea replyTextArea;
     private JButton replyButton;
-    private ReplyingAdapter replyingAdapter;
+    private ReplyController replyController;
     private String currentPostId;
 
-    public ReplyPanel(ReplyingAdapter replyingAdapter) {
-        this.replyingAdapter = replyingAdapter;
+    public ReplyPanel(ReplyController replyController) {
+        this.replyController = replyController;
         setLayout(new BorderLayout());
 
         replyTextArea = new JTextArea(4, 20);
@@ -37,7 +37,7 @@ public class ReplyPanel extends JPanel {
     private void sendReply() {
         String message = replyTextArea.getText().trim();
         if (!message.isEmpty() && currentPostId != null) {
-            replyingAdapter.createReply(currentPostId, message);
+            replyController.createReply(currentPostId, message);
             replyTextArea.setText(""); // Clear the text area after sending the reply
             replyButton.setEnabled(false); // Disable the button until another post is selected
         }

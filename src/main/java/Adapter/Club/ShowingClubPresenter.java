@@ -1,13 +1,9 @@
 package Adapter.Club;
 
 import Entity.Club;
-import View.GUI.FinalApp;
 import View.club.ClubApp;
 import use_case.club.ShowingInputData;
 import use_case.club.ShowingOutputBoundary;
-import use_case.club.ShowingUsecase;
-
-import java.util.List;
 
 public class ShowingClubPresenter implements ShowingOutputBoundary {
     final ClubApp view;
@@ -17,6 +13,7 @@ public class ShowingClubPresenter implements ShowingOutputBoundary {
 
     public void showAllClubs(ShowingInputData showingInputData) {
 
+        view.clubListModel.removeAllElements();
         for (Club c : showingInputData.getClubs()) {
             view.clubListModel.addElement(c.getName());
         }
@@ -28,4 +25,9 @@ public class ShowingClubPresenter implements ShowingOutputBoundary {
         view.descriptionTextField.setText(showingInputData.getClubs().get(index).getDescription());
     }
 
+    @Override
+    public void showClubJoinable(ShowingInputData showingInputData) {
+        int index = showingInputData.getSelection();
+        view.joinableCheckBox.setSelected(showingInputData.getClubs().get(index).getJoinable());
+    }
 }

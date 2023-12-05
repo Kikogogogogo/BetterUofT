@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CsvFoodRepo implements FoodRepo {
-    private Path path;
+    private static Path path;
+
 
     public CsvFoodRepo(String path) {
         this.path = Paths.get(path);
@@ -20,23 +21,84 @@ public class CsvFoodRepo implements FoodRepo {
         String location = food.getLocation();
         String description = food.getDescription();
         String id = food.getId();
-        double rating = food.getRating();
-        String price = food.getPrice();
-        String line = String.format("%s,%s,%s,%s,%d,%d\n", name, location, description, id, rating, price);
+        String rating = String.valueOf(food.getRating());
+        String price = String.valueOf(food.getPrice());
+        int count = food.getCount();
+        String lines = name + "," + location + "," + description + "," + id + "," + rating + "," + price + ", " + count + "\n";
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
-            writer.write(line);
+            writer.write(lines);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public List<Food> getAllFoods() {
-        List<Food> foods = new ArrayList<>();
+    public static ArrayList<Food> getAllFoods() {
+        ArrayList<Food> foodItems = new ArrayList<>();
         if (!Files.exists(path)) {
-            return foods;
+            return foodItems;
         }
 
-        return foods;
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",", -1);
+                if (parts.length >= 7) {
+                    String name = parts[0];
+                    String location = parts[1];
+                    String description = parts[2];
+                    String id = parts[3];
+                    String rating = parts[4];
+                    String price = parts[5];
+                    int count = Integer.parseInt(parts[6].substring(1));
+
+                    Food food = new Food(name, location, description, id, rating, price, count);
+                    foodItems.add(food);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return foodItems;
+    }
+
+    public static void emptyFoodFile() {
+        try {
+            PrintWriter writer = new PrintWriter(path.toString());
+            writer.print("");
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveAllFoods(ArrayList<Food> foodItems) {
+        for (Food food : foodItems) {
+            String name = food.getName();
+            String location = food.getLocation();
+            String description = food.getDescription();
+            String id = food.getId();
+            String rating = food.getRatings();
+            String price = food.getPrices();
+            int count = food.getCount();
+            String lines = name + "," + location + "," + description + "," + id + "," + rating + "," + price + ", " + count + "\n";
+            try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+                writer.write(lines);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void deleteFood(String name) {
+        ArrayList<Food> foodItems = getAllFoods();
+        for (Food food : foodItems) {
+            if (food.getName().equals(name)) {
+                foodItems.remove(food);
+                break;
+            }
+        }
+        emptyFoodFile();
+        saveAllFoods(foodItems);
     }
 }
 

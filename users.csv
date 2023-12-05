@@ -1,0 +1,16 @@
+name,password,id,email,major,yearjoined
+Leo,123456,1,leo@utoronto.ca,math,2022
+Eric,abcdef,2,eric@utoronto.ca,cs,2021
+Amy,111111,3,amy@utoronto.ca,cs,2021
+Leo Liu,1234,4,leo.liu@utoronto.ca,stats,2022
+Ryan,abcde,5,ryan@utoronto.ca,philosophy,2022
+JohnDoe,pass123,6,johndoe@mail.utoronto.ca,Computer Science,2020
+AliceSmith,password456,7,alicesmith@mail.utoronto.ca,Electrical Engineering,2019
+BobJohnson,secure789,8,bobjohnson@mail.utoronto.ca,Mathematics,2021
+EmilyBrown,secret321,9,emilybrown@mail.utoronto.ca,Psychology,2022
+CharlieWilson,p@ssw0rd,10,charliewilson@mail.utoronto.ca,Chemistry,2018
+GraceMiller,letmein2022,11,gracemiller@mail.utoronto.ca,Physics,2023
+DanielClark,dannyboy123,12,danielclark@mail.utoronto.ca,Biology,2020
+SophiaLopez,sophie567,13,sophialopez@mail.utoronto.ca,English Literature,2021
+MichaelYoung,mikepass,14,michaelyoung@mail.utoronto.ca,History,2019
+OliviaChen,olivia789,15,oliviachen@mail.utoronto.ca,Political Science,2022

@@ -1,14 +1,14 @@
-package entity;
+package Entity;
 
 public class User {
     private String username;
     private String password;
-    private String id;
+    private int id;
     private String email;
     private String major;
     private String yearjoined;
 
-    public User(String username, String password, String id, String email, String major, String yearjoined) {
+    public User(String username, String password, int id, String email, String major, String yearjoined) {
         this.username = username;
         this.password = password;
         this.id = id;
@@ -25,7 +25,7 @@ public class User {
         return password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

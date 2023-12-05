@@ -1,6 +1,6 @@
 package View.postandreply;
 
-import Adapter.PostingAdapter;
+import Adapter.PostandReply.PostController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,11 +8,11 @@ import java.awt.*;
 public class PostPanel extends JPanel {
     private JTextArea postTextArea;
     private JButton postButton;
-    private PostingAdapter postingAdapter;
+    private PostController postController;
     private Runnable refreshPostsCallback;
 
-    public PostPanel(PostingAdapter postingAdapter, Runnable refreshPostsCallback) {
-        this.postingAdapter = postingAdapter;
+    public PostPanel(PostController postController, Runnable refreshPostsCallback) {
+        this.postController = postController;
         this.refreshPostsCallback = refreshPostsCallback;
         createUI();
     }
@@ -25,7 +25,7 @@ public class PostPanel extends JPanel {
         postButton.addActionListener(e -> {
             String message = postTextArea.getText().trim();
             if (!message.isEmpty()) {
-                postingAdapter.createPost(message);
+                postController.createPost(message);
                 postTextArea.setText(""); // Clear the text area after posting
                 if (refreshPostsCallback != null) {
                     refreshPostsCallback.run(); // Refresh the posts display

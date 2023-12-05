@@ -1,6 +1,8 @@
 package Entity;
 
-public class LostItem implements entity.Item {
+import javax.swing.text.html.parser.Entity;
+
+public class LostItem implements Item {
     private String name;
     private String description;
     private String location;
