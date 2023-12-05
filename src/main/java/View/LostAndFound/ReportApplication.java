@@ -6,15 +6,17 @@ import Entity.Report;
 import use_case.LostAndFound.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Optional;
 
 
-public class ReportApplication {
-    private JFrame frame;
-    private JTextField reportField;
-    private JTextField reportIdField;
-    private JButton submitButton, findButton, updateButton, deleteButton;
+public class ReportApplication extends JFrame {
     private ReportController reportController;
+
+    private JFrame frame;
+    private JTextField reportField, reportIdField;
+    private JButton submitButton, findButton, updateButton, deleteButton;
+    private JPanel panel;
 
     public ReportApplication() {
         initializeUI();
@@ -28,31 +30,37 @@ public class ReportApplication {
         reportController = new ReportController(createReport, findReport, updateReport, deleteReport);
     }
 
-    private void initializeUI() {
-        frame = new JFrame("Report Management System");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        reportField = new JTextField(20);
+    private void initializeUI() {
+        frame = new JFrame("Lost and Found Management System");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+
+        panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 2, 10, 10));
+
         reportIdField = new JTextField(20);
-        submitButton = new JButton("Submit Report");
-        findButton = new JButton("Find Report");
-        updateButton = new JButton("Update Report");
-        deleteButton = new JButton("Delete Report");
+        reportField = new JTextField(20);
+        submitButton = new JButton("Submit lost item");
+        findButton = new JButton("Find lost item");
+        updateButton = new JButton("Update item");
+        deleteButton = new JButton("Delete lost item report");
 
         submitButton.addActionListener(e -> submitReport());
         findButton.addActionListener(e -> findReport());
         updateButton.addActionListener(e -> updateReport());
         deleteButton.addActionListener(e -> deleteReport());
 
-        frame.add(new JLabel("Report ID:"));
-        frame.add(reportIdField);
-        frame.add(new JLabel("Report Details:"));
-        frame.add(reportField);
-        frame.add(submitButton);
-        frame.add(findButton);
-        frame.add(updateButton);
-        frame.add(deleteButton);
+        panel.add(new JLabel("Item ID:"));
+        panel.add(reportIdField);
+        panel.add(new JLabel("Item Details:"));
+        panel.add(reportField);
+        panel.add(submitButton);
+        panel.add(findButton);
+        panel.add(updateButton);
+        panel.add(deleteButton);
+
+        frame.add(panel, BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
     }
@@ -61,7 +69,7 @@ public class ReportApplication {
         Report report = new Report();
         report.setDescription(reportField.getText());
         reportController.createReport(report);
-        JOptionPane.showMessageDialog(frame, "Report submitted successfully!");
+        JOptionPane.showMessageDialog(frame, "Lost and Found report submitted successfully!");
     }
 
     private void findReport() {
@@ -78,16 +86,19 @@ public class ReportApplication {
         report.setReportId(reportId);
         report.setDescription(reportField.getText());
         reportController.updateReport(report);
-        JOptionPane.showMessageDialog(frame, "Report updated successfully!");
+        JOptionPane.showMessageDialog(frame, "Lost and Found report updated successfully!");
     }
 
     private void deleteReport() {
         Long reportId = Long.parseLong(reportIdField.getText());
         reportController.deleteReport(reportId);
-        JOptionPane.showMessageDialog(frame, "Report deleted successfully!");
+        JOptionPane.showMessageDialog(frame, "Lost and Found report deleted successfully!");
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ReportApplication());
+        SwingUtilities.invokeLater(() -> {
+            ReportApplication reportApp = new ReportApplication();
+            reportApp.setVisible(true);
+        });
     }
 }
