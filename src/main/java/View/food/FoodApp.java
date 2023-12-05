@@ -119,7 +119,12 @@ public class FoodApp extends JFrame {
         detailsDialog.add(new JLabel("Rating: " + food.getAverageRating() + " stars"));
         detailsDialog.add(new JLabel("Price: $" + food.getAveragePrice()));
         detailsDialog.add(new JLabel("Location: " + food.getLocation()));
-        detailsDialog.add(new JLabel("Description: " + food.getDescription()));
+        System.out.println(food.getDescriptionList());
+        detailsDialog.add(new JLabel("Description: " ));
+        for (String description : food.getDescriptionList()) {
+            System.out.println(description + "nn");
+            detailsDialog.add(new JLabel(description));
+        }
 
         detailsDialog.setSize(300, 200);
 
