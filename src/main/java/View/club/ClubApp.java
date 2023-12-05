@@ -6,6 +6,7 @@ import Data.ClubDataAccessObject;
 import Data.UserDataAccess;
 import Data.UserDataAcessObject;
 import Entity.Club;
+import View.GUI.FinalApp;
 import use_case.club.*;
 
 import javax.swing.*;
@@ -153,6 +154,14 @@ public class ClubApp extends JFrame {
             public void valueChanged(ListSelectionEvent e) {
                 showingUsecase.showClubDescription(clubList.getSelectedIndex());
                 showingUsecase.showClubJoinable(clubList.getSelectedIndex());
+            }
+        });
+
+        modifyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ModifyClubApp modifyClubApp = new ModifyClubApp();
+                modifyClubApp.setVisible(true);
             }
         });
     }

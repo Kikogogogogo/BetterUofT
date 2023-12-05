@@ -1,5 +1,6 @@
 package View.GUI;
 
+import View.LostAndFound.ReportApplication;
 import View.club.ClubApp;
 import View.food.FoodApp;
 
@@ -11,30 +12,65 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+
+import java.awt.event.ActionListener;
+import java.net.URL;
+import java.util.Objects;
+
 public class FinalApp extends JFrame {
+    private ImageIcon image1;
+    private  JLabel label1;
 
     public FinalApp() {
         setTitle("Final App");
-        setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(2, 2));
-        JButton postAndReplyButton = new JButton("Post and Reply");
-        postAndReplyButton.addActionListener(this::openPostAndReply);
+        setLayout(new BorderLayout());
+        setSize(400, 400);
+        setLocationRelativeTo(null);
 
-        JButton clubButton = new JButton("Club");
-        clubButton.addActionListener(this::openClub);
 
-        JButton foodButton = new JButton("Food");
-        foodButton.addActionListener(this::openFood);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(3, 2, 10, 10));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JButton tradeButton = new JButton("Trading");
-        tradeButton.addActionListener(this::openTrading);
+        JButton postAndReplyButton = createButton("Post and Reply", this::openPostAndReply);
+        JButton clubButton = createButton("Club", this::openClub);
+        JButton foodButton = createButton("Food", this::openFood);
+        JButton tradeButton = createButton("Trading", this::openTrading);
+        JButton lafButton = createButton("Lost and Found", this::openLAF);
 
-        add(postAndReplyButton);
-        add(clubButton);
-        add(foodButton);
-        add(tradeButton);
+        loadAndSetImage();
+
+
+        buttonPanel.add(postAndReplyButton);
+        buttonPanel.add(clubButton);
+        buttonPanel.add(foodButton);
+        buttonPanel.add(tradeButton);
+        buttonPanel.add(lafButton);
+
+        add(buttonPanel, BorderLayout.CENTER);
     }
+
+
+    private JButton createButton(String text, ActionListener actionListener) {
+        JButton button = new JButton(text);
+        button.addActionListener(actionListener);
+        return button;
+    } //dd
+
+
+    private void loadAndSetImage() {
+        URL imageUrl = getClass().getClassLoader().getResource("UofT-Sc-logo.jpg");
+        if (imageUrl != null) {
+            image1 = new ImageIcon(imageUrl);
+            label1 = new JLabel(image1);
+            add(label1, BorderLayout.NORTH);
+        } else {
+            System.err.println("error");
+        }
+    }
+
+
 
     private void openTrading(ActionEvent e) {
         SwingUtilities.invokeLater(() -> {
@@ -61,6 +97,15 @@ public class FinalApp extends JFrame {
             foodApp.setVisible(true);
         });
     }
+
+    private void openLAF(ActionEvent event) {
+        SwingUtilities.invokeLater(() -> {
+            ReportApplication reportApp = new ReportApplication();
+            reportApp.setVisible(true);
+        });
+    }
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

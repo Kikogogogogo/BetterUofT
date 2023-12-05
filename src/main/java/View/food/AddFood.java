@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
-public class AddFood extends JFrame{
+public class  AddFood extends JFrame{
 
     private final AddFoodController AddFoodController;
     private final FoodInputBoundary FoodInputUsecase;

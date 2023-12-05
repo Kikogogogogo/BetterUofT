@@ -10,6 +10,11 @@ import use_case.food.QuickSort;
 
 public class SortUsecase {
     private static ArrayList<Food> foodItems = new ArrayList<>();
+    private FoodApp foodapp;
+
+    public SortUsecase(FoodApp foodapp) {
+        this.foodapp = foodapp;
+    }
 
     public void sortFood() {
         CsvFoodRepo csvFoodRepo = new CsvFoodRepo("food.csv");
@@ -18,6 +23,7 @@ public class SortUsecase {
         foodItems = quickSort.run();
         CsvFoodRepo.emptyFoodFile();
         CsvFoodRepo.saveAllFoods(foodItems);
+        foodapp.dispose();
         FoodApp foodApp = new FoodApp();
         foodApp.setVisible(true);
     }
