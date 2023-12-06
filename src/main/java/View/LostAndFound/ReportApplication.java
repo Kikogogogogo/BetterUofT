@@ -3,6 +3,7 @@ package View.LostAndFound;
 import Data.InMemoryReportRepository;
 import Data.ReportRepository;
 import Entity.Report;
+import View.GUI.FinalApp;
 import use_case.LostAndFound.*;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ public class ReportApplication extends JFrame {
 
     private JFrame frame;
     private JTextField reportField, reportIdField;
-    private JButton submitButton, findButton, updateButton, deleteButton;
+    private JButton submitButton, findButton, updateButton, deleteButton ,backToFinalAppButton, closeButton;
     private JPanel panel;
 
     public ReportApplication() {
@@ -45,11 +46,21 @@ public class ReportApplication extends JFrame {
         findButton = new JButton("Find lost item");
         updateButton = new JButton("Update item");
         deleteButton = new JButton("Delete lost item report");
+        backToFinalAppButton = new JButton("Back to main page");
+        closeButton = new JButton("Close Program");
 
         submitButton.addActionListener(e -> submitReport());
         findButton.addActionListener(e -> findReport());
         updateButton.addActionListener(e -> updateReport());
         deleteButton.addActionListener(e -> deleteReport());
+        backToFinalAppButton.addActionListener(e -> {
+            openFinalApp();
+            dispose();
+        });
+        closeButton.addActionListener(e -> closeProgram());
+
+        closeButton.setBackground(Color.LIGHT_GRAY);
+        closeButton.setForeground(Color.black);
 
         panel.add(new JLabel("Item ID:"));
         panel.add(reportIdField);
@@ -59,9 +70,23 @@ public class ReportApplication extends JFrame {
         panel.add(findButton);
         panel.add(updateButton);
         panel.add(deleteButton);
+        panel.add(backToFinalAppButton);
+        panel.add(closeButton);
+
 
         add(panel, BorderLayout.CENTER);
         pack();
+    }
+
+    private void closeProgram() {
+        dispose();
+    }
+
+    private void openFinalApp() {
+        SwingUtilities.invokeLater(() -> {
+            FinalApp finalApp = new FinalApp();
+            finalApp.setVisible(true);
+        });
     }
 
     private void submitReport() {
