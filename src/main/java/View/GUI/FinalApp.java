@@ -24,38 +24,47 @@ public class FinalApp extends JFrame {
         setTitle("Final App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setSize(400, 400);
-        setLocationRelativeTo(null);
+        setSize(500, 400); 
+        setLocationRelativeTo(null); 
 
+        loadAndSetImage();
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 2, 10, 10));
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        buttonPanel.setLayout(new GridLayout(4, 2, 10, 10)); 
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); 
 
         JButton postAndReplyButton = createButton("Post and Reply", this::openPostAndReply);
         JButton clubButton = createButton("Club", this::openClub);
         JButton foodButton = createButton("Food", this::openFood);
         JButton tradeButton = createButton("Trading", this::openTrading);
         JButton lafButton = createButton("Lost and Found", this::openLAF);
+        JButton closeButton = createButton("Close Program", e -> closeProgram());
 
-        loadAndSetImage();
-
+        closeButton.setBackground(Color.LIGHT_GRAY);
+        closeButton.setForeground(Color.black);
 
         buttonPanel.add(postAndReplyButton);
         buttonPanel.add(clubButton);
         buttonPanel.add(foodButton);
         buttonPanel.add(tradeButton);
         buttonPanel.add(lafButton);
+        buttonPanel.add(closeButton);
 
         add(buttonPanel, BorderLayout.CENTER);
+    }
+
+    private void closeProgram() {
+        dispose();
     }
 
 
     private JButton createButton(String text, ActionListener actionListener) {
         JButton button = new JButton(text);
         button.addActionListener(actionListener);
+        button.setFont(new Font("Arial", Font.BOLD, 16));
         return button;
-    } //dd
+    }
+
 
 
     private void loadAndSetImage() {
