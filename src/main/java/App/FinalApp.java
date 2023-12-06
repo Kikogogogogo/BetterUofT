@@ -1,11 +1,10 @@
-package View.GUI;
+package App;
 
 import View.LostAndFound.ReportApplication;
 import View.club.ClubApp;
 import View.food.FoodApp;
 
-import View.postandreply.ChooseModeGUI;
-import View.postandreply.MessageBoardApp;
+import View.postandreply.ChooseModeView;
 import View.trade.TradeView;
 
 import javax.swing.*;
@@ -15,14 +14,13 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.Objects;
 
 public class FinalApp extends JFrame {
     private ImageIcon image1;
     private  JLabel label1;
 
     public FinalApp() {
-        setTitle("Final App");
+        setTitle("Better UofT");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setSize(400, 400);
@@ -56,7 +54,7 @@ public class FinalApp extends JFrame {
         JButton button = new JButton(text);
         button.addActionListener(actionListener);
         return button;
-    } //dd
+    }
 
 
     private void loadAndSetImage() {
@@ -70,8 +68,6 @@ public class FinalApp extends JFrame {
         }
     }
 
-
-
     private void openTrading(ActionEvent e) {
         SwingUtilities.invokeLater(() -> {
             TradeView tradeView = new TradeView();
@@ -80,7 +76,7 @@ public class FinalApp extends JFrame {
     }
     private void openPostAndReply(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
-            ChooseModeGUI chooseMode = new ChooseModeGUI();
+            ChooseModeView chooseMode = new ChooseModeView();
             chooseMode.setVisible(true);
         });
     }

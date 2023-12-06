@@ -8,9 +8,9 @@ import javax.swing.*;
 
 public class ChatWithAIView extends JPanel implements ActionListener {
 
-    private final JTextField messageInputField = new JTextField(15);
+    private final JTextField messageInputField = new JTextField(100);
     private final JButton sendMessageButton = new JButton("Send");
-    private final JTextArea conversationArea = new JTextArea(20, 30);
+    private final JTextArea conversationArea = new JTextArea(16, 100);
 
     private final ChatwithAIController aiController;
     private final ChatwithAIViewModel aiViewModel;
@@ -19,15 +19,15 @@ public class ChatWithAIView extends JPanel implements ActionListener {
         this.aiViewModel = viewModel;
         this.aiController = controller;
 
-        // Set up the listener for changes in the ViewModel
+
         this.aiViewModel.addPropertyChangeListener(evt -> {
             switch (evt.getPropertyName()) {
                 case "response":
-                    // Append the AI response to the conversation area
+
                     conversationArea.append("AI: " + evt.getNewValue().toString() + "\n");
                     break;
                 case "error":
-                    // Handle error, display error message
+
                     JOptionPane.showMessageDialog(this, evt.getNewValue().toString(), "Error", JOptionPane.ERROR_MESSAGE);
                     break;
             }
@@ -49,13 +49,13 @@ public class ChatWithAIView extends JPanel implements ActionListener {
         if (e.getSource() == sendMessageButton) {
             String userInput = messageInputField.getText();
             if (!userInput.isEmpty()) {
-                // Display user's message in the conversation area
+
                 conversationArea.append("You: " + userInput + "\n");
 
-                // Send the message to the AI controller
+
                 aiController.SendMessage("user", userInput);
 
-                // Clear the input field
+
                 messageInputField.setText("");
             }
         }

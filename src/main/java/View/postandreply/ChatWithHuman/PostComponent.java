@@ -1,4 +1,4 @@
-package View.postandreply;
+package View.postandreply.ChatWithHuman;
 
 import javax.swing.*;
 import java.awt.*;
