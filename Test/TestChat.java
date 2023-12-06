@@ -1,5 +1,5 @@
-import Data.ChatgptDataAccessObject;
-import Entity.Message;
+import Data.PostandReply.ChatgptDataAccessObject;
+import Entity.Message.Message;
 public class TestChat {
 
     public static void main(String[] args) {
