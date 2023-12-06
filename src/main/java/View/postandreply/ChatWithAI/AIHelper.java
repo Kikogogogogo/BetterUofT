@@ -1,6 +1,6 @@
 package View.postandreply.ChatWithAI;
-import Data.ChatgptDataAccessObject;
-import Entity.Message;
+import Data.PostandReply.ChatgptDataAccessObject;
+import Entity.Message.Message;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

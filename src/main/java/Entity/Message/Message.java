@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Message;
 
 public class Message {
     private String role;

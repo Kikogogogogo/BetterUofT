@@ -1,5 +1,5 @@
-package Data;
-import Entity.Message;
+package Data.PostandReply;
+import Entity.Message.Message;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -14,7 +14,7 @@ import use_case.postandreply.ChatwithAI.ChatgptDataAccessInterface;
 public class ChatgptDataAccessObject implements ChatgptDataAccessInterface {
 
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "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";
+    private static final String API_KEY = "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";
 
     @Override
     public String GetResponse(String model, Message message) {
