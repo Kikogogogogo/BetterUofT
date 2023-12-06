@@ -6,11 +6,11 @@ public class Report {
     private Long reportId;
     private Long userId;
     private Long itemId;
-    private Timestamp timestamp;
+    private Timestamp timestamp ,lastUpdated;
     private String description;
 
+    public Report() {}
 
-    // Getter for reportId
     public Long getReportId() {
         return reportId;
     }
@@ -19,7 +19,30 @@ public class Report {
         this.reportId = reportId;
     }
 
-    // Getter for description
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -28,4 +51,11 @@ public class Report {
         this.description = description;
     }
 
+    public Timestamp getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(Timestamp lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
 }

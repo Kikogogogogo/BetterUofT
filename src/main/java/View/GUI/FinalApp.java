@@ -66,9 +66,8 @@ public class FinalApp extends JFrame {
     }
 
 
-
     private void loadAndSetImage() {
-        URL imageUrl = getClass().getClassLoader().getResource("UofT-Sc-logo.jpg");
+        URL imageUrl = getClass().getClassLoader().getResource("src/U-of-T-Logo.png");
         if (imageUrl != null) {
             image1 = new ImageIcon(imageUrl);
             label1 = new JLabel(image1);
@@ -77,7 +76,6 @@ public class FinalApp extends JFrame {
             System.err.println("error");
         }
     }
-
 
 
     private void openTrading(ActionEvent e) {
