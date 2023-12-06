@@ -8,6 +8,9 @@ import use_case.LostAndFound.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Optional;
 
@@ -16,7 +19,7 @@ public class ReportApplication extends JFrame {
     private ReportController reportController;
 
     private JTextField reportIdField, userIdField, itemIdField, descriptionField;
-    private JButton submitButton, findButton, updateButton, deleteButton, backToFinalAppButton, closeButton;
+    private JButton submitButton, findButton, updateButton, deleteButton, backToFinalAppButton, closeButton, displayAllButton;
     private JPanel panel;
 
     public ReportApplication() {
@@ -49,6 +52,7 @@ public class ReportApplication extends JFrame {
         updateButton = new JButton("Update item");
         deleteButton = new JButton("Delete lost item report");
         backToFinalAppButton = new JButton("Back to main page");
+        displayAllButton = new JButton("Display All Lost items");
         closeButton = new JButton("Close Program");
 
         submitButton.addActionListener(e -> submitReport());
@@ -57,6 +61,8 @@ public class ReportApplication extends JFrame {
         deleteButton.addActionListener(e -> deleteReport());
         backToFinalAppButton.addActionListener(e -> openFinalApp());
         closeButton.addActionListener(e -> closeProgram());
+        displayAllButton.addActionListener(e -> displayAllReports());
+
 
         panel.add(new JLabel("Report ID:"));
         panel.add(reportIdField);
@@ -64,7 +70,7 @@ public class ReportApplication extends JFrame {
         panel.add(userIdField);
         panel.add(new JLabel("Item ID:"));
         panel.add(itemIdField);
-        panel.add(new JLabel("Description:"));
+        panel.add(new JLabel("Lost item description:"));
         panel.add(descriptionField);
 
         panel.add(submitButton);
@@ -72,10 +78,42 @@ public class ReportApplication extends JFrame {
         panel.add(updateButton);
         panel.add(deleteButton);
         panel.add(backToFinalAppButton);
+        panel.add(displayAllButton);
+
         panel.add(closeButton);
 
         add(panel, BorderLayout.CENTER);
         pack();
+    }
+
+    private void displayAllReports() {
+        String csvFilePath = "lostandfound.csv"; // Adjust path as needed
+        JTextArea textArea = new JTextArea(20, 40);
+        textArea.setEditable(false);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                textArea.append(formatReportLine(line) + "\n\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        JOptionPane.showMessageDialog(this, scrollPane, "All Reports", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private String formatReportLine(String line) {
+        String[] values = line.split(",");
+        if (values.length == 5) {
+            return "Report ID: " + values[0] + "\n"
+                    + "User ID: " + values[1] + "\n"
+                    + "Lost Item ID: " + values[2] + "\n"
+                    + "Last updated: " + values[3] + "\n"
+                    + "Lost item description: " + values[4];
+        }
+        return "Invalid report format";
     }
 
     private void submitReport() {
