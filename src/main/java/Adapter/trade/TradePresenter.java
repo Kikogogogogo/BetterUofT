@@ -17,9 +17,5 @@ public class TradePresenter implements TradeOutputBoundary {
         this.view.showResult();
     }
 
-
-    public TradeViewModel getViewModel() {
-        return tradeViewModel;
-    }
 }
 
