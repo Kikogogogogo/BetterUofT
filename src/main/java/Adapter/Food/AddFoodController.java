@@ -13,41 +13,73 @@ public class AddFoodController {
     private final ShowingFoodInputBoundary showingFoodInputBoundary;
     private static ArrayList<Food> foodItems = new ArrayList<>();
 
+    CsvFoodRepo csvFoodRepo = new CsvFoodRepo("food.csv");
+
     public AddFoodController(FoodInputBoundary foodInputBoundary, ShowingFoodInputBoundary showingFoodInputBoundary) {
         this.foodInputBoundary = foodInputBoundary;
         this.showingFoodInputBoundary = showingFoodInputBoundary;
     }
 
-    public void execute(String name, String location, String description, String id, String rating, String price) {
+//    public void execute(String name, String location, String description,
+//                        String id, String rating, String price) {
+//        Food food = check(name, price, rating);
+//        CsvFoodRepo a = new CsvFoodRepo("food.csv");
+//        if (food != null) {
+//            food.addDescription(description);
+//            return;
+//        } else {
+//
+//            a.save(new Food(name, location, description, id, rating, price, 1));
+//        }
+//        showingFoodInputBoundary.showAllFoods();
+//    }
+//
+//    public Food check(String name, String price, String rating) {
+//        foodItems = CsvFoodRepo.getAllFoods();
+//        for (Food food : foodItems) {
+//            if (food.getName().equals(name)) {
+//                double newRating = food.getRating() + Double.parseDouble(rating);
+//                double newPrice = food.getPrice() + Double.parseDouble(price);
+//                food.increaseRating(newRating);
+//                food.increasePrice(newPrice);
+//                System.out.println(food.getCount() + "bac");
+//                food.increaseCount();
+//                System.out.println(food.getCount());
+//                CsvFoodRepo.deleteFood(food.getName());
+//                CsvFoodRepo.saveAllFoods(foodItems);
+//                return food;
+//            }
+//        }
+//        return null;
+//
+//    }
+
+
+    public void execute(String name, String location, String description,
+                        String id, String rating, String price) {
         Food food = check(name);
-        if (food != null) {
-            System.out.println(food.getRating());
-            System.out.println(food.getCount());
-            System.out.println(Double.parseDouble(rating));
-            System.out.println(food.getRating() + Double.parseDouble(rating));
-            System.out.println((food.getRating() + Double.parseDouble(rating)) / food.getCount());
-            double newRating = (food.getRating() + Double.parseDouble(rating)) / food.getCount();
-            double newPrice = (food.getPrice() + Double.parseDouble(price)) / food.getCount();
-            delete(name);
-            foodInputBoundary.createFood(name, location, description, id, Double.toString(newRating), Double.toString(newPrice));
-            return;
+        if (food == null){
+            Food newfood = new Food(name, location, description, id, rating, price, 1);
+            csvFoodRepo.save(newfood);
+        } else {
+            food.increaseCount();
+            food.increaseRating(Double.parseDouble(rating));
+            food.increasePrice(Double.parseDouble(price));
+            csvFoodRepo.deleteFood(food.getName());
+            csvFoodRepo.save(food);
         }
-        foodInputBoundary.createFood(name, location, description, id, rating, price);
-        showingFoodInputBoundary.showAllFoods();
     }
 
-    public Food check(String name) {
-        foodItems = CsvFoodRepo.getAllFoods();
-        for (Food food : foodItems) {
+    public Food check(String name){
+        ArrayList<Food> exist = CsvFoodRepo.getAllFoods();
+        for (Food food : exist) {
             if (food.getName().equals(name)) {
-                food.increaseCount();
-                return food;
+                Food temp = food;
+                return temp;
             }
         }
         return null;
-
     }
-
     public void delete(String name) {
         foodItems = CsvFoodRepo.getAllFoods();
         for (Food food : foodItems) {

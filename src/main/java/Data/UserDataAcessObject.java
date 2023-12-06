@@ -75,5 +75,21 @@ public class UserDataAcessObject implements UserDataAccess {
         return null;
     }
 
+    @Override
+    public int checkUserPassword(String usename, String password) {
+        List<User> users = getUsers();
+        for (User u : users) {
+            if (u.getUsername().equals(usename)) {
+                if (u.getPassword().equals(password)) {
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
+            }
+        }
+        return -2;
+    }
+
 
 }

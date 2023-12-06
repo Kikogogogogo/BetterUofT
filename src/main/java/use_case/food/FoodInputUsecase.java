@@ -16,6 +16,6 @@ public class FoodInputUsecase implements FoodInputBoundary{
 
     @Override
     public void createFood(String name, String location, String description, String id, String rating, String price) {
-        foodDataAccess.save(new Food(name, location, description, id, rating, price));
+        foodDataAccess.save(new Food(name, location, description, id, rating, price, 1));
     }
 }

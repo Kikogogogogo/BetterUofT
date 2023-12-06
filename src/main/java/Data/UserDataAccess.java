@@ -10,4 +10,5 @@ public interface UserDataAccess {
     public String getUserNameFromID(int id);
     public int getUserIDFromName(String userName);
     public String getUserEmailFromID(int id);
+    public int checkUserPassword(String username, String password);
 }
