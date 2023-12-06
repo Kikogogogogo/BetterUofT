@@ -19,6 +19,10 @@ public class TradeView extends JFrame {
     private JTextField categoryField;
     private JTextArea descriptionArea;
     private JTextField priceField;
+    private JTextField nameField;
+    private JTextField emailField;
+    private JTextField phoneField;
+
     private JButton submitButton;
     private TradePresenter presenter = new TradePresenter(this);
     private CsvTradeDataAccess tradeDataAccess = new CsvTradeDataAccess("trade.csv");
@@ -58,6 +62,20 @@ public class TradeView extends JFrame {
         priceField = new JTextField(20);
         formPanel.add(priceField, gbc);
 
+        formPanel.add(new JLabel("Contact Name:"), gbc);
+        nameField = new JTextField(20);
+        formPanel.add(nameField, gbc);
+
+        // Email
+        formPanel.add(new JLabel("Email:"), gbc);
+        emailField = new JTextField(20);
+        formPanel.add(emailField, gbc);
+
+        // Phone
+        formPanel.add(new JLabel("Phone:"), gbc);
+        phoneField = new JTextField(20);
+        formPanel.add(phoneField, gbc);
+
         gbc.weightx = 1;
         gbc.weighty = 1;
         formPanel.add(new JLabel(""), gbc);
@@ -80,7 +98,10 @@ public class TradeView extends JFrame {
         String category = categoryField.getText();
         String description = descriptionArea.getText();
         String priceText = priceField.getText();
-        String[] input = {category, description, priceText};
+        String contactName = nameField.getText();
+        String email = emailField.getText();
+        String phone = phoneField.getText();
+        String[] input = {category, description, priceText, contactName, email, phone};
         tradeController.submitTrade(input);
     }
 

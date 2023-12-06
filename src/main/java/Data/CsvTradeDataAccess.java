@@ -18,7 +18,7 @@ public class CsvTradeDataAccess implements TradeData {
 
 
     public void save(String[] input) {
-        String item = input[0] + "," + input[1] + "," + input[2] + "\n";
+        String item = input[0] + "," + input[1] + "," + input[2] + "," + input[3] + "," + input[4] + "," + input[5] + "\n";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {;
             writer.write(item);
         } catch (IOException e)
