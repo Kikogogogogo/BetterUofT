@@ -57,9 +57,9 @@ public class InMemoryReportRepository implements ReportRepository {
             try (BufferedReader br = Files.newBufferedReader(path)) {
                 String line;
                 while ((line = br.readLine()) != null) {
-                    if (!line.trim().isEmpty()) { // Check if the line is not empty
+                    if (!line.trim().isEmpty()) {
                         String[] values = line.split(",");
-                        if (values.length >= 5) { // Ensure there are enough data fields
+                        if (values.length >= 5) {
                             try {
                                 Report report = new Report();
                                 report.setReportId(Long.parseLong(values[0].trim()));
