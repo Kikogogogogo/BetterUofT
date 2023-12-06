@@ -6,7 +6,7 @@ public class Report {
     private Long reportId;
     private Long userId;
     private Long itemId;
-    private Timestamp timestamp ,lastUpdated;
+    private Timestamp timestamp ;
     private String description;
 
     public Report() {}
@@ -51,11 +51,4 @@ public class Report {
         this.description = description;
     }
 
-    public Timestamp getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(Timestamp lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
 }
