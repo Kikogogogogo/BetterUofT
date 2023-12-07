@@ -14,7 +14,7 @@ import use_case.postandreply.ChatwithAI.ChatgptDataAccessInterface;
 public class ChatgptDataAccessObject implements ChatgptDataAccessInterface {
 
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "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";
+    private static final String API_KEY = "";
 
     @Override
     public String GetResponse(String model, Message message) {
