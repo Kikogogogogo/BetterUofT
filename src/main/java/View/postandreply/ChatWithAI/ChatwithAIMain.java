@@ -25,7 +25,7 @@ public class ChatwithAIMain {
         }
 
         application = new JFrame("Chat with AI");
-        application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        application.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         ChatwithAIViewModel chatViewModel = new ChatwithAIViewModel();
         ChatgptDataAccessObject dataAccessObject = new ChatgptDataAccessObject();

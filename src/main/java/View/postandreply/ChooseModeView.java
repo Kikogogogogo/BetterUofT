@@ -13,7 +13,7 @@ public class ChooseModeView {
 
     public ChooseModeView() {
         frame = new JFrame("Choose Mode");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(300, 200);
         frame.setLayout(new GridBagLayout()); // Set GridBagLayout
 

@@ -5,6 +5,7 @@ import View.club.ClubApp;
 import View.food.FoodApp;
 
 import View.postandreply.ChatWithHuman.MessageBoardApp;
+import View.postandreply.ChooseModeView;
 import View.trade.ShowTradeView;
 import View.trade.TradeView;
 import java.net.URI;
@@ -117,10 +118,8 @@ public class FinalApp extends JFrame {
 
     private void openPostAndReply(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
-            MessageBoardApp messageBoardApp = new MessageBoardApp();
-            messageBoardApp.setVisible(true);
-
-            dispose();
+            ChooseModeView chooseModeView = new ChooseModeView();
+            chooseModeView.setVisible(true);
         });
     }
 
