@@ -21,10 +21,14 @@ public class CsvFoodRepo implements FoodRepo {
         String location = food.getLocation();
         String description = food.getDescription();
         String id = food.getId();
-        String rating = food.getRatings();
-        String price = food.getPrices();
-        String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + "\n";
-        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+        String rating = String.valueOf(food.getRating());
+        String price = String.valueOf(food.getPrice());
+        String comments = food.getComments();
+        int count = food.getCount();
+        String lines = name + "," + location + "," + description + "," + id + "," + rating + "," + price
+                + ", " + count + "," + comments + "\n";
+        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE,
+                StandardOpenOption.APPEND)) {
             writer.write(lines);
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,14 +45,20 @@ public class CsvFoodRepo implements FoodRepo {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",", -1);
-                if (parts.length >= 6) {
+                if (parts.length >= 8) {
                     String name = parts[0];
                     String location = parts[1];
                     String description = parts[2];
                     String id = parts[3];
                     String rating = parts[4];
                     String price = parts[5];
-                    Food food = new Food(name, location, description, id, rating, price);
+                    int count = Integer.parseInt(parts[6].substring(1));
+                    int pos1 = line.indexOf("[");
+                    int pos2 = line.indexOf("]");
+
+                    String comments = line.substring(pos1, pos2 + 1);
+
+                    Food food = new Food(name, location, description, id, rating, price, count, comments);
                     foodItems.add(food);
                 }
             }
@@ -76,13 +86,28 @@ public class CsvFoodRepo implements FoodRepo {
             String id = food.getId();
             String rating = food.getRatings();
             String price = food.getPrices();
-            String lines = name + ", " + location + ", " + description + ", " + id + ", " + rating + ", " + price + "\n";
+            int count = food.getCount();
+            String comments = food.getComments();
+            String lines = name + "," + location + "," + description + "," + id
+                    + "," + rating + "," + price + ", " + count + "," + comments + "\n";
             try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
                 writer.write(lines);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void deleteFood(String name) {
+        ArrayList<Food> foodItems = getAllFoods();
+        for (Food food : foodItems) {
+            if (food.getName().equals(name)) {
+                foodItems.remove(food);
+                break;
+            }
+        }
+        emptyFoodFile();
+        saveAllFoods(foodItems);
     }
 }
 

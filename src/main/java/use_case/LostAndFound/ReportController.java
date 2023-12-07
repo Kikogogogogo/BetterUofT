@@ -1,7 +1,11 @@
 package use_case.LostAndFound;
 
+import Data.ReportRepository;
+
+
 import Entity.Report;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ReportController {
@@ -32,4 +36,5 @@ public class ReportController {
     public void deleteReport(Long reportId) {
         deleteReport.deleteReport(reportId);
     }
+
 }

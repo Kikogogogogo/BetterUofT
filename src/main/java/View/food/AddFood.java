@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
-public class AddFood extends JFrame{
+public class  AddFood extends JFrame{
 
     private final AddFoodController AddFoodController;
     private final FoodInputBoundary FoodInputUsecase;
@@ -79,6 +79,23 @@ public class AddFood extends JFrame{
                 rating = foodratingField.getText();
                 description = foodDescriptionField.getText();
                 location = foodlocationFeild.getText();
+                try {
+                    Double.parseDouble(price);
+                } catch (NumberFormatException exception) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid price!");
+                    return;
+                }
+                try {
+                    Double.parseDouble(rating);
+                } catch (NumberFormatException exception) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid rating!");
+                    return;
+                }
+
+                if (Double.parseDouble(rating) > 5 || Double.parseDouble(rating) < 0) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid rating!");
+                    return;
+                }
                 AddFoodController.execute(name, location, description, id.toString(), rating, price);
                 JOptionPane.showMessageDialog(null, "Food added successfully!");
                 dispose();
@@ -87,6 +104,8 @@ public class AddFood extends JFrame{
         });
 
     }
+
+
 
     private void openFood() {
         SwingUtilities.invokeLater(() -> {

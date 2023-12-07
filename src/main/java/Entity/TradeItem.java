@@ -1,45 +1,67 @@
 package Entity;
 
-import java.sql.Timestamp;
-
-public abstract class TradeItem implements Entity.Item {
-    private String name;
+public abstract class TradeItem {
     private String description;
-    private Timestamp timestamp;
-    private String id;
-    private boolean traded;
     private String category;
+    private String price;
+    private String contactName;
+    private String email;
+    private String phone;
 
-    public TradeItem(String name, String description, String date, String time, Timestamp timestamp, String id, boolean status, String category) {
-        this.name = name;
+    protected TradeItem(String description, String category, String price, String contactName, String email, String phone) {
         this.description = description;
-        this.timestamp = timestamp;
-        this.id = id;
-        this.traded = status;
         this.category = category;
-    }
-
-    public String getName() {
-        return name;
+        this.price = price;
+        this.contactName = contactName;
+        this.email = email;
+        this.phone = phone;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Timestamp getTimestamp() { return timestamp; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public String getId() { return id; }
-
-    public boolean getStatus() { return traded; }
-
-    public void setStatus(boolean status) { this.traded = status; }
+    public String getCategory() {
+        return category;
+    }
 
     public void setCategory(String category) {
         this.category = category;
     }
 
-    public String getCategory() {
-        return category;
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
