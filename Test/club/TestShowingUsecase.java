@@ -10,7 +10,6 @@ import use_case.club.ShowingUsecase.ShowingClubInputBoundary;
 import use_case.club.ShowingUsecase.ShowingOutputBoundary;
 import use_case.club.ShowingUsecase.ShowingUsecase;
 
-
 public class TestShowingUsecase {
     @Test
     public void testShowingUsecase() {

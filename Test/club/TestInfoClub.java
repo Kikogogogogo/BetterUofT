@@ -7,10 +7,9 @@ import Data.Club.UserDataAccess;
 import Data.Club.UserDataAcessObject;
 import View.club.InfoClubApp;
 import org.junit.Test;
+import use_case.club.InfoUsecase.InfoClubInputBoundary;
 import use_case.club.InfoUsecase.InfoClubOutputBoundary;
 import use_case.club.InfoUsecase.InfoClubUsecase;
-import use_case.club.InfoUsecase.InfoClubInputBoundary;
-
 
 public class TestInfoClub {
     @Test

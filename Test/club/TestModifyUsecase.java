@@ -12,7 +12,6 @@ import use_case.club.ModifyUsecase.ModifyClubUsecase;
 import use_case.club.ModifyUsecase.ModifyInputBoundary;
 import use_case.club.ModifyUsecase.ModifyOutputBoundary;
 
-
 public class TestModifyUsecase {
     @Test
     public void testModifyUsecase() {

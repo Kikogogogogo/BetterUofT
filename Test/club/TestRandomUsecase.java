@@ -12,7 +12,6 @@ import use_case.club.RandomUsecase.RandomClubUsecase;
 import use_case.club.RandomUsecase.RandomInputBoundary;
 import use_case.club.RandomUsecase.RandomOutputBoundary;
 
-
 public class TestRandomUsecase {
     @Test
     public void testRandomUsecase() {

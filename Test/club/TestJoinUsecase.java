@@ -7,7 +7,6 @@ import Data.Club.UserDataAccess;
 import Data.Club.UserDataAcessObject;
 import View.club.JoinClubApp;
 import org.junit.Test;
-
 import use_case.club.JoinUsecase.JoinInputBoundary;
 import use_case.club.JoinUsecase.JoinInputData;
 import use_case.club.JoinUsecase.JoinOutputBoundary;
