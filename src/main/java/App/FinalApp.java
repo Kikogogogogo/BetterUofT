@@ -65,7 +65,7 @@ public class FinalApp extends JFrame {
             label1 = new JLabel(image1);
             add(label1, BorderLayout.NORTH);
         } else {
-            System.err.println("error");
+
         }
     }
 
