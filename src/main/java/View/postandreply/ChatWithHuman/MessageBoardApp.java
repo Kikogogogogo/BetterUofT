@@ -38,7 +38,7 @@ public class MessageBoardApp extends JFrame {
         this.postandReplyPrensenter = new PostandReplyPrensenter(postUsecase, replyUsecase);
 
         // Set up the JFrame
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("General Discussion");
         setSize(800, 600);
         setLayout(new BorderLayout());

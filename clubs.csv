@@ -2,7 +2,7 @@ Name,Description,ID,Joinable,Students
 Chess Club,A club for chess enthusiasts,1,1,3,2,5,7,10
 Coding Club,Learn programming together,2,1,4,1,5,8,12,14
 Art Club,Express your creativity,3,0,2,3,9,11
-Music Club,Explore the world of music and learn more.,4,1,1,4,5,7,10,13,1
+Music Club,Explore the world of music,4,1,1,4,5,7,10,13
 Science Club,Discover the wonders of science,5,0,5,12,15
 Photography Club,Capture the moment,6,1,2,1,4,8,11,13,15
 Debate Club,Sharpen your communication skills,7,1,3,5,7,9,12
