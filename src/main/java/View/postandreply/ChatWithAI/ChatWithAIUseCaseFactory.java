@@ -4,14 +4,11 @@ import Adapter.PostandReply.ChatwithAIController;
 import Adapter.PostandReply.ChatwithAIPresenter;
 import Adapter.PostandReply.ChatwithAIViewModel;
 import Adapter.ViewManagerModel;
-import Entity.Message.Message;
-import Entity.Message.MessageFactory;
+import Entity.PostandReply.MessageFactory;
 import use_case.postandreply.ChatwithAI.ChatgptDataAccessInterface;
 import use_case.postandreply.ChatwithAI.GetResponseInputBoundary;
 import use_case.postandreply.ChatwithAI.GetResponseInteractor;
 import use_case.postandreply.ChatwithAI.GetResponseOutputBoundary;
-import Data.PostandReply.ChatgptDataAccessObject;
-import View.postandreply.ChatWithAI.ChatWithAIView;
 
 public class ChatWithAIUseCaseFactory {
 

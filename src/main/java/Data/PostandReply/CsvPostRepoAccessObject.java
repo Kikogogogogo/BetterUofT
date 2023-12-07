@@ -1,6 +1,6 @@
 package Data.PostandReply;
 
-import Entity.Post;
+import Entity.PostandReply.Post;
 
 import java.util.ArrayList;
 import java.util.List;

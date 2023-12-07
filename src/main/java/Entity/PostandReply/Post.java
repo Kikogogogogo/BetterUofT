@@ -1,18 +1,15 @@
-package Entity;
+package Entity.PostandReply;
 
 import java.io.Serializable;
 
-public class Reply implements Serializable {
+public class Post implements Serializable {
     private String id;
-    private String postId;
     private String message;
 
-    public Reply(String id, String postId, String message) {
+    public Post(String id, String message) {
         this.id = id;
-        this.postId = postId;
         this.message = message;
     }
-
 
     public String getId() {
         return id;
@@ -20,14 +17,6 @@ public class Reply implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getPostId() {
-        return postId;
-    }
-
-    public void setPostId(String postId) {
-        this.postId = postId;
     }
 
     public String getMessage() {
@@ -40,6 +29,6 @@ public class Reply implements Serializable {
 
     @Override
     public String toString() {
-        return "Reply ID: " + id + " | Post ID: " + postId + " | Content: " + message;
+        return "Post ID: " + id + " | Content: " + message;
     }
 }

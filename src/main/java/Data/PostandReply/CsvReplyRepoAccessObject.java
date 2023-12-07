@@ -1,5 +1,5 @@
 package Data.PostandReply;
-import Entity.Reply;
+import Entity.PostandReply.Reply;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;

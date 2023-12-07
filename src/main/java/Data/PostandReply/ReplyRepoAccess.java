@@ -1,5 +1,5 @@
 package Data.PostandReply;
-import Entity.Reply;
+import Entity.PostandReply.Reply;
 import java.util.List;
 
 public interface ReplyRepoAccess {

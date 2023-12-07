@@ -3,10 +3,10 @@ package View.postandreply.ChatWithHuman;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
-import Entity.Reply;
+import Entity.PostandReply.Reply;
 
 
-import Entity.Post;
+import Entity.PostandReply.Post;
 
 import Adapter.PostandReply.PostandReplyPrensenter;
 

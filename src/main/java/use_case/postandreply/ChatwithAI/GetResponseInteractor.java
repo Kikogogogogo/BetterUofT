@@ -1,6 +1,6 @@
 package use_case.postandreply.ChatwithAI;
-import Entity.Message.Message;
-import Entity.Message.MessageFactory;
+import Entity.PostandReply.Message;
+import Entity.PostandReply.MessageFactory;
 
 public class GetResponseInteractor implements GetResponseInputBoundary{
     final ChatgptDataAccessInterface chatgptDataAccessObject;

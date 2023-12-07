@@ -1,6 +1,6 @@
 package use_case.postandreply.ChatWithHuman;
 import Data.PostandReply.ReplyRepoAccess;
-import Entity.Reply;
+import Entity.PostandReply.Reply;
 import java.util.List;
 import java.util.UUID;
 

@@ -1,6 +1,6 @@
 package use_case.postandreply.ChatWithHuman;
 import Data.PostandReply.PostRepoAccess;
-import Entity.Post;
+import Entity.PostandReply.Post;
 import java.util.List;
 
 public class PostUsecase implements PostInputBoundary{

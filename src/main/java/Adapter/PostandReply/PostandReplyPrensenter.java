@@ -1,7 +1,7 @@
 package Adapter.PostandReply;
 
-import Entity.Post;
-import Entity.Reply;
+import Entity.PostandReply.Post;
+import Entity.PostandReply.Reply;
 import use_case.postandreply.ChatWithHuman.PostUsecase;
 import use_case.postandreply.ChatWithHuman.ReplyUsecase;
 

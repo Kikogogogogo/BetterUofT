@@ -1,5 +1,5 @@
 package View.postandreply.ChatWithHuman;
-import Entity.Post;
+import Entity.PostandReply.Post;
 import javax.swing.*;
 import java.awt.*;
 import Adapter.PostandReply.PostandReplyPrensenter;
