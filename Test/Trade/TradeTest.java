@@ -8,6 +8,8 @@ import View.trade.ShowTradeView;
 import View.trade.TradeView;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import use_case.trade.TradeInputData;
+import use_case.trade.TradeOutputData;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -184,6 +186,14 @@ public class TradeTest {
         assertEquals("Invalid phone format.", result, "Validation should fail with invalid phone format");
     }
 
+    @Test
+    void testTradeInputOutputData(){
+        TradeInputData tradeInputData = new TradeInputData("Description", "category", "price", "contactname","email", "phone");
+        TradeOutputData tradeOutputData = new TradeOutputData("Description", "category", "price", "contactname","email", "phone");
+        assertEquals(tradeOutputData.getMessage(),"Success");
+
+
+    }
 
 
 }
