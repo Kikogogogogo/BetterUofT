@@ -35,21 +35,18 @@ public class CreateUsecase implements CreateInputBoundary{
             if (id < c.getId())
                 id = c.getId();
             if (name.equals(c.getName())){
-                createClubPresenter.prepareFailView(new CreateOutputData(false,
-                        "There is already a club with this name, please try again!"));
+                createClubPresenter.prepareFailView(new CreateOutputData("There is already a club with this name, please try again!"));
                 return false;
             }
         }
         int leaderID = userDataAccess.getUserIDFromName(leaderName);
         if (leaderID == -1) {
-            createClubPresenter.prepareFailView(new CreateOutputData(false,
-                    "The user does not exist!"));
+            createClubPresenter.prepareFailView(new CreateOutputData("The user does not exist!"));
             return false;
         }
         Club club = new Club(name, description, id + 1, joinable, new ArrayList<>(), leaderID);
         clubDataAccess.save(club);
-        createClubPresenter.prepareSuccessView(new CreateOutputData(true,
-                "The club is successfully created!"));
+        createClubPresenter.prepareSuccessView(new CreateOutputData("The club is successfully created!"));
         return true;
     }
 }

@@ -21,6 +21,7 @@ public class ClubApp extends JFrame {
     private JPanel panel;
     private final ShowingClubInputBoundary showingUsecase;
     private final ShowingOutputBoundary showingClubPresenter;
+    private final ShowingClubController showingClubController;
     public JList<String> clubList;
     public DefaultListModel<String> clubListModel;
     public JTextArea descriptionTextField;
@@ -32,8 +33,8 @@ public class ClubApp extends JFrame {
         UserDataAccess userDataAccess = new UserDataAcessObject("users.csv");
 
         showingClubPresenter = new ShowingClubPresenter(this);
-
         showingUsecase = new ShowingUsecase(clubDataAccess, showingClubPresenter);
+        showingClubController = new ShowingClubController(showingUsecase);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Clubs");
@@ -48,13 +49,14 @@ public class ClubApp extends JFrame {
         clubList.setFont(new Font("serif", Font.PLAIN, 18));
         JScrollPane listScrollPane = new JScrollPane(clubList);
 
-        showingUsecase.showAllClubs();
+        showingClubController.showAllClubs();
 
         JButton createClubButton = new JButton("Create Club");
         JButton joinClubButton = new JButton("Join Club");
         JButton showInfoButton = new JButton("Show Club Information");
         JButton modifyButton = new JButton("Modify club information (for leaders)");
         JButton randomButton = new JButton("Not sure what to join? Get a random club!");
+        JButton backButton = new JButton("Back to main page");
         descriptionTextField = new JTextArea();
         joinableCheckBox = new JCheckBox("Joinable");
 
@@ -97,8 +99,11 @@ public class ClubApp extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 3;
-        gbc.gridwidth = 2;
+        gbc.gridwidth = 1;
         add(randomButton, gbc);
+
+        gbc.gridx = 1;
+        add(backButton, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 4;
@@ -152,8 +157,8 @@ public class ClubApp extends JFrame {
         clubList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                showingUsecase.showClubDescription(clubList.getSelectedIndex());
-                showingUsecase.showClubJoinable(clubList.getSelectedIndex());
+                showingClubController.showDescription(clubList.getSelectedIndex());
+                showingClubController.showJoinbale(clubList.getSelectedIndex());
             }
         });
 
@@ -162,6 +167,13 @@ public class ClubApp extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ModifyClubApp modifyClubApp = new ModifyClubApp();
                 modifyClubApp.setVisible(true);
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
             }
         });
     }

@@ -1,0 +1,27 @@
+package club;
+
+import Adapter.Club.ShowingClubController;
+import Adapter.Club.ShowingClubPresenter;
+import Data.ClubDataAccess;
+import Data.ClubDataAccessObject;
+import Data.UserDataAccess;
+import Data.UserDataAcessObject;
+import View.club.ClubApp;
+import org.junit.Test;
+import use_case.club.ShowingClubInputBoundary;
+import use_case.club.ShowingOutputBoundary;
+import use_case.club.ShowingUsecase;
+
+public class TestShowingUsecase {
+    @Test
+    public void testShowingUsecase() {
+        ClubDataAccess clubDataAccess = new ClubDataAccessObject("clubs.csv");
+        ClubApp clubApp = new ClubApp();
+        ShowingOutputBoundary showingPresenter = new ShowingClubPresenter(clubApp);
+        ShowingClubInputBoundary showingUsecase = new ShowingUsecase(clubDataAccess, showingPresenter);
+        ShowingClubController showingClubController = new ShowingClubController(showingUsecase);
+        showingClubController.showAllClubs();
+        showingClubController.showDescription(1);
+        showingClubController.showJoinbale(1);
+    }
+}

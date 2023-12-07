@@ -43,26 +43,10 @@ public class Club {
         return leader;
     }
 
-    public void setJoinable(Boolean joinable) {
-        this.joinable = joinable;
-    }
-
-    public void join(int user) {
-        users.add(user);
-    }
-
-    public void leave(int user) {
-        users.remove(user);
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public void setDescription(String description) { this.description = description; }
-
-    public boolean joined(int user) {
-        return users.contains(user);
-    }
 
 }

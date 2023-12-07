@@ -7,7 +7,19 @@ import use_case.club.ShowingInputData;
 import java.util.List;
 
 public class ShowingClubController {
-    public void showDescriptions(int selection, List<Club> clubs) {
+    private final ShowingClubInputBoundary showingUsecase;
+    public ShowingClubController(ShowingClubInputBoundary showingUsecase) {
+        this.showingUsecase = showingUsecase;
+    }
+    public void showAllClubs() {
+        showingUsecase.showAllClubs();
+    }
 
+    public void showDescription(int selection) {
+        showingUsecase.showClubDescription(selection);
+    }
+
+    public void showJoinbale(int selection) {
+        showingUsecase.showClubJoinable(selection);
     }
 }
