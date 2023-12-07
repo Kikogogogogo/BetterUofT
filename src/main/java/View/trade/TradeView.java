@@ -31,7 +31,7 @@ public class TradeView extends JFrame {
 
     public TradeView() {
         setTitle("Trade Item");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
         add(createFormPanel(), BorderLayout.CENTER);
         add(createSubmitButton(), BorderLayout.PAGE_END);

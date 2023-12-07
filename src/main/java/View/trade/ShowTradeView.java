@@ -13,7 +13,7 @@ public class ShowTradeView extends JFrame {
     public ShowTradeView() {
         setTitle("Trade Items");
         setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel panel = new JPanel(new BorderLayout());
         add(panel);
