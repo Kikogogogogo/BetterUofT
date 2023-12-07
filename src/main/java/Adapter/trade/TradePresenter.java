@@ -4,7 +4,6 @@ import View.trade.TradeView;
 import use_case.trade.TradeOutputBoundary;
 
 public class TradePresenter implements TradeOutputBoundary {
-    private TradeViewModel tradeViewModel;
     private TradeView view;
     public TradePresenter(TradeView view){
 
