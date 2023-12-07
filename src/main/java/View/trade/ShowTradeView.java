@@ -36,7 +36,7 @@ public class ShowTradeView extends JFrame {
         }
         setVisible(true);
     }
-    private JPanel createCardPanel(String description, String category, String price, String name, String email, String phone) {
+    public JPanel createCardPanel(String description, String category, String price, String name, String email, String phone) {
         JPanel cardPanel = new JPanel(new BorderLayout());
         cardPanel.setBorder(BorderFactory.createRaisedBevelBorder());
 
