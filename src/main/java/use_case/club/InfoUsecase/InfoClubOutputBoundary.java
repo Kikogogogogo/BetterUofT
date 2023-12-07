@@ -1,4 +1,4 @@
-package use_case.club;
+package use_case.club.InfoUsecase;
 
 public interface InfoClubOutputBoundary {
     public void prepareFailedView(String message);

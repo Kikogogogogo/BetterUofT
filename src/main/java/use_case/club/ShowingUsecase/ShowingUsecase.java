@@ -1,10 +1,8 @@
-package use_case.club;
+package use_case.club.ShowingUsecase;
 
-import Adapter.Club.ShowingClubPresenter;
 import Data.ClubDataAccess;
 import Entity.Club;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShowingUsecase implements ShowingClubInputBoundary{

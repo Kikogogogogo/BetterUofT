@@ -3,7 +3,9 @@ package View.club;
 import Adapter.Club.RandomClubPresenter;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
-import use_case.club.*;
+import use_case.club.RandomUsecase.RandomClubUsecase;
+import use_case.club.RandomUsecase.RandomInputBoundary;
+import use_case.club.RandomUsecase.RandomOutputBoundary;
 
 import javax.swing.*;
 import java.awt.*;

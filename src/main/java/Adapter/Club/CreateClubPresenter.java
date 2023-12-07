@@ -1,8 +1,8 @@
 package Adapter.Club;
 
 import View.club.CreateClubApp;
-import use_case.club.CreateOutputData;
-import use_case.club.CreateOutputBoundary;
+import use_case.club.CreateUsecase.CreateOutputData;
+import use_case.club.CreateUsecase.CreateOutputBoundary;
 
 import javax.swing.*;
 

@@ -1,8 +1,4 @@
-package use_case.club;
-
-import Entity.Club;
-
-import java.util.List;
+package use_case.club.ShowingUsecase;
 
 public interface ShowingOutputBoundary {
     public void showAllClubs(ShowingInputData showingInputData);

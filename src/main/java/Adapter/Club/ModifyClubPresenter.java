@@ -1,8 +1,7 @@
 package Adapter.Club;
 
 import View.club.ModifyClubApp;
-import use_case.club.JoinUsecase;
-import use_case.club.ModifyOutputBoundary;
+import use_case.club.ModifyUsecase.ModifyOutputBoundary;
 
 import javax.swing.*;
 import java.util.List;

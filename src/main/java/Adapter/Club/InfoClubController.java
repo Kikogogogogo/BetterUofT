@@ -1,8 +1,6 @@
 package Adapter.Club;
 
-import View.club.InfoClubApp;
-import use_case.club.InfoClubInputBoundary;
-import use_case.club.InfoOutputData;
+import use_case.club.InfoUsecase.InfoClubInputBoundary;
 
 public class InfoClubController {
     private final InfoClubInputBoundary infoUsecase;

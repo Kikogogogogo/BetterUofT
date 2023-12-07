@@ -1,6 +1,5 @@
-package use_case.club;
+package use_case.club.InfoUsecase;
 
-import Adapter.Club.InfoClubPresenter;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;

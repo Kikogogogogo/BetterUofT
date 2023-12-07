@@ -6,10 +6,10 @@ import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Data.UserDataAccess;
 import Data.UserDataAcessObject;
-import use_case.club.CreateInputBoundary;
-import use_case.club.CreateOutputBoundary;
-import use_case.club.CreateUsecase;
-import use_case.club.ShowingClubInputBoundary;
+import use_case.club.CreateUsecase.CreateInputBoundary;
+import use_case.club.CreateUsecase.CreateOutputBoundary;
+import use_case.club.CreateUsecase.CreateUsecase;
+import use_case.club.ShowingUsecase.ShowingClubInputBoundary;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package use_case.club;
+package use_case.club.ShowingUsecase;
 
 import java.util.List;
 import Entity.Club;

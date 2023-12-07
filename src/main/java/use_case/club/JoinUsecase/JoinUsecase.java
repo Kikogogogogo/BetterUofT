@@ -1,10 +1,8 @@
-package use_case.club;
+package use_case.club.JoinUsecase;
 
-import Adapter.Club.JoinClubPresenter;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;
-import Entity.User;
 
 import java.util.ArrayList;
 import java.util.List;

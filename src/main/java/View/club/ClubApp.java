@@ -5,9 +5,10 @@ import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Data.UserDataAccess;
 import Data.UserDataAcessObject;
-import Entity.Club;
-import App.FinalApp;
-import use_case.club.*;
+import use_case.club.JoinUsecase.JoinInputData;
+import use_case.club.ShowingUsecase.ShowingClubInputBoundary;
+import use_case.club.ShowingUsecase.ShowingOutputBoundary;
+import use_case.club.ShowingUsecase.ShowingUsecase;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -15,7 +16,6 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class ClubApp extends JFrame {
     private JPanel panel;

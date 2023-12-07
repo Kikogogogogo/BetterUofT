@@ -1,13 +1,10 @@
 package Adapter.Club;
 
-import View.club.ClubApp;
 import View.club.InfoClubApp;
-import use_case.club.InfoClubOutputBoundary;
-import use_case.club.InfoClubUsecase;
-import use_case.club.InfoOutputData;
+import use_case.club.InfoUsecase.InfoClubOutputBoundary;
+import use_case.club.InfoUsecase.InfoOutputData;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class InfoClubPresenter implements InfoClubOutputBoundary {
     final InfoClubApp view;

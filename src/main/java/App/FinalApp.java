@@ -4,7 +4,7 @@ import View.LostAndFound.ReportApplication;
 import View.club.ClubApp;
 import View.food.FoodApp;
 
-import View.postandreply.MessageBoardApp;
+import View.postandreply.ChatWithHuman.MessageBoardApp;
 import View.trade.TradeView;
 import java.net.URI;
 
@@ -62,7 +62,7 @@ public class FinalApp extends JFrame {
     private JLabel loadImage() {
         try {
             ImageIcon imageIcon = new ImageIcon("logo.png");
-            Image image = imageIcon.getImage().getScaledInstance(350, 175, Image.SCALE_SMOOTH);
+            Image image = imageIcon.getImage().getScaledInstance((int) (this.getWidth() * 0.9), 175, Image.SCALE_SMOOTH);
             JLabel imageLabel = new JLabel(new ImageIcon(image));
 
             imageLabel.addMouseListener(new MouseAdapter() {

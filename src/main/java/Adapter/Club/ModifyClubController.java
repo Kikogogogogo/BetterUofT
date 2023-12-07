@@ -1,7 +1,6 @@
 package Adapter.Club;
 
-import use_case.club.ModifyClubUsecase;
-import use_case.club.ModifyInputBoundary;
+import use_case.club.ModifyUsecase.ModifyInputBoundary;
 
 public class ModifyClubController {
     private final ModifyInputBoundary modifyClubUsecase;

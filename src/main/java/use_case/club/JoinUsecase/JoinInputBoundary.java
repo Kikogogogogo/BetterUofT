@@ -1,7 +1,4 @@
-package use_case.club;
-
-import Adapter.Club.JoinClubPresenter;
-import Data.ClubDataAccess;
+package use_case.club.JoinUsecase;
 
 public interface JoinInputBoundary {
     public void showClubInfo(JoinInputData joinInputData);

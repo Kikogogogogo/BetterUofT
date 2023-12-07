@@ -1,6 +1,6 @@
 package Adapter.Club;
 
-import use_case.club.RandomInputBoundary;
+import use_case.club.RandomUsecase.RandomInputBoundary;
 
 public class RandomClubController {
     private final RandomInputBoundary randomUsecase;

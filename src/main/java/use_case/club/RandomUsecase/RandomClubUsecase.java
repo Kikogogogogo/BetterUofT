@@ -1,10 +1,10 @@
-package use_case.club;
+package use_case.club.RandomUsecase;
 
-import Adapter.Club.InfoClubPresenter;
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;
 import View.club.JoinClubApp;
+import use_case.club.JoinUsecase.JoinInputData;
 
 import java.util.List;
 import java.util.Random;

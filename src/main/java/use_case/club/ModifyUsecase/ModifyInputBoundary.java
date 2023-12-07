@@ -1,4 +1,4 @@
-package use_case.club;
+package use_case.club.ModifyUsecase;
 
 public interface ModifyInputBoundary {
     public void getClubsFromLeader(String userName, String password);

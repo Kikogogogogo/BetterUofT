@@ -1,4 +1,4 @@
-package use_case.club;
+package use_case.club.ModifyUsecase;
 
 import java.util.List;
 

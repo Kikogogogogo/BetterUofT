@@ -1,4 +1,4 @@
-package use_case.club;
+package use_case.club.ShowingUsecase;
 
 public interface ShowingClubInputBoundary {
     public void showClubDescription(int selection);

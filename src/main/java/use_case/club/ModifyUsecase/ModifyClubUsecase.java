@@ -1,10 +1,9 @@
-package use_case.club;
+package use_case.club.ModifyUsecase;
 
 import Data.ClubDataAccess;
 import Data.UserDataAccess;
 import Entity.Club;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -6,9 +6,9 @@ import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Data.UserDataAccess;
 import Data.UserDataAcessObject;
-import use_case.club.ModifyClubUsecase;
-import use_case.club.ModifyInputBoundary;
-import use_case.club.ModifyOutputBoundary;
+import use_case.club.ModifyUsecase.ModifyClubUsecase;
+import use_case.club.ModifyUsecase.ModifyInputBoundary;
+import use_case.club.ModifyUsecase.ModifyOutputBoundary;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
