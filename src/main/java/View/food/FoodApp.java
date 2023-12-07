@@ -9,7 +9,8 @@ import Entity.Food;
 import use_case.food.FoodShowingUsecase;
 import use_case.food.ShowingFoodInputBoundary;
 import use_case.food.ShowingFoodOutputBoundary;
-import use_case.food.SortUsecase;
+import use_case.food.SortUseCase;
+import use_case.food.SortUseCase;
 
 import javax.swing.*;
 import java.awt.*;
@@ -134,7 +135,7 @@ public class FoodApp extends JFrame {
 
     private void sortFoodItems(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
-            SortUsecase sortFood = new SortUsecase(this);
+            SortUseCase sortFood = new SortUseCase(this);
             sortFood.sortFood();
         });
     }

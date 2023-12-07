@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import View.food.FoodApp;
 import use_case.food.QuickSort;
 
-public class SortUsecase {
+public class SortUseCase {
     private static ArrayList<Food> foodItems = new ArrayList<>();
     private FoodApp foodapp;
 
-    public SortUsecase(FoodApp foodapp) {
+    public SortUseCase(FoodApp foodapp) {
         this.foodapp = foodapp;
     }
 
