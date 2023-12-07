@@ -19,18 +19,22 @@ public class ReportController {
     }
 
     public Report createReport(Report report) {
+
         return createReport.createNewReport(report);
     }
 
     public Optional<Report> findReport(Long reportId) {
+
         return findReport.findReportById(reportId);
     }
 
     public Report updateReport(Report report) {
+
         return updateReport.updateReport(report);
     }
 
     public void deleteReport(Long reportId) {
+
         deleteReport.deleteReport(reportId);
     }
 

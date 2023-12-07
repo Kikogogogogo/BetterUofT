@@ -28,8 +28,6 @@ public class ReportApplication extends JFrame {
 
     private JPanel panel;
 
-   
-
     private FinalApp finalApp;
 
 
