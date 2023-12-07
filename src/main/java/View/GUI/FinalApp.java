@@ -6,6 +6,7 @@ import View.food.FoodApp;
 
 import View.postandreply.MessageBoardApp;
 import View.trade.TradeView;
+import java.net.URI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,25 +14,29 @@ import java.awt.event.ActionEvent;
 
 
 import java.awt.event.ActionListener;
-import java.net.URL;
-import java.util.Objects;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FinalApp extends JFrame {
-    private ImageIcon image1;
-    private  JLabel label1;
+
 
     public FinalApp() {
         setTitle("Final App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setSize(500, 400); 
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
 
-        loadAndSetImage();
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 2, 10, 10)); 
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); 
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JLabel imageLabel = loadImage();
+        if (imageLabel != null) {
+            add(imageLabel, BorderLayout.NORTH);
+        }
+
 
         JButton postAndReplyButton = createButton("Post and Reply", this::openPostAndReply);
         JButton clubButton = createButton("Club", this::openClub);
@@ -51,9 +56,41 @@ public class FinalApp extends JFrame {
         buttonPanel.add(closeButton);
 
         add(buttonPanel, BorderLayout.CENTER);
+
     }
 
+    private JLabel loadImage() {
+        try {
+            ImageIcon imageIcon = new ImageIcon("logo.png");
+            Image image = imageIcon.getImage().getScaledInstance(350, 175, Image.SCALE_SMOOTH);
+            JLabel imageLabel = new JLabel(new ImageIcon(image));
+
+            imageLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    openWebpage("https://github.com/Kikogogogogo/BetterUofT");
+                }
+            });
+
+            return imageLabel;
+        } catch (Exception e) {
+            System.err.println("error");
+            return null;
+        }
+    }
+
+    private void openWebpage(String urlString) {
+        try {
+            Desktop desktop = Desktop.getDesktop();
+            desktop.browse(new URI(urlString));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
     private void closeProgram() {
+
         dispose();
     }
 
@@ -66,28 +103,22 @@ public class FinalApp extends JFrame {
     }
 
 
-    private void loadAndSetImage() {
-        URL imageUrl = getClass().getClassLoader().getResource("src/U-of-T-Logo.png");
-        if (imageUrl != null) {
-            image1 = new ImageIcon(imageUrl);
-            label1 = new JLabel(image1);
-            add(label1, BorderLayout.NORTH);
-        } else {
-            System.err.println("error");
-        }
-    }
-
 
     private void openTrading(ActionEvent e) {
         SwingUtilities.invokeLater(() -> {
             TradeView tradeView = new TradeView();
             tradeView.setVisible(true);
+
+            dispose();
         });
     }
+
     private void openPostAndReply(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
             MessageBoardApp messageBoardApp = new MessageBoardApp();
             messageBoardApp.setVisible(true);
+
+            dispose();
         });
     }
 
@@ -95,6 +126,8 @@ public class FinalApp extends JFrame {
         SwingUtilities.invokeLater(() -> {
             ClubApp clubApp = new ClubApp();
             clubApp.setVisible(true);
+
+            dispose();
         });
     }
   
@@ -102,6 +135,9 @@ public class FinalApp extends JFrame {
         SwingUtilities.invokeLater(() -> {
             FoodApp foodApp = new FoodApp();
             foodApp.setVisible(true);
+
+            dispose();
+
         });
     }
 
@@ -109,6 +145,8 @@ public class FinalApp extends JFrame {
         SwingUtilities.invokeLater(() -> {
             ReportApplication reportApp = new ReportApplication();
             reportApp.setVisible(true);
+
+            dispose();
         });
     }
 
