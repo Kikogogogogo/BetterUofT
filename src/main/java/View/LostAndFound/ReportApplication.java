@@ -1,10 +1,9 @@
 package View.LostAndFound;
 
-import API.ClubAutoCorrect;
+import App.FinalApp;
 import Data.InMemoryReportRepository;
 import Data.ReportRepository;
 import Entity.Report;
-import View.GUI.FinalApp;
 import use_case.LostAndFound.*;
 
 import javax.swing.*;
@@ -14,8 +13,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Optional;
-import API.LAFAutoCorrect;
-
 
 
 public class ReportApplication extends JFrame {
