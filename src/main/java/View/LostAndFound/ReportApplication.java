@@ -1,6 +1,7 @@
 package View.LostAndFound;
 
 import API.LAFAutoCorrect;
+import Adapter.LostAndFound.ReportController;
 import App.FinalApp;
 import Data.LostAndFound.InMemoryReportRepository;
 import Data.LostAndFound.ReportRepository;
