@@ -2,8 +2,8 @@ package lostAndFoundTest;
 
 import static org.junit.Assert.*;
 
-import Data.InMemoryReportRepository;
-import Entity.Report;
+import Data.LostAndFound.InMemoryReportRepository;
+import Entity.LostAndFound.Report;
 import org.junit.Before;
 import org.junit.Test;
 import use_case.LostAndFound.CreateReport;

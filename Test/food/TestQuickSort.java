@@ -1,6 +1,6 @@
 package food;
 
-import Entity.Food;
+import Entity.Food.Food;
 import org.junit.Test;
 import use_case.food.QuickSort;
 

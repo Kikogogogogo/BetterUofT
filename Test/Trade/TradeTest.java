@@ -1,7 +1,7 @@
 import Adapter.trade.TradeController;
 import Adapter.trade.TradePresenter;
-import Data.CsvTradeDataAccess;
-import Entity.TradeItem;
+import Data.Trade.CsvTradeDataAccess;
+import Entity.Trade.TradeItem;
 import View.trade.ShowTradeView;
 import View.trade.TradeView;
 import org.junit.jupiter.api.Test;
