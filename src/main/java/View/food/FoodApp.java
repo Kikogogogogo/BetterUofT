@@ -1,6 +1,7 @@
 package View.food;
 
 import Adapter.Food.ShowingFoodPresenter;
+import App.FinalApp;
 import Data.Food.CsvFoodRepo;
 import Data.Food.FoodDataAccess;
 import Data.Food.FoodDataAccessObject;
@@ -40,10 +41,19 @@ public class FoodApp extends JFrame {
 
         JButton sortButton = new JButton("Sort");
         sortButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        sortButton.addActionListener(this::sortFoodItems); // Implement sorting logic in sortFoodItems method
+        sortButton.addActionListener(this::sortFoodItems);
+
+        JButton backButton = new JButton("Back");
+        backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        backButton.addActionListener(e -> {
+            this.dispose();
+            new FinalApp().setVisible(true);
+        });
         controlPanel.add(addButton);
         controlPanel.add(Box.createRigidArea(new Dimension(0, 5))); // Space between buttons
         controlPanel.add(sortButton);
+        controlPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+        controlPanel.add(backButton);
 
         // Right panel for listing the food items
         JPanel foodListPanel = new JPanel();
@@ -80,6 +90,7 @@ public class FoodApp extends JFrame {
         setLocationRelativeTo(null); // Center on screen
 
 
+
     }
 
     protected JPanel createFoodPanel(Food food) {
@@ -109,7 +120,7 @@ public class FoodApp extends JFrame {
         return panel;
     }
 
-    private void openFoodDetails(Food food) {
+    void openFoodDetails(Food food) {
         JDialog detailsDialog = new JDialog(this, "Food Details", true);
 
 

@@ -16,6 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestFoodApp {
 
     private FoodApp foodApp;
+    UUID uuid1 = UUID.randomUUID();
+    Food food = new Food("KFC", "123 ave", "bad",
+            uuid1.toString(), "2", "30", 1, "[bad]");
+
 
     @BeforeEach
     public void setUp() {
@@ -32,10 +36,6 @@ public class TestFoodApp {
 
     @Test
     public void testCreateFoodPanel() {
-        UUID uuid1 = UUID.randomUUID();
-        Food food = new Food("KFC", "123 ave", "bad",
-                uuid1.toString(), "2", "30", 1, "[bad]");
-
         JPanel panel = foodApp.createFoodPanel(food);
         assertNotNull(panel);
     }
@@ -50,4 +50,8 @@ public class TestFoodApp {
         foodApp.openAdd(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
     }
 
+    @Test
+    public void testopenFoodDetails() {
+        foodApp.openFoodDetails(food);
+    }
 }
