@@ -15,7 +15,6 @@ public class ChatwithAIPresenter implements GetResponseOutputBoundary {
     @Override
     public void prepareSuccessView(GetResponseOutputData outputdata) {
         if (outputdata.SuccessorNot()) {
-            // Update the view with the AI's answer and any additional success message
             String messageToShow = outputdata.GetAnswer() + "\n" + outputdata.getTellyoudogshitifitssuccess();
             chatwithAIViewMode.updateViewWithSuccess(messageToShow);
         } else {
