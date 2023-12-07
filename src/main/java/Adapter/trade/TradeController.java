@@ -10,6 +10,8 @@ import use_case.trade.TradeUserDataAccessInterface;
 // TradeController.java
 
 public class TradeController {
+
+    //Is actually InputBoundary but is called usecase because it is an implementation
     private TradeInputBoundary usecase;
 
     public TradeController(TradePresenter presenter, CsvTradeDataAccess tradeDataAccess) {
@@ -18,7 +20,9 @@ public class TradeController {
 
 
     public void submitTrade(String[] input) {
+        //calls interactor to do the action
         this.usecase.submitTrade(input);
+
     }
 }
 

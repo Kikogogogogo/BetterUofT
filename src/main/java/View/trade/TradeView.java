@@ -98,7 +98,7 @@ public class TradeView extends JFrame {
         });
         return submitButton;
     }
-    private void onSubmit() {
+    public void onSubmit() {
         String category = categoryField.getText();
         String description = descriptionArea.getText();
         String priceText = priceField.getText();
@@ -113,7 +113,7 @@ public class TradeView extends JFrame {
         String[] input = {category, description, priceText, contactName, email, phone};
         tradeController.submitTrade(input);
     }
-    private String validateInput(String category, String description, String price, String contactName, String email, String phone) {
+    public String validateInput(String category, String description, String price, String contactName, String email, String phone) {
         if (category.isEmpty() || description.isEmpty() || price.isEmpty() || contactName.isEmpty() || email.isEmpty() || phone.isEmpty()) {
             return "All fields are required.";
         }

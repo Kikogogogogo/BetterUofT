@@ -1,35 +1,24 @@
 package use_case.trade;
 
 public class TradeOutputData {
-    private boolean success;
-    private String message;
-    private String itemId;
-    private String tradeId; // If there's an identifier for the trade
+    private String description;
+    private String category;
+    private String price;
+    private String contactName;
+    private String email;
+    private String phone;
 
-    // You can include more fields depending on what information
-    // you want to pass to the presenter and eventually to the view.
 
-    public TradeOutputData(boolean success, String message) {
-        this.success = success;
-        this.message = message;
-
-    }
-
-    // Getters
-    public boolean isSuccess() {
-        return success;
+    public TradeOutputData(String description, String category, String price, String contactName, String email, String phone) {
+        this.description = description;
+        this.category = category;
+        this.price = price;
+        this.contactName = contactName;
+        this.email = email;
+        this.phone = phone;
     }
 
     public String getMessage() {
-        return message;
+        return "Success";
     }
-
-    public String getItemId() {
-        return itemId;
-    }
-
-    public String getTradeId() {
-        return tradeId;
-    }
-
 }
