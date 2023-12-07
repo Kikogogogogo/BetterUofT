@@ -1,4 +1,4 @@
-package View.GUI;
+package App;
 
 import View.LostAndFound.ReportApplication;
 import View.club.ClubApp;
