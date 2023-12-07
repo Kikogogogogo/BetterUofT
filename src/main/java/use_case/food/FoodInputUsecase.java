@@ -1,8 +1,8 @@
 package use_case.food;
 
 
-import Data.FoodDataAccess;
-import Entity.Food;
+import Data.Food.FoodDataAccess;
+import Entity.Food.Food;
 
 public class FoodInputUsecase implements FoodInputBoundary{
 

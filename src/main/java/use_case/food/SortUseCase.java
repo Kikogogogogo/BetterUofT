@@ -1,10 +1,10 @@
 package use_case.food;
 
-import Data.CsvFoodRepo;
-import Entity.Food;
+import Data.Food.CsvFoodRepo;
 
 import java.util.ArrayList;
 
+import Entity.Food.Food;
 import View.food.FoodApp;
 import use_case.food.QuickSort;
 

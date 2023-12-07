@@ -1,6 +1,6 @@
 package use_case.food;
 
-import Data.FoodDataAccess;
+import Data.Food.FoodDataAccess;
 
 public class FoodShowingUsecase implements ShowingFoodInputBoundary{
     private FoodDataAccess foodDataAccess;

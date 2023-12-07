@@ -1,11 +1,8 @@
 package use_case.LostAndFound;
 
-import Data.ReportRepository;
 
+import Entity.LostAndFound.Report;
 
-import Entity.Report;
-
-import java.util.List;
 import java.util.Optional;
 
 public class ReportController {
@@ -22,18 +19,22 @@ public class ReportController {
     }
 
     public Report createReport(Report report) {
+
         return createReport.createNewReport(report);
     }
 
     public Optional<Report> findReport(Long reportId) {
+
         return findReport.findReportById(reportId);
     }
 
     public Report updateReport(Report report) {
+
         return updateReport.updateReport(report);
     }
 
     public void deleteReport(Long reportId) {
+
         deleteReport.deleteReport(reportId);
     }
 

@@ -1,9 +1,10 @@
 package View.LostAndFound;
 
-import Data.InMemoryReportRepository;
-import Data.ReportRepository;
-import Entity.Report;
+import API.LAFAutoCorrect;
 import App.FinalApp;
+import Data.LostAndFound.InMemoryReportRepository;
+import Data.LostAndFound.ReportRepository;
+import Entity.LostAndFound.Report;
 import use_case.LostAndFound.*;
 
 import javax.swing.*;
@@ -18,11 +19,21 @@ import java.util.Optional;
 public class ReportApplication extends JFrame {
     private ReportController reportController;
 
-    private JTextField reportIdField, userIdField, itemIdField, descriptionField;
-    private JButton submitButton, findButton, updateButton, deleteButton, backToFinalAppButton, closeButton, displayAllButton;
+    private JTextField reportIdField, userIdField, itemIdField;
+
+    private JTextArea descriptionField;
+    private JButton submitButton, findButton, updateButton, deleteButton, backToFinalAppButton, closeButton, displayAllButton, autoCorrectButton;
+
+    private LAFAutoCorrect autoCorrector = new LAFAutoCorrect();
+
     private JPanel panel;
 
+    private FinalApp finalApp;
+
+
     public ReportApplication() {
+        this.finalApp = finalApp;
+
         initializeUI();
         ReportRepository reportRepository = new InMemoryReportRepository();
 
@@ -36,17 +47,30 @@ public class ReportApplication extends JFrame {
 
     private void initializeUI() {
         setTitle("Lost and Found Management System");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        panel = new JPanel();
-        panel.setLayout(new GridLayout(0, 2, 10, 10));
+        JPanel fieldsPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(5, 5, 5, 5);
 
         reportIdField = new JTextField(20);
         userIdField = new JTextField(20);
         itemIdField = new JTextField(20);
-        descriptionField = new JTextField(20);
+        descriptionField = new JTextArea(5, 20);
+        descriptionField.setLineWrap(true);
+        descriptionField.setWrapStyleWord(true);
 
+        addField(fieldsPanel, "Report ID:", reportIdField, gbc);
+        addField(fieldsPanel, "User ID:", userIdField, gbc);
+        addField(fieldsPanel, "Item ID:", itemIdField, gbc);
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        addField(fieldsPanel, "Lost item description:", new JScrollPane(descriptionField), gbc);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(0, 2, 10, 10));
         submitButton = new JButton("Submit lost item");
         findButton = new JButton("Find lost item");
         updateButton = new JButton("Update item");
@@ -55,6 +79,11 @@ public class ReportApplication extends JFrame {
         displayAllButton = new JButton("Display All Lost items");
         closeButton = new JButton("Close Program");
 
+        closeButton.setBackground(Color.LIGHT_GRAY);
+        closeButton.setForeground(Color.black);
+
+        autoCorrectButton = new JButton("Auto Correct");
+
         submitButton.addActionListener(e -> submitReport());
         findButton.addActionListener(e -> findReport());
         updateButton.addActionListener(e -> updateReport());
@@ -62,32 +91,43 @@ public class ReportApplication extends JFrame {
         backToFinalAppButton.addActionListener(e -> openFinalApp());
         closeButton.addActionListener(e -> closeProgram());
         displayAllButton.addActionListener(e -> displayAllReports());
+        autoCorrectButton.addActionListener(e -> autoCorrectDescription());
 
 
-        panel.add(new JLabel("Report ID:"));
-        panel.add(reportIdField);
-        panel.add(new JLabel("User ID:"));
-        panel.add(userIdField);
-        panel.add(new JLabel("Item ID:"));
-        panel.add(itemIdField);
-        panel.add(new JLabel("Lost item description:"));
-        panel.add(descriptionField);
 
-        panel.add(submitButton);
-        panel.add(findButton);
-        panel.add(updateButton);
-        panel.add(deleteButton);
-        panel.add(backToFinalAppButton);
-        panel.add(displayAllButton);
+        buttonPanel.add(submitButton);
+        buttonPanel.add(findButton);
+        buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(displayAllButton);
+        buttonPanel.add(autoCorrectButton);
+        buttonPanel.add(backToFinalAppButton);
+        buttonPanel.add(closeButton);
 
-        panel.add(closeButton);
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.add(fieldsPanel);
+        mainPanel.add(buttonPanel);
 
-        add(panel, BorderLayout.CENTER);
+
+        add(mainPanel, BorderLayout.CENTER);
         pack();
+        setLocationRelativeTo(null);
+    }
+
+    private void autoCorrectDescription() {
+        String originalText = descriptionField.getText();
+        String correctedText = autoCorrector.getCorrectedText(originalText);
+        descriptionField.setText(correctedText);
+    }
+
+    private void addField(JPanel panel, String label, Component field, GridBagConstraints gbc) {
+        panel.add(new JLabel(label), gbc);
+        panel.add(field, gbc);
     }
 
     private void displayAllReports() {
-        String csvFilePath = "lostandfound.csv"; // Adjust path as needed
+        String csvFilePath = "lostandfound.csv";
         JTextArea textArea = new JTextArea(20, 40);
         textArea.setEditable(false);
 

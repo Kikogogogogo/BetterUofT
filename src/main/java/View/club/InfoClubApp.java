@@ -2,12 +2,11 @@ package View.club;
 
 import Adapter.Club.InfoClubController;
 import Adapter.Club.InfoClubPresenter;
-import Data.ClubDataAccess;
-import Data.UserDataAccess;
-import use_case.club.InfoClubInputBoundary;
-import use_case.club.InfoClubOutputBoundary;
-import use_case.club.InfoClubUsecase;
-import use_case.club.InfoOutputData;
+import Data.Club.ClubDataAccess;
+import Data.Club.UserDataAccess;
+import use_case.club.InfoUsecase.InfoClubInputBoundary;
+import use_case.club.InfoUsecase.InfoClubOutputBoundary;
+import use_case.club.InfoUsecase.InfoClubUsecase;
 
 import javax.swing.*;
 import java.awt.*;

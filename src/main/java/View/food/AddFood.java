@@ -1,8 +1,8 @@
 package View.food;
 
 import Adapter.Food.AddFoodPresenter;
-import Data.FoodDataAccess;
-import Data.FoodDataAccessObject;
+import Data.Food.FoodDataAccess;
+import Data.Food.FoodDataAccessObject;
 import Adapter.Food.AddFoodController;
 import use_case.food.*;
 

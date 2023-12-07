@@ -1,8 +1,7 @@
 package Adapter.Club;
 
-import use_case.club.JoinInputBoundary;
-import use_case.club.JoinInputData;
-import use_case.club.JoinUsecase;
+import use_case.club.JoinUsecase.JoinInputBoundary;
+import use_case.club.JoinUsecase.JoinInputData;
 
 public class JoinClubController {
     private JoinInputBoundary joinUsecase;

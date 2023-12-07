@@ -1,12 +1,9 @@
 package Adapter.Club;
 
-import Entity.Club;
-import View.club.ClubApp;
 import View.club.RandomClubApp;
-import use_case.club.RandomOutputBoundary;
+import use_case.club.RandomUsecase.RandomOutputBoundary;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class RandomClubPresenter implements RandomOutputBoundary {
     private final RandomClubApp view;

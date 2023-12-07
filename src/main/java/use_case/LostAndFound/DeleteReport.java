@@ -1,6 +1,5 @@
 package use_case.LostAndFound;
-import java.util.Optional;
-import Data.ReportRepository;
+import Data.LostAndFound.ReportRepository;
 
 public class DeleteReport {
     private ReportRepository reportRepository;

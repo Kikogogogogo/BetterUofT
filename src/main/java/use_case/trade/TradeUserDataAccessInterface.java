@@ -1,6 +1,6 @@
 package use_case.trade;
 
-import Entity.TradeItem;
+import Entity.Trade.TradeItem;
 
 public interface TradeUserDataAccessInterface {
     void saveTrade(String[] input);

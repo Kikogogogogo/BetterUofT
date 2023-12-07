@@ -3,14 +3,19 @@ package club;
 import Adapter.Club.CreateClubController;
 import Adapter.Club.CreateClubPresenter;
 import Adapter.Club.ShowingClubPresenter;
-import Data.ClubDataAccess;
-import Data.ClubDataAccessObject;
-import Data.UserDataAccess;
-import Data.UserDataAcessObject;
+import Data.Club.ClubDataAccess;
+import Data.Club.ClubDataAccessObject;
+import Data.Club.UserDataAccess;
+import Data.Club.UserDataAcessObject;
 import View.club.ClubApp;
 import View.club.CreateClubApp;
 import org.junit.Test;
-import use_case.club.*;
+import use_case.club.CreateUsecase.CreateInputBoundary;
+import use_case.club.CreateUsecase.CreateOutputBoundary;
+import use_case.club.CreateUsecase.CreateUsecase;
+import use_case.club.ShowingUsecase.ShowingClubInputBoundary;
+import use_case.club.ShowingUsecase.ShowingOutputBoundary;
+import use_case.club.ShowingUsecase.ShowingUsecase;
 
 public class TestCreateUsecase {
     @Test

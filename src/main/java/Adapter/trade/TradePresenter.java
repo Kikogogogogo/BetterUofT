@@ -1,9 +1,7 @@
 package Adapter.trade;
 
-import Entity.TradeItem;
 import View.trade.TradeView;
 import use_case.trade.TradeOutputBoundary;
-import use_case.trade.TradeOutputData;
 
 public class TradePresenter implements TradeOutputBoundary {
     private TradeViewModel tradeViewModel;

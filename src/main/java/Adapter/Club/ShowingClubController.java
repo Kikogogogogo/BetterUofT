@@ -1,10 +1,6 @@
 package Adapter.Club;
 
-import Entity.Club;
-import use_case.club.ShowingClubInputBoundary;
-import use_case.club.ShowingInputData;
-
-import java.util.List;
+import use_case.club.ShowingUsecase.ShowingClubInputBoundary;
 
 public class ShowingClubController {
     private final ShowingClubInputBoundary showingUsecase;

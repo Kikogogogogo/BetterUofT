@@ -2,15 +2,15 @@ package club;
 
 import Adapter.Club.RandomClubController;
 import Adapter.Club.RandomClubPresenter;
-import Data.ClubDataAccess;
-import Data.ClubDataAccessObject;
-import Data.UserDataAccess;
-import Data.UserDataAcessObject;
+import Data.Club.ClubDataAccess;
+import Data.Club.ClubDataAccessObject;
+import Data.Club.UserDataAccess;
+import Data.Club.UserDataAcessObject;
 import View.club.RandomClubApp;
 import org.junit.Test;
-import use_case.club.RandomClubUsecase;
-import use_case.club.RandomInputBoundary;
-import use_case.club.RandomOutputBoundary;
+import use_case.club.RandomUsecase.RandomClubUsecase;
+import use_case.club.RandomUsecase.RandomInputBoundary;
+import use_case.club.RandomUsecase.RandomOutputBoundary;
 
 public class TestRandomUsecase {
     @Test

@@ -1,13 +1,15 @@
 package View.club;
 
 import Adapter.Club.*;
-import Data.ClubDataAccess;
-import Data.ClubDataAccessObject;
-import Data.UserDataAccess;
-import Data.UserDataAcessObject;
-import Entity.Club;
 import App.FinalApp;
-import use_case.club.*;
+import Data.Club.ClubDataAccess;
+import Data.Club.ClubDataAccessObject;
+import Data.Club.UserDataAccess;
+import Data.Club.UserDataAcessObject;
+import use_case.club.JoinUsecase.JoinInputData;
+import use_case.club.ShowingUsecase.ShowingClubInputBoundary;
+import use_case.club.ShowingUsecase.ShowingOutputBoundary;
+import use_case.club.ShowingUsecase.ShowingUsecase;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -15,7 +17,6 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class ClubApp extends JFrame {
     private JPanel panel;
@@ -173,7 +174,11 @@ public class ClubApp extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                SwingUtilities.invokeLater(() -> {
+                    FinalApp finalApp = new FinalApp();
+                    finalApp.setVisible(true);
+                });
+                dispose();
             }
         });
     }

@@ -1,9 +1,7 @@
 package Adapter.Club;
 
-import use_case.club.CreateInputBoundary;
-import use_case.club.ShowingClubInputBoundary;
-
-import java.util.ArrayList;
+import use_case.club.CreateUsecase.CreateInputBoundary;
+import use_case.club.ShowingUsecase.ShowingClubInputBoundary;
 
 public class CreateClubController {
     private final CreateInputBoundary createUsecase;

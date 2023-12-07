@@ -1,6 +1,6 @@
 package use_case.food;
 
-import Entity.Food;
+import Entity.Food.Food;
 
 import java.util.ArrayList;
 
