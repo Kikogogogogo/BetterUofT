@@ -2,66 +2,62 @@ package lostAndFoundTest;
 
 import static org.junit.Assert.*;
 
+import Adapter.LostAndFound.ReportController;
 import Data.LostAndFound.InMemoryReportRepository;
 import Entity.LostAndFound.Report;
-import org.junit.Before;
 import org.junit.Test;
-import use_case.LostAndFound.CreateReport;
-import use_case.LostAndFound.DeleteReport;
-import use_case.LostAndFound.FindReport;
-import use_case.LostAndFound.UpdateReport;
+import use_case.LostAndFound.*;
 
-import use_case.LostAndFound.ReportController;
-
-
+import java.sql.Timestamp;
 import java.util.Optional;
 
-class ReportControllerTest {
+public class ReportControllerTest {
     private ReportController reportController;
     private InMemoryReportRepository reportRepository;
 
-    @Before
-    public void setUp() {
-        reportRepository = new InMemoryReportRepository();
-        CreateReport createReport = new CreateReport(reportRepository);
-        FindReport findReport = new FindReport(reportRepository);
-        UpdateReport updateReport = new UpdateReport(reportRepository);
-        DeleteReport deleteReport = new DeleteReport(reportRepository);
-        reportController = new ReportController(createReport, findReport, updateReport, deleteReport);
-    }
-
     @Test
     public void testUpdateReport() {
-        Report reportToUpdate = new Report();
-        reportToUpdate.setReportId(1L);
-        reportToUpdate.setUserId(1L);
-        reportToUpdate.setItemId(1L);
-        reportToUpdate.setReportId(1L);
-        reportToUpdate.setDescription("Updated Description");
+        reportRepository = new InMemoryReportRepository();
+        reportController = new ReportController(
+                new CreateReport(reportRepository),
+                new FindReport(reportRepository),
+                new UpdateReport(reportRepository),
+                new DeleteReport(reportRepository));
+        Report newReport = new Report();
+        newReport.setUserId(1L);
+        newReport.setItemId(1L);
+        newReport.setDescription("Original Description");
+        newReport.setTimestamp(new Timestamp(System.currentTimeMillis())); // Set timestamp
+        Report createdReport = reportController.createReport(newReport);
 
-        Report updatedReport = reportController.updateReport(reportToUpdate);
+        createdReport.setDescription("Updated Description");
+        Report updatedReport = reportController.updateReport(createdReport);
+
         assertNotNull(updatedReport);
         assertEquals("Updated Description", updatedReport.getDescription());
 
-        Optional<Report> foundReport = reportController.findReport(1L);
+        Optional<Report> foundReport = reportController.findReport(createdReport.getReportId());
         assertTrue(foundReport.isPresent());
         assertEquals("Updated Description", foundReport.get().getDescription());
     }
 
     @Test
     public void testDeleteReport() {
+        reportRepository = new InMemoryReportRepository();
+        reportController = new ReportController(
+                new CreateReport(reportRepository),
+                new FindReport(reportRepository),
+                new UpdateReport(reportRepository),
+                new DeleteReport(reportRepository));
         Report newReport = new Report();
-
-        newReport.setReportId(2L);
-        newReport.setUserId(789L);
-        newReport.setItemId(1011L);
+        newReport.setUserId(1L);
+        newReport.setItemId(1L);
         newReport.setDescription("Report to Delete");
+        newReport.setTimestamp(new Timestamp(System.currentTimeMillis())); // Set timestamp
+        Report createdReport = reportController.createReport(newReport);
 
-        reportController.createReport(newReport);
-
-        // Test Delete
-        reportController.deleteReport(2L);
-        Optional<Report> foundReport = reportController.findReport(2L);
-        assertTrue(foundReport.isEmpty());
+        reportController.deleteReport(createdReport.getReportId());
+        Optional<Report> foundReport = reportController.findReport(createdReport.getReportId());
+        assertFalse(foundReport.isPresent());
     }
 }

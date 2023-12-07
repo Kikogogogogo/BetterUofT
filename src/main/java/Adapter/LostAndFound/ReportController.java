@@ -1,7 +1,11 @@
-package use_case.LostAndFound;
+package Adapter.LostAndFound;
 
 
 import Entity.LostAndFound.Report;
+import use_case.LostAndFound.CreateReport;
+import use_case.LostAndFound.DeleteReport;
+import use_case.LostAndFound.FindReport;
+import use_case.LostAndFound.UpdateReport;
 
 import java.util.Optional;
 
