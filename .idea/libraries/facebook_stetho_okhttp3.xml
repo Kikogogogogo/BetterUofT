@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="facebook.stetho.okhttp3" type="repository">
+    <properties maven-id="com.facebook.stetho:stetho-okhttp3:1.3.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/facebook/stetho/stetho-okhttp3/1.3.1/stetho-okhttp3-1.3.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/3.0.1/okhttp-3.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okio/okio/1.6.0/okio-1.6.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/facebook/stetho/stetho/1.3.1/stetho-1.3.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-cli/commons-cli/1.2/commons-cli-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
