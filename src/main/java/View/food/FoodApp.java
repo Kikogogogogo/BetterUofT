@@ -82,7 +82,7 @@ public class FoodApp extends JFrame {
 
     }
 
-    private JPanel createFoodPanel(Food food) {
+    protected JPanel createFoodPanel(Food food) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -131,7 +131,7 @@ public class FoodApp extends JFrame {
         detailsDialog.setVisible(true);
     }
 
-    private void sortFoodItems(ActionEvent event) {
+    protected void sortFoodItems(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
             SortUseCase sortFood = new SortUseCase(this);
             sortFood.sortFood();
@@ -139,7 +139,7 @@ public class FoodApp extends JFrame {
     }
 
 
-    private void openAdd(ActionEvent event){
+    protected void openAdd(ActionEvent event){
         SwingUtilities.invokeLater(() -> {
             AddFood addFood = new AddFood(showingUsecase);
             addFood.setVisible(true);
