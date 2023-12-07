@@ -1,12 +1,10 @@
-package View.GUI;
+package App;
 
 import View.LostAndFound.ReportApplication;
 import View.club.ClubApp;
 import View.food.FoodApp;
 
-import View.postandreply.ChooseModeGUI;
-import View.postandreply.MessageBoardApp;
-import View.trade.ShowTradeView;
+import View.postandreply.ChooseModeView;
 import View.trade.TradeView;
 
 import javax.swing.*;
@@ -16,60 +14,51 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.Objects;
 
 public class FinalApp extends JFrame {
     private ImageIcon image1;
     private  JLabel label1;
 
     public FinalApp() {
-        setTitle("Final App");
+        setTitle("Better UofT");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setSize(500, 400); 
-        setLocationRelativeTo(null); 
+        setSize(400, 400);
+        setLocationRelativeTo(null);
 
-        loadAndSetImage();
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(4, 2, 10, 10)); 
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); 
+        buttonPanel.setLayout(new GridLayout(3, 2, 10, 10));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JButton postAndReplyButton = createButton("Post and Reply", this::openPostAndReply);
         JButton clubButton = createButton("Club", this::openClub);
         JButton foodButton = createButton("Food", this::openFood);
         JButton tradeButton = createButton("Trading", this::openTrading);
         JButton lafButton = createButton("Lost and Found", this::openLAF);
-        JButton closeButton = createButton("Close Program", e -> closeProgram());
 
-        closeButton.setBackground(Color.LIGHT_GRAY);
-        closeButton.setForeground(Color.black);
+        loadAndSetImage();
+
 
         buttonPanel.add(postAndReplyButton);
         buttonPanel.add(clubButton);
         buttonPanel.add(foodButton);
         buttonPanel.add(tradeButton);
         buttonPanel.add(lafButton);
-        buttonPanel.add(closeButton);
 
         add(buttonPanel, BorderLayout.CENTER);
-    }
-
-    private void closeProgram() {
-        dispose();
     }
 
 
     private JButton createButton(String text, ActionListener actionListener) {
         JButton button = new JButton(text);
         button.addActionListener(actionListener);
-        button.setFont(new Font("Arial", Font.BOLD, 16));
         return button;
     }
 
 
     private void loadAndSetImage() {
-        URL imageUrl = getClass().getClassLoader().getResource("src/U-of-T-Logo.png");
+        URL imageUrl = getClass().getClassLoader().getResource("UofT-Sc-logo.jpg");
         if (imageUrl != null) {
             image1 = new ImageIcon(imageUrl);
             label1 = new JLabel(image1);
@@ -79,18 +68,15 @@ public class FinalApp extends JFrame {
         }
     }
 
-
     private void openTrading(ActionEvent e) {
         SwingUtilities.invokeLater(() -> {
             TradeView tradeView = new TradeView();
             tradeView.setVisible(true);
-            ShowTradeView showTradeView = new ShowTradeView();
-            showTradeView.setVisible(true);
         });
     }
     private void openPostAndReply(ActionEvent event) {
         SwingUtilities.invokeLater(() -> {
-            ChooseModeGUI chooseMode = new ChooseModeGUI();
+            ChooseModeView chooseMode = new ChooseModeView();
             chooseMode.setVisible(true);
         });
     }

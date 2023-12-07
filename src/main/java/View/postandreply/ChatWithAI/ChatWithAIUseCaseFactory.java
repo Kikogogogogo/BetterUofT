@@ -1,4 +1,4 @@
-package App;
+package View.postandreply.ChatWithAI;
 
 import Adapter.PostandReply.ChatwithAIController;
 import Adapter.PostandReply.ChatwithAIPresenter;
