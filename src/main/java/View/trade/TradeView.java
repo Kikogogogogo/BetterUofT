@@ -5,6 +5,7 @@ import Adapter.trade.TradePresenter;
 import Data.ClubDataAccess;
 import Data.ClubDataAccessObject;
 import Data.CsvTradeDataAccess;
+import Entity.TradeItem;
 import use_case.trade.*;
 
 import javax.swing.*;
@@ -27,6 +28,9 @@ public class TradeView extends JFrame {
     private TradePresenter presenter = new TradePresenter(this);
     private CsvTradeDataAccess tradeDataAccess = new CsvTradeDataAccess("trade.csv");
     private final TradeController tradeController = new TradeController(presenter, tradeDataAccess);
+
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    private static final String PHONE_REGEX = "^\\d{10}$"; // Example for a 10-digit phone number without any dashes or spaces
 
 
     public TradeView() {
@@ -101,9 +105,34 @@ public class TradeView extends JFrame {
         String contactName = nameField.getText();
         String email = emailField.getText();
         String phone = phoneField.getText();
+        String validationError = validateInput(category, description, priceText, contactName, email, phone);
+        if (!validationError.isEmpty()) {
+            JOptionPane.showMessageDialog(this, validationError, "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; // Stop further processing if there is a validation error
+        }
         String[] input = {category, description, priceText, contactName, email, phone};
         tradeController.submitTrade(input);
     }
+    private String validateInput(String category, String description, String price, String contactName, String email, String phone) {
+        if (category.isEmpty() || description.isEmpty() || price.isEmpty() || contactName.isEmpty() || email.isEmpty() || phone.isEmpty()) {
+            return "All fields are required.";
+        }
+        try {
+            Double.parseDouble(price); // Validate if price is a number
+        } catch (NumberFormatException e) {
+            return "Invalid price format.";
+        }
+        if (!email.matches(EMAIL_REGEX)) {
+            return "Invalid email format.";
+        }
+
+        if (!phone.matches(PHONE_REGEX)) {
+            return "Invalid phone format.";
+        }
+
+        return ""; // Return empty string if all validations pass
+    }
+
 
     public static void main(String[] args) {
 //        String csvFilePath = "trades.csv";

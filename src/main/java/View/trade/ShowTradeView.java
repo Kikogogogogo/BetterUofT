@@ -26,6 +26,7 @@ public class ShowTradeView extends JFrame {
         JScrollPane scrollPane = new JScrollPane(cardsPanel);
         panel.add(scrollPane, BorderLayout.CENTER);
 
+        //return all information stored in csv
         List<String[]> output = tradeDataAccess.getAllTrade();
         for (String[] item : output) {
             //description, categorty, price, name, email, phone
@@ -55,9 +56,11 @@ public class ShowTradeView extends JFrame {
         return cardPanel;
     }
     private void openDetailedView(String description, String category, String price, String name, String email, String phone) {
-        JDialog detailDialog = new JDialog(this, "Item Details", true); // 'this' refers to the parent frame
+        // 'this' refers to the parent frame
+        JDialog detailDialog = new JDialog(this, "Item Details", true);
         detailDialog.setSize(300, 200);
-        detailDialog.setLayout(new GridLayout(0, 1)); // 0 rows, 1 column for a vertical layout
+        // 0 rows, 1 column for a vertical layout
+        detailDialog.setLayout(new GridLayout(0, 1));
 
         // Add item details
         detailDialog.add(new JLabel("Description: " + description));
@@ -77,7 +80,8 @@ public class ShowTradeView extends JFrame {
         detailDialog.add(closeButton);
 
         // Display the dialog
-        detailDialog.setLocationRelativeTo(this); // Center it relative to the parent frame
+        // Center it relative to the parent frame
+        detailDialog.setLocationRelativeTo(this);
         detailDialog.setVisible(true);
     }
 
@@ -89,8 +93,10 @@ public class ShowTradeView extends JFrame {
         contactDialog.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.fill = GridBagConstraints.HORIZONTAL; // Ensure components stretch to fill the horizontal space
-        gbc.insets = new Insets(5, 10, 5, 10); // Increase insets for better spacing
+        // Ensure components stretch to fill the horizontal space
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        // Increase insets for better spacing
+        gbc.insets = new Insets(5, 10, 5, 10);
 
         // Name label and field
         contactDialog.add(new JLabel("Contact Person:"), gbc);
