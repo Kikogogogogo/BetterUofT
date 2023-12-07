@@ -3,7 +3,7 @@ package View.LostAndFound;
 import Data.InMemoryReportRepository;
 import Data.ReportRepository;
 import Entity.Report;
-import View.GUI.FinalApp;
+import App.FinalApp;
 import use_case.LostAndFound.*;
 
 import javax.swing.*;

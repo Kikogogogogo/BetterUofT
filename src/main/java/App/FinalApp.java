@@ -5,6 +5,7 @@ import View.club.ClubApp;
 import View.food.FoodApp;
 
 import View.postandreply.ChooseModeView;
+import View.trade.ShowTradeView;
 import View.trade.TradeView;
 
 import javax.swing.*;
@@ -72,6 +73,8 @@ public class FinalApp extends JFrame {
         SwingUtilities.invokeLater(() -> {
             TradeView tradeView = new TradeView();
             tradeView.setVisible(true);
+            ShowTradeView showTradeView = new ShowTradeView();
+            showTradeView.setVisible(true);
         });
     }
     private void openPostAndReply(ActionEvent event) {
