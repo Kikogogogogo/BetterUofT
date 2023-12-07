@@ -55,7 +55,7 @@ public class ShowTradeView extends JFrame {
 
         return cardPanel;
     }
-    private void openDetailedView(String description, String category, String price, String name, String email, String phone) {
+    public void openDetailedView(String description, String category, String price, String name, String email, String phone) {
         // 'this' refers to the parent frame
         JDialog detailDialog = new JDialog(this, "Item Details", true);
         detailDialog.setSize(300, 200);

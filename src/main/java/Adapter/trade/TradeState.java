@@ -1,7 +1,8 @@
 package Adapter.trade;
 
 public class TradeState {
-    // Example state variables
+
+    //for future, this state can be used to indicate a sold item
     private boolean isTradeInProgress;
     private String currentSessionId;
 

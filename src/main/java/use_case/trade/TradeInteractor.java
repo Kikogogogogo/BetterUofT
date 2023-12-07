@@ -21,4 +21,5 @@ public class TradeInteractor implements TradeInputBoundary {
         this.presenter.showTrade(input);
         this.tradeDataAccess.save(input);
     }
+
 }
