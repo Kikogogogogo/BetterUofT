@@ -1,7 +1,7 @@
-package Data;
+package Data.Food;
 
 
-import Entity.Food;
+import Entity.Food.Food;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

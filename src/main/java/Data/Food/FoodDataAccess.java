@@ -1,7 +1,7 @@
-package Data;
+package Data.Food;
 
 import java.util.List;
-import Entity.Food;
+import Entity.Food.Food;
 
 public interface FoodDataAccess {
     void save(Food food);

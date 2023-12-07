@@ -1,11 +1,10 @@
 package Adapter.Food;
 
-import Data.CsvFoodRepo;
-import Entity.Food;
+import Data.Food.CsvFoodRepo;
+import Entity.Food.Food;
 import use_case.food.FoodInputBoundary;
 import use_case.food.ShowingFoodInputBoundary;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class AddFoodController {

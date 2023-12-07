@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Food;
 
 import java.util.ArrayList;
 import java.util.Arrays;

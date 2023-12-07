@@ -1,7 +1,7 @@
 package use_case.club.ShowingUsecase;
 
 import java.util.List;
-import Entity.Club;
+import Entity.Club.Club;
 
 public class ShowingInputData {
     final private int selection;

@@ -1,11 +1,9 @@
 package View.trade;
 
-import Data.CsvTradeDataAccess;
+import Data.Trade.CsvTradeDataAccess;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;

@@ -1,5 +1,5 @@
-package Data;
-import Entity.Report;
+package Data.LostAndFound;
+import Entity.LostAndFound.Report;
 
 import java.util.List;
 import java.util.Optional;

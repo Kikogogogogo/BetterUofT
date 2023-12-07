@@ -1,8 +1,8 @@
 package use_case.club.RandomUsecase;
 
-import Data.ClubDataAccess;
-import Data.UserDataAccess;
-import Entity.Club;
+import Data.Club.ClubDataAccess;
+import Data.Club.UserDataAccess;
+import Entity.Club.Club;
 import View.club.JoinClubApp;
 import use_case.club.JoinUsecase.JoinInputData;
 

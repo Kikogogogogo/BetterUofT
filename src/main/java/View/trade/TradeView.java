@@ -2,17 +2,13 @@ package View.trade;
 
 import Adapter.trade.TradeController;
 import Adapter.trade.TradePresenter;
-import Data.ClubDataAccess;
-import Data.ClubDataAccessObject;
-import Data.CsvTradeDataAccess;
-import Entity.TradeItem;
-import use_case.trade.*;
+import Data.Trade.CsvTradeDataAccess;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class TradeView extends JFrame {

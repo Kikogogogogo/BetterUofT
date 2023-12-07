@@ -1,11 +1,8 @@
 package Adapter.trade;
 
-import Data.CsvTradeDataAccess;
-import Entity.TradeItem;
+import Data.Trade.CsvTradeDataAccess;
 import use_case.trade.TradeInputBoundary;
-import use_case.trade.TradeInputData;
 import use_case.trade.TradeInteractor;
-import use_case.trade.TradeUserDataAccessInterface;
 
 // TradeController.java
 

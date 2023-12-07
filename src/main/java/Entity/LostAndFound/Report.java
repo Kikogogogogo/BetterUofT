@@ -1,4 +1,4 @@
-package Entity;
+package Entity.LostAndFound;
 import java.sql.Timestamp;
 
 

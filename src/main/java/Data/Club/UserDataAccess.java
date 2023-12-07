@@ -1,6 +1,6 @@
-package Data;
+package Data.Club;
 
-import Entity.User;
+import Entity.Club.User;
 
 import java.util.List;
 

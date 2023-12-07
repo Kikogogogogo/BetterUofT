@@ -1,15 +1,13 @@
 package View.food;
 
-import Adapter.Food.AddFoodPresenter;
 import Adapter.Food.ShowingFoodPresenter;
-import Data.CsvFoodRepo;
-import Data.FoodDataAccess;
-import Data.FoodDataAccessObject;
-import Entity.Food;
+import Data.Food.CsvFoodRepo;
+import Data.Food.FoodDataAccess;
+import Data.Food.FoodDataAccessObject;
+import Entity.Food.Food;
 import use_case.food.FoodShowingUsecase;
 import use_case.food.ShowingFoodInputBoundary;
 import use_case.food.ShowingFoodOutputBoundary;
-import use_case.food.SortUseCase;
 import use_case.food.SortUseCase;
 
 import javax.swing.*;

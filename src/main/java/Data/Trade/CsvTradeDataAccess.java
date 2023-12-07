@@ -1,9 +1,4 @@
-package Data;
-
-import Entity.Club;
-import Entity.TradeItem;
-import use_case.trade.TradeOutputBoundary;
-import use_case.trade.TradeUserDataAccessInterface;
+package Data.Trade;
 
 import java.io.*;
 import java.util.ArrayList;

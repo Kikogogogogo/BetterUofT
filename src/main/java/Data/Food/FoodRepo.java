@@ -1,5 +1,5 @@
-package Data;
-import Entity.Food;
+package Data.Food;
+import Entity.Food.Food;
 import java.util.List;
 
 public interface FoodRepo {

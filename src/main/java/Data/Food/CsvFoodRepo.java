@@ -1,11 +1,10 @@
-package Data;
+package Data.Food;
 
-import Entity.Food;
+import Entity.Food.Food;
 
 import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CsvFoodRepo implements FoodRepo {
     private static Path path;

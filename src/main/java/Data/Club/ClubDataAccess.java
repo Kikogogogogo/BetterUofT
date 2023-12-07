@@ -1,5 +1,5 @@
-package Data;
-import Entity.Club;
+package Data.Club;
+import Entity.Club.Club;
 
 import java.util.List;
 

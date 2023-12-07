@@ -2,8 +2,8 @@ package View.club;
 
 import Adapter.Club.InfoClubController;
 import Adapter.Club.InfoClubPresenter;
-import Data.ClubDataAccess;
-import Data.UserDataAccess;
+import Data.Club.ClubDataAccess;
+import Data.Club.UserDataAccess;
 import use_case.club.InfoUsecase.InfoClubInputBoundary;
 import use_case.club.InfoUsecase.InfoClubOutputBoundary;
 import use_case.club.InfoUsecase.InfoClubUsecase;

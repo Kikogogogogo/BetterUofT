@@ -1,6 +1,4 @@
-package Data;
-
-import Entity.Club;
+package Data.Trade;
 
 import java.util.List;
 

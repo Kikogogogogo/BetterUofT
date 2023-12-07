@@ -1,16 +1,12 @@
-package Data;
+package Data.Club;
 
-import Entity.Club;
+import Entity.Club.Club;
 
-import java.awt.*;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
-public class ClubDataAccessObject implements ClubDataAccess{
+public class ClubDataAccessObject implements ClubDataAccess {
     private String csvFilePath;
     public ClubDataAccessObject(String csvFilePath) {
         this.csvFilePath = csvFilePath;

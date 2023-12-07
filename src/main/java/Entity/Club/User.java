@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Club;
 
 public class User {
     private String username;

@@ -1,11 +1,8 @@
 package use_case.LostAndFound;
 
-import Data.ReportRepository;
 
+import Entity.LostAndFound.Report;
 
-import Entity.Report;
-
-import java.util.List;
 import java.util.Optional;
 
 public class ReportController {

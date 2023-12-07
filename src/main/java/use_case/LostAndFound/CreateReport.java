@@ -1,7 +1,7 @@
 package use_case.LostAndFound;
 
-import Data.ReportRepository;
-import Entity.Report;
+import Data.LostAndFound.ReportRepository;
+import Entity.LostAndFound.Report;
 
 public class CreateReport {
     private final ReportRepository reportRepository;

@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Club;
 
 import java.util.ArrayList;
 

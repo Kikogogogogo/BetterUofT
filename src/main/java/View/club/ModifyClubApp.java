@@ -2,10 +2,10 @@ package View.club;
 
 import Adapter.Club.ModifyClubController;
 import Adapter.Club.ModifyClubPresenter;
-import Data.ClubDataAccess;
-import Data.ClubDataAccessObject;
-import Data.UserDataAccess;
-import Data.UserDataAcessObject;
+import Data.Club.ClubDataAccess;
+import Data.Club.ClubDataAccessObject;
+import Data.Club.UserDataAccess;
+import Data.Club.UserDataAcessObject;
 import use_case.club.ModifyUsecase.ModifyClubUsecase;
 import use_case.club.ModifyUsecase.ModifyInputBoundary;
 import use_case.club.ModifyUsecase.ModifyOutputBoundary;

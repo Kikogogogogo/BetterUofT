@@ -1,9 +1,10 @@
 package View.LostAndFound;
 
+import API.LAFAutoCorrect;
 import App.FinalApp;
-import Data.InMemoryReportRepository;
-import Data.ReportRepository;
-import Entity.Report;
+import Data.LostAndFound.InMemoryReportRepository;
+import Data.LostAndFound.ReportRepository;
+import Entity.LostAndFound.Report;
 import use_case.LostAndFound.*;
 
 import javax.swing.*;
@@ -21,8 +22,13 @@ public class ReportApplication extends JFrame {
     private JTextField reportIdField, userIdField, itemIdField;
 
     private JTextArea descriptionField;
-    private JButton submitButton, findButton, updateButton, deleteButton, backToFinalAppButton, closeButton, displayAllButton;
+    private JButton submitButton, findButton, updateButton, deleteButton, backToFinalAppButton, closeButton, displayAllButton, autoCorrectButton;
+
+    private LAFAutoCorrect autoCorrector = new LAFAutoCorrect();
+
     private JPanel panel;
+
+   
 
     private FinalApp finalApp;
 
@@ -78,6 +84,8 @@ public class ReportApplication extends JFrame {
         closeButton.setBackground(Color.LIGHT_GRAY);
         closeButton.setForeground(Color.black);
 
+        autoCorrectButton = new JButton("Auto Correct");
+
         submitButton.addActionListener(e -> submitReport());
         findButton.addActionListener(e -> findReport());
         updateButton.addActionListener(e -> updateReport());
@@ -85,14 +93,17 @@ public class ReportApplication extends JFrame {
         backToFinalAppButton.addActionListener(e -> openFinalApp());
         closeButton.addActionListener(e -> closeProgram());
         displayAllButton.addActionListener(e -> displayAllReports());
+        autoCorrectButton.addActionListener(e -> autoCorrectDescription());
+
 
 
         buttonPanel.add(submitButton);
         buttonPanel.add(findButton);
         buttonPanel.add(updateButton);
         buttonPanel.add(deleteButton);
-        buttonPanel.add(backToFinalAppButton);
         buttonPanel.add(displayAllButton);
+        buttonPanel.add(autoCorrectButton);
+        buttonPanel.add(backToFinalAppButton);
         buttonPanel.add(closeButton);
 
         JPanel mainPanel = new JPanel();
@@ -104,6 +115,12 @@ public class ReportApplication extends JFrame {
         add(mainPanel, BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(null);
+    }
+
+    private void autoCorrectDescription() {
+        String originalText = descriptionField.getText();
+        String correctedText = autoCorrector.getCorrectedText(originalText);
+        descriptionField.setText(correctedText);
     }
 
     private void addField(JPanel panel, String label, Component field, GridBagConstraints gbc) {

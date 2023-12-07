@@ -1,7 +1,7 @@
 package use_case.club.ShowingUsecase;
 
-import Data.ClubDataAccess;
-import Entity.Club;
+import Data.Club.ClubDataAccess;
+import Entity.Club.Club;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Trade;
 
 public class TradeItem {
     private String description;

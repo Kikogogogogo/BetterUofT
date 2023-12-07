@@ -1,10 +1,11 @@
 package View.club;
 
 import Adapter.Club.*;
-import Data.ClubDataAccess;
-import Data.ClubDataAccessObject;
-import Data.UserDataAccess;
-import Data.UserDataAcessObject;
+import App.FinalApp;
+import Data.Club.ClubDataAccess;
+import Data.Club.ClubDataAccessObject;
+import Data.Club.UserDataAccess;
+import Data.Club.UserDataAcessObject;
 import use_case.club.JoinUsecase.JoinInputData;
 import use_case.club.ShowingUsecase.ShowingClubInputBoundary;
 import use_case.club.ShowingUsecase.ShowingOutputBoundary;
@@ -173,7 +174,11 @@ public class ClubApp extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                SwingUtilities.invokeLater(() -> {
+                    FinalApp finalApp = new FinalApp();
+                    finalApp.setVisible(true);
+                });
+                dispose();
             }
         });
     }

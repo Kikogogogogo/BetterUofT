@@ -1,6 +1,6 @@
 package Adapter.Club;
 
-import Entity.Club;
+import Entity.Club.Club;
 import View.club.ClubApp;
 import use_case.club.ShowingUsecase.ShowingInputData;
 import use_case.club.ShowingUsecase.ShowingOutputBoundary;
