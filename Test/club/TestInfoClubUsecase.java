@@ -1,15 +1,15 @@
 package club;
 
 import Adapter.Club.InfoClubPresenter;
-import Data.ClubDataAccess;
-import Data.ClubDataAccessObject;
-import Data.UserDataAccess;
-import Data.UserDataAcessObject;
+import Data.Club.ClubDataAccess;
+import Data.Club.ClubDataAccessObject;
+import Data.Club.UserDataAccess;
+import Data.Club.UserDataAcessObject;
 import View.club.InfoClubApp;
 import org.junit.Test;
-import use_case.club.InfoClubInputBoundary;
-import use_case.club.InfoClubOutputBoundary;
-import use_case.club.InfoClubUsecase;
+import use_case.club.InfoUsecase.InfoClubOutputBoundary;
+import use_case.club.InfoUsecase.InfoClubUsecase;
+import use_case.club.InfoUsecase.InfoClubInputBoundary;
 
 public class TestInfoClubUsecase {
     @Test

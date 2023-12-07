@@ -1,28 +1,24 @@
+package Trade;
+
 import Adapter.trade.TradeController;
 import Adapter.trade.TradePresenter;
-import Data.CsvTradeDataAccess;
-import Entity.TradeItem;
+import Data.Trade.CsvTradeDataAccess;
+import Entity.Trade.TradeItem;
 import View.trade.ShowTradeView;
 import View.trade.TradeView;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.*;
 
 import static org.junit.Assert.assertTrue;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
-import App.FinalApp;
 
 
 public class TradeTest {

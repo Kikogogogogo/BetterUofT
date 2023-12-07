@@ -1,16 +1,17 @@
 package club;
 
 import Adapter.Club.JoinClubPresenter;
-import Data.ClubDataAccess;
-import Data.ClubDataAccessObject;
-import Data.UserDataAccess;
-import Data.UserDataAcessObject;
+import Data.Club.ClubDataAccess;
+import Data.Club.ClubDataAccessObject;
+import Data.Club.UserDataAccess;
+import Data.Club.UserDataAcessObject;
 import View.club.JoinClubApp;
 import org.junit.Test;
-import use_case.club.JoinInputBoundary;
-import use_case.club.JoinInputData;
-import use_case.club.JoinOutputBoundary;
-import use_case.club.JoinUsecase;
+
+import use_case.club.JoinUsecase.JoinInputBoundary;
+import use_case.club.JoinUsecase.JoinInputData;
+import use_case.club.JoinUsecase.JoinOutputBoundary;
+import use_case.club.JoinUsecase.JoinUsecase;
 
 public class TestJoinUsecase {
 
