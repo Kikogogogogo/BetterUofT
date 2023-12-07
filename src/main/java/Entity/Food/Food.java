@@ -40,6 +40,13 @@ public class Food implements Cloneable{
         this.count += count;
     }
 
+    public Food(String name, int rating, int price) {
+        this.name = name;
+        this.rating = String.valueOf(rating);
+        this.price = String.valueOf(price);
+
+    }
+
     public String getName() {
         return this.name;
     }

@@ -99,7 +99,7 @@ public class  AddFood extends JFrame{
                 AddFoodController.execute(name, location, description, id.toString(), rating, price);
                 JOptionPane.showMessageDialog(null, "Food added successfully!");
                 dispose();
-                openFood();
+                openFood(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
             }
         });
 
@@ -107,7 +107,7 @@ public class  AddFood extends JFrame{
 
 
 
-    private void openFood() {
+    public void openFood(ActionEvent actionEvent) {
         SwingUtilities.invokeLater(() -> {
             FoodApp foodApp = new FoodApp();
             foodApp.setVisible(true);
