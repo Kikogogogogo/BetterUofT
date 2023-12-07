@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 
-public class TradeTest {
+public class TestTrade {
 
 
     @Test
@@ -62,22 +62,14 @@ public class TradeTest {
         assertEquals("123@321.com", firstTrade[4], "Description should match");
         assertEquals("1234567890", firstTrade[5], "Description should match");
 
-        //second row
-        String[] secondTrade = trades.get(1);
-        assertEquals("books", firstTrade[0], "Description should match");
-        assertEquals("CSC207", firstTrade[1], "Description should match");
-        assertEquals("10", firstTrade[2], "Description should match");
-        assertEquals("Amy", firstTrade[3], "Description should match");
-        assertEquals("123@321.com", firstTrade[4], "Description should match");
-        assertEquals("1234567890", firstTrade[5], "Description should match");
 
     }
     @Test
     void testTradeItemConstructorAndGetters() {
-            // Create an instance of the concrete subclass with test data
+        // Create an instance of the concrete subclass with test data
         TradeItem tradeItem = new TradeItem("Laptop", "Electronics", "500", "John Doe", "john@example.com", "1234567890");
 
-            // Test getters
+        // Test getters
         assertEquals("Laptop", tradeItem.getDescription(), "Description should match");
         assertEquals("Electronics", tradeItem.getCategory(), "Category should match");
         assertEquals("500", tradeItem.getPrice(), "Price should match");
@@ -103,13 +95,13 @@ public class TradeTest {
         assertEquals("Jane Doe", tradeItem.getContactName(), "Updated contact name should match");
         assertEquals("jane@example.com", tradeItem.getEmail(), "Updated email should match");
         assertEquals("0987654321", tradeItem.getPhone(), "Updated phone should match");
-        }
+    }
 
-        @Test
+    @Test
     void testShowTradeView(){
         ShowTradeView showTradeView = new ShowTradeView();
 
-        }
+    }
 
     @Test
     void testCreateCardPanel() {
